@@ -2,6 +2,7 @@ package com.bretzelfresser.ornithodira.client.screens;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
 import com.bretzelfresser.ornithodira.common.menu.ScannerMenu;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.LockIconButton;
@@ -9,6 +10,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.Slot;
 
@@ -30,10 +32,15 @@ public class ScannerScreen extends AbstractContainerScreen<ScannerMenu> {
     }
 
     @Override
-    protected void renderLabels(GuiGraphics p_281635_, int p_282681_, int p_283686_) {
-        p_281635_.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
-        p_281635_.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, 4210752, false);
-        p_281635_.drawString(this.font, Component.translatable("container." + Ornithodira.MODID + ".scanner.possibilities"), this.titleLabelX + 80, this.titleLabelY, 4210752, false);
+    protected void renderLabels(GuiGraphics guiGraphics, int p_282681_, int p_283686_) {
+        guiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
+        guiGraphics.drawString(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, 4210752, false);
+        drawCenteredString(guiGraphics, this.font, Component.translatable("container." + Ornithodira.MODID + ".scanner.possibilities"), 121, this.titleLabelY, 4210752, false);
+    }
+
+    public static void drawCenteredString(GuiGraphics graphics, Font pFont, Component pText, int pX, int pY, int pColor, boolean dropShadow) {
+        FormattedCharSequence formattedcharsequence = pText.getVisualOrderText();
+        graphics.drawString(pFont, formattedcharsequence, pX - pFont.width(formattedcharsequence) / 2, pY, pColor, dropShadow);
     }
 
     @Override
