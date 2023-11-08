@@ -16,6 +16,9 @@ public class ModLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         ModItems.ITEMS.getEntries().stream().forEach(i -> add(i.get(), toTitleCase(i.getId().getPath())));
         ModTabs.CREATIVE_MODE_TABS.getEntries().stream().forEach(i -> add(ModTabs.makeDiscriptionId(i.getId().getPath()), toTitleCase(i.getId().getPath())));
+
+        this.add("container." + Ornithodira.MODID + ".scanner", "Scanner");
+        this.add("container." + Ornithodira.MODID + ".scanner.possibilities", "Possibilities:");
     }
 
     public static String toTitleCase(String input) {

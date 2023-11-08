@@ -22,7 +22,6 @@ public class AddItemModifier extends LootModifier {
                     .apply(inst, AddItemModifier::new)));
 
     private final Item item;
-    private float chance = 1f;
     /**
      * Constructs a LootModifier.
      *

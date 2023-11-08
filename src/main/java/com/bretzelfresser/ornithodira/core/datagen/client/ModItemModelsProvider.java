@@ -3,6 +3,7 @@ package com.bretzelfresser.ornithodira.core.datagen.client;
 import com.bretzelfresser.ornithodira.Ornithodira;
 import com.bretzelfresser.ornithodira.core.init.ModItems;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -25,7 +26,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         ModItems.ITEMS.getEntries().stream().map(RegistryObject::get).forEach(i -> {
             if (i instanceof ForgeSpawnEggItem)
                 spawnEgg(i);
-            else
+            else if (!(i instanceof BlockItem))
                 simple(i);
         });
     }
