@@ -22,20 +22,18 @@ public class Ornithodira {
 
     public Ornithodira() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-
-
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModTabs.CREATIVE_MODE_TABS.register(modEventBus);
         ModLootModifiers.LOOT_MODIFIER_SERIALIZER.register(modEventBus);
+        ModEntities.ENTITIES.register(modEventBus);
         ModMenus.MENUS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
         GeckoLib.initialize();
     }
@@ -44,11 +42,25 @@ public class Ornithodira {
            event.accept(ModItems.PARADOX_AMULET);
            event.accept(ModBlocks.SCANNER_1);
        }
+       if (event.getTab() == ModTabs.SPAWN_EGGS.get()){
+           event.accept(ModItems.SANCHUANSAURUS_SPAWN_EGG);
+       }
     }
 
     public static ResourceLocation modLoc(String name){
         return new ResourceLocation(MODID, name);
     }
 
+    public static ResourceLocation entityGeo(String name){
+        return modLoc("geo/entity/" + name);
+    }
+
+    public static ResourceLocation entityTexture(String name){
+        return modLoc("textures/entity/" + name);
+    }
+
+    public static ResourceLocation animation(String name){
+        return modLoc("animations/" + name);
+    }
 
 }

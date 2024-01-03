@@ -19,7 +19,7 @@ public class ModTabs {
             .icon(() -> ModItems.PARADOX_AMULET.get().getDefaultInstance()));
     public static final RegistryObject<CreativeModeTab> SPAWN_EGGS = register("ornithodira_spawn_eggs", CreativeModeTab.builder()
             .withTabsBefore(ITEMS.getId())
-            .icon(() -> ModItems.PARADOX_AMULET.get().getDefaultInstance()));
+            .icon(() -> ModItems.SANCHUANSAURUS_SPAWN_EGG.get().getDefaultInstance()));
 
     public static RegistryObject<CreativeModeTab> register(String name, CreativeModeTab.Builder tabBuilder){
         CreativeModeTab.Builder finalTabBuilder = tabBuilder.title(Component.translatable(makeDiscriptionId(name)));

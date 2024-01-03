@@ -3,9 +3,12 @@ package com.bretzelfresser.ornithodira.core.datagen.client;
 import com.bretzelfresser.ornithodira.Ornithodira;
 import com.bretzelfresser.ornithodira.core.init.ModItems;
 import com.bretzelfresser.ornithodira.core.init.ModTabs;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.concurrent.CompletableFuture;
 
 public class ModLanguageProvider extends LanguageProvider {
     public ModLanguageProvider(PackOutput output) {
@@ -14,8 +17,21 @@ public class ModLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        ModItems.ITEMS.getEntries().stream().forEach(i -> add(i.get(), toTitleCase(i.getId().getPath())));
-        ModTabs.CREATIVE_MODE_TABS.getEntries().stream().forEach(i -> add(ModTabs.makeDiscriptionId(i.getId().getPath()), toTitleCase(i.getId().getPath())));
+        ModItems.ITEMS.getEntries().stream().forEach(i -> {
+            try {
+                add(i.get(), toTitleCase(i.getId().getPath()));
+            }catch (Exception ignored){
+            }
+
+        });
+        ModTabs.CREATIVE_MODE_TABS.getEntries().stream().forEach(i -> {
+            try {
+                add(ModTabs.makeDiscriptionId(i.getId().getPath()), toTitleCase(i.getId().getPath()));
+            }catch (Exception ignored){
+
+            }
+
+        });
 
         this.add("container." + Ornithodira.MODID + ".scanner", "Scanner");
         this.add("container." + Ornithodira.MODID + ".scanner.possibilities", "Possibilities:");
