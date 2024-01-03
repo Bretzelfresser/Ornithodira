@@ -1,5 +1,6 @@
 package com.bretzelfresser.ornithodira.common.entity;
 
+import com.bretzelfresser.ornithodira.common.entity.util.SpecialKeyBindEntity;
 import com.bretzelfresser.ornithodira.core.init.ModEntities;
 import com.bretzelfresser.ornithodira.core.tags.ModTags;
 import net.minecraft.core.BlockPos;
@@ -11,7 +12,6 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
@@ -25,9 +25,11 @@ import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.Tags;
+import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -37,7 +39,7 @@ import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable {
+public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable, SpecialKeyBindEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createMobAttributes().add(Attributes.MAX_HEALTH, 25d)
@@ -48,6 +50,8 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable {
     public static final EntityDataAccessor<Boolean> HAS_SADDLE = SynchedEntityData.defineId(Sanchuansaurus.class, EntityDataSerializers.BOOLEAN);
 
     protected AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+
+    protected int blockBreakCooldown = 0;
 
     public Sanchuansaurus(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -127,6 +131,15 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable {
     }
 
     @Override
+    public void tick() {
+        if (!this.level().isClientSide) {
+            if (this.blockBreakCooldown > 0)
+                this.blockBreakCooldown--;
+        }
+        super.tick();
+    }
+
+    @Override
     public boolean isSaddleable() {
         return this.isAlive() && !this.isBaby();
     }
@@ -155,7 +168,7 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController<Sanchuansaurus>(this, 10, this::predicate));
+        controllerRegistrar.add(new AnimationController<>(this, 10, this::predicate));
     }
 
     @Override
@@ -179,7 +192,7 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable {
 
     @Override
     protected float getRiddenSpeed(Player pPlayer) {
-        return (float)(this.getAttributeValue(Attributes.MOVEMENT_SPEED) * 0.225D);
+        return (float) (this.getAttributeValue(Attributes.MOVEMENT_SPEED) * 0.225D);
     }
 
     @Override
@@ -220,5 +233,35 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable {
 
         }
         return super.getDismountLocationForPassenger(pLivingEntity);
+    }
+
+    public int getBlockBreakMaxCooldown() {
+        return 200;
+    }
+
+    @Override
+    public boolean canExecute(Player sender) {
+        return this.blockBreakCooldown <= 0 && this.getControllingPassenger() != null && this.isVehicle() && this.getControllingPassenger().getUUID().equals(sender.getUUID());
+    }
+
+    @Override
+    public void execute(Player sender) {
+        Direction facing = this.getMotionDirection();
+        BlockPos firstPos = this.getOnPos().relative(facing);
+        boolean destroyedOneBlock = false;
+        for (int x = -1; x <= 1; x++) {
+            for (int y = 1; y <= 3; y++) {
+                BlockPos pos = firstPos.relative(facing.getClockWise(), x).above(y);
+                BlockState state = level().getBlockState(pos);
+                if (state.getDestroySpeed(level(), pos) > 0 && ForgeEventFactory.doPlayerHarvestCheck(sender, state, !state.requiresCorrectToolForDrops() || Items.IRON_PICKAXE.isCorrectToolForDrops(new ItemStack(Items.IRON_PICKAXE), state))) {
+                    this.level().destroyBlock(pos, true, this, 1 << 5);
+                    destroyedOneBlock = true;
+                }
+            }
+        }
+        if (destroyedOneBlock) {
+            this.blockBreakCooldown = getBlockBreakMaxCooldown();
+            ForgeRegistries.ITEMS.tags().getTag(ModTags.Items.SANCHUANSAURUS_STEER_ITEMS).forEach(item -> sender.getCooldowns().addCooldown(item, getBlockBreakMaxCooldown()));
+        }
     }
 }

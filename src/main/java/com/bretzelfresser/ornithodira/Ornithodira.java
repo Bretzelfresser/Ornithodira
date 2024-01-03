@@ -23,6 +23,7 @@ public class Ornithodira {
     public Ornithodira() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modEventBus.addListener(ModKeyBindings::registerKeyBindings);
 
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
