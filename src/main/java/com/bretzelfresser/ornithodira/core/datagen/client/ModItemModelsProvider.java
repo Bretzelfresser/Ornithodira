@@ -17,6 +17,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
     public final ModelFile generated = getExistingFile(mcLoc("item/generated"));
     public final ModelFile spawnEgg = getExistingFile(mcLoc("item/template_spawn_egg"));
+
+    public final ModelFile rod = getExistingFile(mcLoc("item/handheld_rod"));
     public ModItemModelsProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, Ornithodira.MODID, existingFileHelper);
     }
@@ -26,6 +28,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
         ModItems.ITEMS.getEntries().stream().map(RegistryObject::get).forEach(i -> {
             if (i instanceof ForgeSpawnEggItem)
                 spawnEgg(i);
+            else if (i == ModItems.NINGXIAITES_CONE_STICK.get())
+                rod(i);
             else if (!(i instanceof BlockItem))
                 simple(i);
         });
@@ -49,6 +53,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         for (Item item : items) {
             String name = ForgeRegistries.ITEMS.getKey(item).getPath();
             getBuilder(name).parent(spawnEgg);
+        }
+    }
+
+    private void rod(Item... items) {
+        for (Item item : items) {
+            String name = ForgeRegistries.ITEMS.getKey(item).getPath();
+            getBuilder(name).parent(rod);
         }
     }
 }

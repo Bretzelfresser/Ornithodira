@@ -187,7 +187,7 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable, Spe
 
     @Override
     protected Vec3 getRiddenInput(Player pPlayer, Vec3 pTravelVector) {
-        return new Vec3(0.0D, 0.0D, 1.0D);
+        return new Vec3(0.0D, 0.0D, 3.5d / 5D);
     }
 
     @Override

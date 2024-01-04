@@ -19,12 +19,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.Map;
 import java.util.function.Predicate;
 
 public class BrushTool extends Item {
@@ -45,7 +47,7 @@ public class BrushTool extends Item {
     }
 
     public BrushTool(int toolLevel, Properties pProperties) {
-        this(toolLevel, state -> state.getBlock() instanceof CustomEggBlock egg && egg.canBrush(state) && egg.getMinToolLevel() >= toolLevel, (state, level, pos, player, hand) -> {
+        this(toolLevel, state -> state.getBlock() instanceof CustomEggBlock egg && egg.canBrush(state) && egg.getMinToolLevel() <= toolLevel, (state, level, pos, player, hand) -> {
             if (state.getBlock() instanceof CustomEggBlock egg) {
                 egg.brush(state, level, pos, player, hand);
             }
@@ -106,6 +108,20 @@ public class BrushTool extends Item {
         return USE_DURATION;
     }
 
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return false;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack pStack) {
+        return false;
+    }
+
+    @Override
+    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+        return false;
+    }
 
     public void spawnDustParticles(Level pLevel, BlockHitResult pHitResult, BlockState pState, Vec3 pPos, HumanoidArm pArm) {
         int i = pArm == HumanoidArm.RIGHT ? 1 : -1;

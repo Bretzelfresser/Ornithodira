@@ -9,6 +9,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -41,22 +42,24 @@ public class CustomEggBlock extends Block {
 
     public static final BooleanProperty FOSSILIZED = BooleanProperty.create("fossilized");
 
+    protected final Supplier<EntityType<?>> entityTypeSupplier;
     protected final Predicate<ItemStack> fossilizedEgg, cleanEgg;
     protected final float probability, fortuneAddition;
     protected final int minToolLevel;
 
-    public CustomEggBlock(float probability, float fortuneAddition, int minToolLevel, Predicate<ItemStack> fossilizedEgg, Predicate<ItemStack> cleanEgg, Properties pProperties) {
+    public CustomEggBlock(Supplier<EntityType<?>> entityTypeSupplier, float probability, float fortuneAddition, int minToolLevel, Predicate<ItemStack> fossilizedEgg, Predicate<ItemStack> cleanEgg, Properties pProperties) {
         super(pProperties);
         this.probability = probability;
         this.fortuneAddition = fortuneAddition;
         this.minToolLevel = minToolLevel;
         this.fossilizedEgg = fossilizedEgg;
         this.cleanEgg = cleanEgg;
+        this.entityTypeSupplier = entityTypeSupplier;
         this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, 0).setValue(EGGS, 1).setValue(FOSSILIZED, false));
     }
 
-    public CustomEggBlock(float probability, float fortuneAddition, int minToolLevel, Supplier<ItemLike> fossilizedEgg, Supplier<ItemLike> cleanEgg, Properties pProperties) {
-        this(probability, fortuneAddition, minToolLevel, stack -> stack.getItem() == fossilizedEgg.get().asItem(), stack -> stack.getItem() == cleanEgg.get().asItem(), pProperties);
+    public CustomEggBlock(Supplier<EntityType<?>> entityTypeSupplier, float probability, float fortuneAddition, int minToolLevel, Supplier<ItemLike> fossilizedEgg, Supplier<ItemLike> cleanEgg, Properties pProperties) {
+        this(entityTypeSupplier, probability, fortuneAddition, minToolLevel, stack -> stack.getItem() == fossilizedEgg.get().asItem(), stack -> stack.getItem() == cleanEgg.get().asItem(), pProperties);
     }
 
     public void brush(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand) {
@@ -107,14 +110,14 @@ public class CustomEggBlock extends Block {
     }
 
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
-        if (!pEntity.isSteppingCarefully()) {
+        if (!pEntity.isSteppingCarefully() && !pState.getValue(FOSSILIZED)) {
             this.destroyEgg(pLevel, pState, pPos, pEntity, 100);
         }
         super.stepOn(pLevel, pPos, pState, pEntity);
     }
 
     public void fallOn(Level pLevel, BlockState pState, BlockPos pPos, Entity pEntity, float pFallDistance) {
-        if (!(pEntity instanceof Zombie)) {
+        if (!(pEntity instanceof Zombie) && !pState.getValue(FOSSILIZED)) {
             this.destroyEgg(pLevel, pState, pPos, pEntity, 3);
         }
 
@@ -133,13 +136,12 @@ public class CustomEggBlock extends Block {
 
                 for (int j = 0; j < pState.getValue(EGGS); ++j) {
                     pLevel.levelEvent(2001, pPos, Block.getId(pState));
-                    Turtle turtle = EntityType.TURTLE.create(pLevel);
-                    if (turtle != null) {
-                        turtle.setAge(-24000);
-                        turtle.setHomePos(pPos);
-                        turtle.moveTo((double) pPos.getX() + 0.3D + (double) j * 0.2D, (double) pPos.getY(), (double) pPos.getZ() + 0.3D, 0.0F, 0.0F);
-                        pLevel.addFreshEntity(turtle);
+                    Entity turtle = this.entityTypeSupplier.get().create(pLevel);
+                    if (turtle != null && turtle instanceof AgeableMob ageableMob) {
+                        ageableMob.setAge(-24000);
                     }
+                    turtle.moveTo((double) pPos.getX() + 0.3D + (double) j * 0.2D, (double) pPos.getY(), (double) pPos.getZ() + 0.3D, 0.0F, 0.0F);
+                    pLevel.addFreshEntity(turtle);
                 }
             }
         }
