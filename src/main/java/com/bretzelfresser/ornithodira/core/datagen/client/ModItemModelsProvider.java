@@ -29,6 +29,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
             else if (!(i instanceof BlockItem))
                 simple(i);
         });
+        simple(ModItems.FOSSILIZED_SANCHUANSAURUS_EGG.get(), ModItems.SANCHUANSAURUS_EGG.get());
     }
 
     private void simple(Item... items) {

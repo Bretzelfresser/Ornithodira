@@ -29,9 +29,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('s', Items.STICK)
                 .define('c', Items.COPPER_INGOT)
                 .define('i', Items.IRON_INGOT)
-                .pattern("i")
-                .pattern("c")
-                .pattern("s")
+                .pattern("iii")
+                .pattern(" c ")
+                .pattern(" s ")
                 .unlockedBy("hasItem", has(Items.COPPER_INGOT))
                 .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DIAMOND_BRUSH.get()).requires(ModItems.METAL_BRUSH.get()).requires(Items.DIAMOND).unlockedBy("hasItem", has(ModItems.METAL_BRUSH.get())).save(consumer);

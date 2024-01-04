@@ -4,10 +4,7 @@ import com.bretzelfresser.ornithodira.Ornithodira;
 import com.bretzelfresser.ornithodira.core.datagen.client.ModBlockStatesProvider;
 import com.bretzelfresser.ornithodira.core.datagen.client.ModItemModelsProvider;
 import com.bretzelfresser.ornithodira.core.datagen.client.ModLanguageProvider;
-import com.bretzelfresser.ornithodira.core.datagen.server.ModBlockTagsProvider;
-import com.bretzelfresser.ornithodira.core.datagen.server.ModGlobalLootModifiersProvider;
-import com.bretzelfresser.ornithodira.core.datagen.server.ModItemTagsProvider;
-import com.bretzelfresser.ornithodira.core.datagen.server.ModRecipeProvider;
+import com.bretzelfresser.ornithodira.core.datagen.server.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -36,6 +33,7 @@ public class DataGenerator {
         gen.addProvider(event.includeClient(), new ModBlockStatesProvider(output, helper));
         ModBlockTagsProvider blockTags = gen.addProvider(event.includeServer(), new ModBlockTagsProvider(output,lookupProvider, helper));
         gen.addProvider(event.includeServer(), new ModItemTagsProvider(output, lookupProvider, blockTags.contentsGetter(), helper));
+        gen.addProvider(event.includeServer(), new ModLoot(output));
 
 
 

@@ -1,6 +1,7 @@
 package com.bretzelfresser.ornithodira.core.datagen.server;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
+import com.bretzelfresser.ornithodira.core.init.ModItems;
 import com.bretzelfresser.ornithodira.core.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -19,6 +20,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(ModTags.Items.SANCHUANSAURUS_STEER_ITEMS).add(Items.CARROT_ON_A_STICK);
+        tag(ModTags.Items.SANCHUANSAURUS_STEER_ITEMS).add(ModItems.NINGXIAITES_CONE_STICK.get());
     }
 }

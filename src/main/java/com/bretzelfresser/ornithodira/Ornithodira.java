@@ -44,6 +44,8 @@ public class Ornithodira {
            event.accept(ModBlocks.SCANNER_1);
            event.accept(ModItems.METAL_BRUSH);
            event.accept(ModItems.DIAMOND_BRUSH);
+           event.accept(ModItems.SANCHUANSAURUS_EGG);
+           event.accept(ModItems.FOSSILIZED_SANCHUANSAURUS_EGG);
        }
        if (event.getTab() == ModTabs.SPAWN_EGGS.get()){
            event.accept(ModItems.SANCHUANSAURUS_SPAWN_EGG);
