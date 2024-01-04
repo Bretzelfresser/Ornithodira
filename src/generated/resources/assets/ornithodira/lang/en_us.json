@@ -1,10 +1,13 @@
 {
   "block.ornithodira.paradox_scanner_1": "Paradox Scanner 1",
   "block.ornithodira.paradox_scanner_2": "Paradox Scanner 2",
+  "block.ornithodira.sanchuansaurus_egg": "Sanchuansaurus Egg",
   "container.ornithodira.scanner": "Scanner",
   "container.ornithodira.scanner.possibilities": "Possibilities:",
   "creative_tab.ornithodira.ornithodira_items": "Ornithodira Items",
   "creative_tab.ornithodira.ornithodira_spawn_eggs": "Ornithodira Spawn Eggs",
+  "item.ornithodira.diamond_brush": "Diamond Brush",
+  "item.ornithodira.metal_brush": "Metal Brush",
   "item.ornithodira.paradox_amulet": "Paradox Amulet",
   "item.ornithodira.sanchuansaurus_spawn_egg": "Sanchuansaurus Spawn Egg"
 }

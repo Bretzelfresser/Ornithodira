@@ -1,11 +1,14 @@
 package com.bretzelfresser.ornithodira.core.datagen.client;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
+import com.bretzelfresser.ornithodira.common.block.CustomEggBlock;
 import com.bretzelfresser.ornithodira.core.init.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -27,6 +30,22 @@ public class ModBlockStatesProvider extends BlockStateProvider {
         ModelFile model = models().getExistingFile(key(scanner));
         horizontalBlock(scanner, model);
         simpleBlockItem(scanner, model);
+        makeFossilizedEggBlock(ModBlocks.SANCHUANSAURUS_EGG.get());
+    }
+
+    protected void makeFossilizedEggBlock(Block egg){
+        makeFossilizedEggBlock(egg, name(egg));
+    }
+
+    protected void makeFossilizedEggBlock(Block egg, String baseName){
+        getVariantBuilder(egg).forAllStates(state -> {
+            String baseModelName = baseName;
+            //if (state.getValue(CustomEggBlock.FOSSILIZED))
+            baseModelName = "fossilized_" + baseModelName;
+            int eggs = state.getValue(BlockStateProperties.EGGS);
+            baseModelName += "_" + eggs;
+            return ConfiguredModel.builder().modelFile(models().getExistingFile(modLoc(baseModelName))).build();
+        });
     }
 
 
