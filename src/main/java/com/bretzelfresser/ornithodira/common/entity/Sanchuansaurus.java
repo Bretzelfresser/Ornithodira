@@ -15,6 +15,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -44,10 +45,12 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable, SpecialKeyBindEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Animal.createMobAttributes().add(Attributes.MAX_HEALTH, 25d)
+        return Animal.createMobAttributes().add(Attributes.MAX_HEALTH, 20d)
                 .add(Attributes.ATTACK_DAMAGE, 8d)
                 .add(Attributes.MOVEMENT_SPEED, .6d);
     }
+
+    public static final AttributeModifier BABY_MAX_HEALTH = new AttributeModifier("baby_max_health", -16, AttributeModifier.Operation.ADDITION);
 
     public static final EntityDataAccessor<Boolean> HAS_SADDLE = SynchedEntityData.defineId(Sanchuansaurus.class, EntityDataSerializers.BOOLEAN);
 
@@ -137,6 +140,12 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable, Spe
         if (!this.level().isClientSide) {
             if (this.blockBreakCooldown > 0)
                 this.blockBreakCooldown--;
+            if (this.isBaby() && !getAttribute(Attributes.MAX_HEALTH).hasModifier(BABY_MAX_HEALTH)){
+                getAttribute(Attributes.MAX_HEALTH).addTransientModifier(BABY_MAX_HEALTH);
+            }else if (!this.isBaby() && getAttribute(Attributes.MAX_HEALTH).hasModifier(BABY_MAX_HEALTH)){
+                getAttribute(Attributes.MAX_HEALTH).removeModifier(BABY_MAX_HEALTH);
+                this.heal(16);
+            }
         }
         super.tick();
     }

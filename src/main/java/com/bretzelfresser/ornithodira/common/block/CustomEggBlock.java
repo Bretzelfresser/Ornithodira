@@ -2,6 +2,7 @@ package com.bretzelfresser.ornithodira.common.block;
 
 import com.bretzelfresser.ornithodira.common.item.BrushTool;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -20,8 +21,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,11 +31,19 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class CustomEggBlock extends Block {
+
+    public static final VoxelShape SHAPE_EGG1 = Block.box(4, 0, 4, 12, 7, 12);
+    public static final VoxelShape SHAPE_EGG_OTHER = Block.box(1, 0, 1, 15, 7, 15);
 
     public static final IntegerProperty HATCH = BlockStateProperties.HATCH;
     public static final IntegerProperty EGGS = BlockStateProperties.EGGS;
@@ -69,7 +77,7 @@ public class CustomEggBlock extends Block {
         float chance = Mth.clamp(probability + fortuneLevel * fortuneAddition, 0, 1);
         int moreEggs = 0;
         for (int i = 0; i < eggs; i++) {
-            if (level.getRandom().nextFloat() <= chance){
+            if (level.getRandom().nextFloat() <= chance) {
                 moreEggs++;
             }
         }
@@ -189,6 +197,35 @@ public class CustomEggBlock extends Block {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        BlockState below = pLevel.getBlockState(pPos.below());
+        return below.isFaceSturdy(pLevel, pPos.below(), Direction.UP);
+    }
+
+    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (!pLevel.isAreaLoaded(pPos, 1))
+            return; // Forge: prevent growing cactus from loading unloaded chunks with block update
+        if (!pState.canSurvive(pLevel, pPos)) {
+            pLevel.destroyBlock(pPos, true);
+        }
+
+    }
+
+    @Override
+    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+        if (!pState.canSurvive(pLevel, pCurrentPos)) {
+            pLevel.scheduleTick(pCurrentPos, this, 1);
+        }
+
+        return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return pState.getValue(EGGS) <= 1 ? SHAPE_EGG1 : SHAPE_EGG_OTHER;
     }
 
     @Override

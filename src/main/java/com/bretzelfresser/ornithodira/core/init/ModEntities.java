@@ -17,7 +17,7 @@ public class ModEntities {
 
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Ornithodira.MODID);
 
-    public static final RegistryObject<EntityType<Sanchuansaurus>> SANCHUANSAURUS = register("sanchuansaurus", () -> EntityType.Builder.of(Sanchuansaurus::new, MobCategory.CREATURE).sized(1f, .6f));
+    public static final RegistryObject<EntityType<Sanchuansaurus>> SANCHUANSAURUS = register("sanchuansaurus", () -> EntityType.Builder.of(Sanchuansaurus::new, MobCategory.CREATURE).sized(.8f, .6f));
 
     public static final <T extends Entity> RegistryObject<EntityType<T>> register(String name, Supplier<EntityType.Builder<T>> builder){
         return ENTITIES.register(name, () -> builder.get().build(Ornithodira.modLoc(name).toString()));
