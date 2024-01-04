@@ -25,6 +25,8 @@ import net.minecraft.world.entity.vehicle.DismountHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DragonEggBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -187,12 +189,12 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable, Spe
 
     @Override
     protected Vec3 getRiddenInput(Player pPlayer, Vec3 pTravelVector) {
-        return new Vec3(0.0D, 0.0D, 3.5d / 5D);
+        return new Vec3(0.0D, 0.0D, 1d);
     }
 
     @Override
     protected float getRiddenSpeed(Player pPlayer) {
-        return (float) (this.getAttributeValue(Attributes.MOVEMENT_SPEED) * 0.225D);
+        return (float) (this.getAttributeValue(Attributes.MOVEMENT_SPEED) * 0.225D * 3.5d / 5d);
     }
 
     @Override
@@ -249,14 +251,16 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable, Spe
         Direction facing = this.getMotionDirection();
         BlockPos firstPos = this.getOnPos().relative(facing);
         boolean destroyedOneBlock = false;
-        for (int x = -1; x <= 1; x++) {
-            for (int y = 1; y <= 3; y++) {
-                BlockPos pos = firstPos.relative(facing.getClockWise(), x).above(y);
-                BlockState state = level().getBlockState(pos);
-                if (state.getDestroySpeed(level(), pos) > 0 && ForgeEventFactory.doPlayerHarvestCheck(sender, state, !state.requiresCorrectToolForDrops() || Items.IRON_PICKAXE.isCorrectToolForDrops(new ItemStack(Items.IRON_PICKAXE), state))) {
+        for (int y = 1; y <= 2; y++) {
+            BlockPos pos = firstPos.above(y);
+            BlockState state = level().getBlockState(pos);
+            if (state.getDestroySpeed(level(), pos) > 0 && ForgeEventFactory.doPlayerHarvestCheck(sender, state, !state.requiresCorrectToolForDrops() || Items.IRON_PICKAXE.isCorrectToolForDrops(new ItemStack(Items.IRON_PICKAXE), state))) {
+                if (state.getBlock() instanceof DragonEggBlock eggBlock){
+                    eggBlock.attack(state, level(), pos, sender);
+                }else {
                     this.level().destroyBlock(pos, true, this, 1 << 5);
-                    destroyedOneBlock = true;
                 }
+                destroyedOneBlock = true;
             }
         }
         if (destroyedOneBlock) {

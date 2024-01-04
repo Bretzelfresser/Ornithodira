@@ -59,7 +59,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
     private void rod(Item... items) {
         for (Item item : items) {
             String name = ForgeRegistries.ITEMS.getKey(item).getPath();
-            getBuilder(name).parent(rod);
+            getBuilder(name).parent(rod).texture("layer0", "item/" + name);
         }
     }
 }

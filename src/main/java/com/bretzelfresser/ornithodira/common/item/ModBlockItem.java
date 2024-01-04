@@ -29,4 +29,9 @@ public class ModBlockItem extends BlockItem {
             blockstate = placementMapper.apply(blockstate);
         return blockstate != null && this.canPlace(pContext, blockstate) ? blockstate : null;
     }
+
+    @Override
+    public String getDescriptionId() {
+        return getOrCreateDescriptionId();
+    }
 }
