@@ -28,15 +28,9 @@ public class ModBlockStatesProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        makeScanner(ModBlocks.SCANNER_1.get());
         makeFossilizedEggBlock(ModBlocks.SANCHUANSAURUS_EGG.get());
     }
 
-    protected void makeScanner(Block scanner) {
-        ModelFile model = models().getExistingFile(key(scanner));
-        horizontalBlock(scanner, model);
-        simpleBlockItem(scanner, model);
-    }
 
     protected void makeFossilizedEggBlock(Block egg) {
         makeFossilizedEggBlock(egg, name(egg));
@@ -51,7 +45,11 @@ public class ModBlockStatesProvider extends BlockStateProvider {
             int eggs = state.getValue(BlockStateProperties.EGGS);
             textureName += "_" + eggs;
             modelName += "_" + eggs;
-            return ConfiguredModel.builder().modelFile(models().withExistingParent(modLoc(textureName).toString(), modLoc(modelName)).texture("texture", modLoc("block/" + textureName))).build();
+            if (!state.getValue(CustomEggBlock.FOSSILIZED) && state.getValue(BlockStateProperties.HATCH) > 0){
+                int hatch = state.getValue(BlockStateProperties.HATCH);
+                textureName += "_hatching_" + hatch;
+            }
+            return ConfiguredModel.builder().modelFile(models().withExistingParent(modLoc(textureName).toString(), modLoc(modelName)).texture("texture", modLoc("block/" + textureName))).rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot()).build();
         });
     }
 

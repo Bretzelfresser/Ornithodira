@@ -16,7 +16,7 @@ public class ModTabs {
 
     public static final RegistryObject<CreativeModeTab> ITEMS = register("ornithodira_items",  CreativeModeTab.builder()
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> ModItems.PARADOX_AMULET.get().getDefaultInstance()));
+            .icon(() -> ModItems.DIAMOND_BRUSH.get().getDefaultInstance()));
     public static final RegistryObject<CreativeModeTab> SPAWN_EGGS = register("ornithodira_spawn_eggs", CreativeModeTab.builder()
             .withTabsBefore(ITEMS.getId())
             .icon(() -> ModItems.SANCHUANSAURUS_SPAWN_EGG.get().getDefaultInstance()));

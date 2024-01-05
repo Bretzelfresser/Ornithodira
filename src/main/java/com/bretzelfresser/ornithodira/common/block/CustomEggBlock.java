@@ -3,6 +3,8 @@ package com.bretzelfresser.ornithodira.common.block;
 import com.bretzelfresser.ornithodira.common.item.BrushTool;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -19,24 +21,29 @@ import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nullable;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -47,6 +54,8 @@ public class CustomEggBlock extends Block {
 
     public static final IntegerProperty HATCH = BlockStateProperties.HATCH;
     public static final IntegerProperty EGGS = BlockStateProperties.EGGS;
+
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     public static final BooleanProperty FOSSILIZED = BooleanProperty.create("fossilized");
 
@@ -63,7 +72,7 @@ public class CustomEggBlock extends Block {
         this.fossilizedEgg = fossilizedEgg;
         this.cleanEgg = cleanEgg;
         this.entityTypeSupplier = entityTypeSupplier;
-        this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, 0).setValue(EGGS, 1).setValue(FOSSILIZED, false));
+        this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, 0).setValue(EGGS, 1).setValue(FOSSILIZED, false).setValue(FACING, Direction.NORTH));
     }
 
     public CustomEggBlock(Supplier<EntityType<?>> entityTypeSupplier, float probability, float fortuneAddition, int minToolLevel, Supplier<ItemLike> fossilizedEgg, Supplier<ItemLike> cleanEgg, Properties pProperties) {
@@ -86,6 +95,24 @@ public class CustomEggBlock extends Block {
         else {
             level.destroyBlock(pos, false, player, 1 << 5);
         }
+        if (level.isClientSide) {
+            BlockParticleOption blockparticleoption = new BlockParticleOption(ParticleTypes.BLOCK, state);
+            Vec3 centerPos = Vec3.atCenterOf(pos);
+            for (double x = -.25d; x <= .25d; x += .01d) {
+                for (double z = -.25d; z <= .25d; z += .01d) {
+                    double y = Math.sqrt(1 - z * z - x * x);
+                    Vec3 moition = new Vec3(x, y, z).normalize().scale(.3d);
+                    level.addParticle(blockparticleoption, centerPos.x, centerPos.y, centerPos.z, moition.x, moition.y, moition.z);
+                }
+            }
+
+        }
+
+    }
+
+    @Override
+    public BlockState rotate(BlockState pState, Rotation pRot) {
+        return pState.setValue(FACING, pRot.rotate(pState.getValue(FACING)));
     }
 
     public boolean canBrush(BlockState state) {
@@ -124,6 +151,16 @@ public class CustomEggBlock extends Block {
         super.stepOn(pLevel, pPos, pState, pEntity);
     }
 
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        Direction facing = context.getHorizontalDirection();
+        int random = context.getLevel().random.nextInt(4);
+        for (int i = 0; i < random; i++) {
+            facing = facing.getClockWise();
+        }
+        return super.getStateForPlacement(context).setValue(FACING, facing);
+    }
+
     public void fallOn(Level pLevel, BlockState pState, BlockPos pPos, Entity pEntity, float pFallDistance) {
         if (!(pEntity instanceof Zombie) && !pState.getValue(FOSSILIZED)) {
             this.destroyEgg(pLevel, pState, pPos, pEntity, 3);
@@ -154,6 +191,12 @@ public class CustomEggBlock extends Block {
             }
         }
 
+    }
+
+    @Override
+    public void playerDestroy(Level pLevel, Player pPlayer, BlockPos pPos, BlockState pState, @Nullable BlockEntity pTe, ItemStack pStack) {
+        super.playerDestroy(pLevel, pPlayer, pPos, pState, pTe, pStack);
+        this.decreaseEggs(pLevel, pPos, pState);
     }
 
     private boolean shouldUpdateHatchLevel(Level pLevel) {
@@ -231,7 +274,7 @@ public class CustomEggBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         super.createBlockStateDefinition(pBuilder);
-        pBuilder.add(HATCH, EGGS, FOSSILIZED);
+        pBuilder.add(HATCH, EGGS, FOSSILIZED, FACING);
     }
 
     public float getProbability() {

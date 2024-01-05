@@ -17,13 +17,5 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        add("add_to_desert_pyramid", new AddItemModifier(new LootItemCondition[]{
-              new LootTableIdCondition.Builder(BuiltInLootTables.DESERT_PYRAMID).build(),
-                LootItemRandomChanceCondition.randomChance(0.25f).build()
-        }, ModItems.PARADOX_AMULET.get()));
-        add("add_to_jungle_temple", new AddItemModifier(new LootItemCondition[]{
-                new LootTableIdCondition.Builder(BuiltInLootTables.JUNGLE_TEMPLE).build(),
-                LootItemRandomChanceCondition.randomChance(0.25f).build()
-        }, ModItems.PARADOX_AMULET.get()));
     }
 }

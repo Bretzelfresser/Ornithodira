@@ -30,9 +30,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 public class BrushTool extends Item {
-
-    public static final int ANIMATION_DURATION = 10;
-    public static final int USE_DURATION = 96;
+    public static final int USE_DURATION = 10 * 20;
     public static final double MAX_BRUSH_DISTANCE = Math.sqrt(ServerGamePacketListenerImpl.MAX_INTERACTION_DISTANCE) - 1.0D;
 
     protected final int toolLevel;
@@ -73,13 +71,14 @@ public class BrushTool extends Item {
                     BlockPos blockpos = blockhitresult.getBlockPos();
                     BlockState blockstate = pLevel.getBlockState(blockpos);
                     HumanoidArm humanoidarm = pLivingEntity.getUsedItemHand() == InteractionHand.MAIN_HAND ? player.getMainArm() : player.getMainArm().getOpposite();
-                    this.spawnDustParticles(pLevel, blockhitresult, blockstate, pLivingEntity.getViewVector(0.0F), humanoidarm);
+                    spawnDustParticles(pLevel, blockhitresult, blockstate, pLivingEntity.getViewVector(0.0F), humanoidarm);
                     pLevel.playSound(player, blockpos, SoundEvents.BRUSH_GENERIC, SoundSource.BLOCKS);
-                    if (!pLevel.isClientSide && pRemainingUseDuration <= 1 && canBrush.test(blockstate)) {
-                        this.consumer.brush(blockstate, pLevel, blockpos, player, pLivingEntity.getUsedItemHand());
-                        pLivingEntity.releaseUsingItem();
+                    if (pRemainingUseDuration <= 1 && canBrush.test(blockstate)) {
                         EquipmentSlot equipmentslot = pStack.equals(player.getItemBySlot(EquipmentSlot.OFFHAND)) ? EquipmentSlot.OFFHAND : EquipmentSlot.MAINHAND;
                         pStack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(equipmentslot));
+                        this.consumer.brush(blockstate, pLevel, blockpos, player, pLivingEntity.getUsedItemHand());
+                        pLivingEntity.releaseUsingItem();
+
                     }
                 }
             } else
@@ -123,7 +122,7 @@ public class BrushTool extends Item {
         return false;
     }
 
-    public void spawnDustParticles(Level pLevel, BlockHitResult pHitResult, BlockState pState, Vec3 pPos, HumanoidArm pArm) {
+    public static void spawnDustParticles(Level pLevel, BlockHitResult pHitResult, BlockState pState, Vec3 pPos, HumanoidArm pArm) {
         int i = pArm == HumanoidArm.RIGHT ? 1 : -1;
         int j = pLevel.getRandom().nextInt(7, 12);
         BlockParticleOption blockparticleoption = new BlockParticleOption(ParticleTypes.BLOCK, pState);

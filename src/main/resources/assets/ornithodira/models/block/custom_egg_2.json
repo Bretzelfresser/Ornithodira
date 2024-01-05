@@ -6,8 +6,8 @@
 	},
 	"elements": [
 		{
-			"from": [7, -1, 4],
-			"to": [11, 4, 8],
+			"from": [7, 0, 4],
+			"to": [11, 5, 8],
 			"faces": {
 				"north": {"uv": [0, 0, 4, 5], "texture": "#0"},
 				"east": {"uv": [4, 0, 8, 5], "texture": "#0"},
@@ -35,6 +35,7 @@
 			"name": "group",
 			"origin": [8, 8, 8],
 			"color": 0,
+			"nbt": "{}",
 			"children": [0, 1]
 		}
 	]

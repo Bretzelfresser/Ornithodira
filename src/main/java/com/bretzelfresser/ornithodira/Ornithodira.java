@@ -40,8 +40,6 @@ public class Ornithodira {
     }
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
        if (event.getTab() == ModTabs.ITEMS.get()) {
-           event.accept(ModItems.PARADOX_AMULET);
-           event.accept(ModBlocks.SCANNER_1);
            event.accept(ModItems.METAL_BRUSH);
            event.accept(ModItems.DIAMOND_BRUSH);
            event.accept(ModItems.SANCHUANSAURUS_EGG);

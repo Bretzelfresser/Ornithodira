@@ -1,6 +1,4 @@
 {
-  "block.ornithodira.paradox_scanner_1": "Paradox Scanner 1",
-  "block.ornithodira.paradox_scanner_2": "Paradox Scanner 2",
   "container.ornithodira.scanner": "Scanner",
   "container.ornithodira.scanner.possibilities": "Possibilities:",
   "creative_tab.ornithodira.ornithodira_items": "Ornithodira Items",
@@ -9,7 +7,6 @@
   "item.ornithodira.fossilized_sanchuansaurus_egg": "Fossilized Sanchuansaurus Egg",
   "item.ornithodira.metal_brush": "Metal Brush",
   "item.ornithodira.ningxiaites_cone_on_a_stick": "Ningxiaites Cone On A Stick",
-  "item.ornithodira.paradox_amulet": "Paradox Amulet",
   "item.ornithodira.sanchuansaurus_egg": "Sanchuansaurus Egg",
   "item.ornithodira.sanchuansaurus_spawn_egg": "Sanchuansaurus Spawn Egg"
 }

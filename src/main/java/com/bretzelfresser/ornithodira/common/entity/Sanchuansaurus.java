@@ -45,12 +45,12 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable, SpecialKeyBindEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Animal.createMobAttributes().add(Attributes.MAX_HEALTH, 20d)
+        return Animal.createMobAttributes().add(Attributes.MAX_HEALTH, 12d)
                 .add(Attributes.ATTACK_DAMAGE, 8d)
                 .add(Attributes.MOVEMENT_SPEED, .6d);
     }
 
-    public static final AttributeModifier BABY_MAX_HEALTH = new AttributeModifier("baby_max_health", -16, AttributeModifier.Operation.ADDITION);
+    public static final AttributeModifier BABY_MAX_HEALTH = new AttributeModifier("baby_max_health", -9, AttributeModifier.Operation.ADDITION);
 
     public static final EntityDataAccessor<Boolean> HAS_SADDLE = SynchedEntityData.defineId(Sanchuansaurus.class, EntityDataSerializers.BOOLEAN);
 
@@ -247,7 +247,7 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable, Spe
     }
 
     public int getBlockBreakMaxCooldown() {
-        return 200;
+        return 5 * 20;
     }
 
     @Override

@@ -25,6 +25,7 @@ import java.util.Set;
 public class ModBlockLoot extends BlockLootSubProvider {
 
     protected List<Block> knownBlocks = new ArrayList<>();
+
     public ModBlockLoot() {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags());
     }
@@ -34,15 +35,15 @@ public class ModBlockLoot extends BlockLootSubProvider {
         makeCustomEggLootTable(ModBlocks.SANCHUANSAURUS_EGG.get(), ModItems.SANCHUANSAURUS_EGG.get(), ModItems.FOSSILIZED_SANCHUANSAURUS_EGG.get());
     }
 
-    protected void makeCustomEggLootTable(Block egg, ItemLike cleanEgg, ItemLike fossilizedEgg){
+    protected void makeCustomEggLootTable(Block egg, ItemLike cleanEgg, ItemLike fossilizedEgg) {
         LootTable.Builder table = LootTable.lootTable();
         table.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).
                 add(LootItem.lootTableItem(cleanEgg).when(
                         LootItemBlockStatePropertyCondition.hasBlockStateProperties(egg).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CustomEggBlock.FOSSILIZED, false))
-                ).when(HAS_SILK_TOUCH).apply(SetItemCountFunction.setCount(BlocksStateNumberProvider.create(CustomEggBlock.EGGS))))
+                ).when(HAS_SILK_TOUCH))
                 .add(LootItem.lootTableItem(fossilizedEgg).when(
                         LootItemBlockStatePropertyCondition.hasBlockStateProperties(egg).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CustomEggBlock.FOSSILIZED, true))
-                ).when(HAS_SILK_TOUCH).apply(SetItemCountFunction.setCount(BlocksStateNumberProvider.create(CustomEggBlock.EGGS)))));
+                ).when(HAS_SILK_TOUCH)));
         add(egg, table);
     }
 

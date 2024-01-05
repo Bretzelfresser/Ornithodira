@@ -20,7 +20,6 @@ public class ModRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
-        makeScanner(consumer);
         makeBrushRecipes(consumer);
     }
 
@@ -35,18 +34,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("hasItem", has(Items.COPPER_INGOT))
                 .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DIAMOND_BRUSH.get()).requires(ModItems.METAL_BRUSH.get()).requires(Items.DIAMOND).unlockedBy("hasItem", has(ModItems.METAL_BRUSH.get())).save(consumer);
-    }
-
-    private void makeScanner(Consumer<FinishedRecipe> consumer){
-        //Level 1
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SCANNER_1.get())
-                .define('d', Blocks.CHISELED_DEEPSLATE)
-                .define('g', Items.GOLD_INGOT)
-                .define('a', ModItems.PARADOX_AMULET.get())
-                .pattern("dgd")
-                .pattern("gag")
-                .pattern("dgd")
-                .unlockedBy("hasItem", has(ModItems.PARADOX_AMULET.get())).save(consumer);
     }
 
     protected void makeSurroundingRecipe(Consumer<FinishedRecipe> consumer, TagKey<Item> middle, ItemLike surrounding, ItemLike result){

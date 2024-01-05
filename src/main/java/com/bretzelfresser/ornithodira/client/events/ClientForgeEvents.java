@@ -1,13 +1,10 @@
 package com.bretzelfresser.ornithodira.client.events;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
-import com.bretzelfresser.ornithodira.client.model.block.ScannerModel;
 import com.bretzelfresser.ornithodira.client.renderer.entity.SanchuansaurusRenderer;
-import com.bretzelfresser.ornithodira.client.screens.ScannerScreen;
 import com.bretzelfresser.ornithodira.core.init.ModBlockEntities;
 import com.bretzelfresser.ornithodira.core.init.ModEntities;
 import com.bretzelfresser.ornithodira.core.init.ModMenus;
-import com.mojang.blaze3d.platform.ScreenManager;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -32,13 +29,11 @@ public class ClientForgeEvents {
 
     @SubscribeEvent
     public static void registerRenders(EntityRenderersEvent.RegisterRenderers event){
-        event.registerBlockEntityRenderer(ModBlockEntities.SCANNER.get(), createBlockGeoRenderer(new ScannerModel()));
         event.registerEntityRenderer(ModEntities.SANCHUANSAURUS.get(), SanchuansaurusRenderer::new);
     }
 
     @SubscribeEvent
     public static void registerScreens(FMLCommonSetupEvent event){
-        MenuScreens.register(ModMenus.SCANNER_MENU.get(), ScannerScreen::new);
     }
 
     public static <T extends LivingEntity & GeoEntity> EntityRendererProvider<T> createEntityGeoRenderer(GeoModel<T> model) {
