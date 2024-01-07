@@ -3,6 +3,7 @@ package com.bretzelfresser.ornithodira.core.datagen.client;
 import com.bretzelfresser.ornithodira.Ornithodira;
 import com.bretzelfresser.ornithodira.common.block.CustomEggBlock;
 import com.bretzelfresser.ornithodira.core.init.ModBlocks;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -29,6 +30,7 @@ public class ModBlockStatesProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         makeFossilizedEggBlock(ModBlocks.SANCHUANSAURUS_EGG.get());
+        makeFossilizedEggBlock(ModBlocks.TAOHEODON_EGG.get(), name(ModBlocks.TAOHEODON_EGG.get()),name(ModBlocks.TAOHEODON_EGG.get()), true);
     }
 
 
@@ -39,7 +41,7 @@ public class ModBlockStatesProvider extends BlockStateProvider {
     protected void makeFossilizedEggBlock(Block egg, String baseName) {
         getVariantBuilder(egg).forAllStates(state -> {
             String textureName = baseName;
-            String modelName = "custom_egg";
+            String modelName = "prefab_" + baseName;
             if (state.getValue(CustomEggBlock.FOSSILIZED))
                 textureName = "fossilized_" + textureName;
             int eggs = state.getValue(BlockStateProperties.EGGS);
@@ -50,6 +52,28 @@ public class ModBlockStatesProvider extends BlockStateProvider {
                 textureName += "_hatching_" + hatch;
             }
             return ConfiguredModel.builder().modelFile(models().withExistingParent(modLoc(textureName).toString(), modLoc(modelName)).texture("texture", modLoc("block/" + textureName))).rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot()).build();
+        });
+    }
+
+
+    protected void makeFossilizedEggBlock(Block egg, String baseName, String textureName, boolean ignoreHatching) {
+        getVariantBuilder(egg).forAllStates(state -> {
+            String textureFinal = textureName;
+            String parentModelName = "prefab_" + baseName;
+            String modelName = textureFinal;
+            if (state.getValue(CustomEggBlock.FOSSILIZED)) {
+                textureFinal = "fossilized_" + textureFinal;
+                modelName = "fossilized_" + modelName;
+            }
+            int eggs = state.getValue(BlockStateProperties.EGGS);
+            parentModelName += "_" + eggs;
+            modelName += "_" + eggs;
+            if (!ignoreHatching && !state.getValue(CustomEggBlock.FOSSILIZED) && state.getValue(BlockStateProperties.HATCH) > 0){
+                int hatch = state.getValue(BlockStateProperties.HATCH);
+                textureFinal += "_hatching_" + hatch;
+                modelName += "_hatching_" + hatch;
+            }
+            return ConfiguredModel.builder().modelFile(models().withExistingParent(modLoc(modelName).toString(), modLoc(parentModelName)).texture("texture", modLoc("block/" + textureFinal)).renderType("translucent")).rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot()).build();
         });
     }
 

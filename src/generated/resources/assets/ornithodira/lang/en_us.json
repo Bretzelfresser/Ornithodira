@@ -1,12 +1,15 @@
 {
-  "container.ornithodira.scanner": "Scanner",
-  "container.ornithodira.scanner.possibilities": "Possibilities:",
   "creative_tab.ornithodira.ornithodira_items": "Ornithodira Items",
   "creative_tab.ornithodira.ornithodira_spawn_eggs": "Ornithodira Spawn Eggs",
+  "entity.ornithodira.sanchuansaurus": "Sanchuansaurus",
+  "entity.ornithodira.taoheodon": "Taoheodon",
   "item.ornithodira.diamond_brush": "Diamond Brush",
   "item.ornithodira.fossilized_sanchuansaurus_egg": "Fossilized Sanchuansaurus Egg",
+  "item.ornithodira.fossilized_tahoeodon_egg": "Fossilized Tahoeodon Egg",
   "item.ornithodira.metal_brush": "Metal Brush",
   "item.ornithodira.ningxiaites_cone_on_a_stick": "Ningxiaites Cone On A Stick",
   "item.ornithodira.sanchuansaurus_egg": "Sanchuansaurus Egg",
-  "item.ornithodira.sanchuansaurus_spawn_egg": "Sanchuansaurus Spawn Egg"
+  "item.ornithodira.sanchuansaurus_spawn_egg": "Sanchuansaurus Spawn Egg",
+  "item.ornithodira.taoheodon_egg": "Taoheodon Egg",
+  "item.ornithodira.taoheodon_spawn_egg": "Taoheodon Spawn Egg"
 }

@@ -33,6 +33,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
     @Override
     protected void generate() {
         makeCustomEggLootTable(ModBlocks.SANCHUANSAURUS_EGG.get(), ModItems.SANCHUANSAURUS_EGG.get(), ModItems.FOSSILIZED_SANCHUANSAURUS_EGG.get());
+        makeCustomEggLootTable(ModBlocks.TAOHEODON_EGG.get(), ModItems.TAOHEODON_EGG.get(), ModItems.FOSSILIZED_TAOHEODON_EGG.get());
     }
 
     protected void makeCustomEggLootTable(Block egg, ItemLike cleanEgg, ItemLike fossilizedEgg) {

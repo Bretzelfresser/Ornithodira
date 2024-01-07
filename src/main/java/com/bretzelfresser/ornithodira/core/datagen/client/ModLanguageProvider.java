@@ -1,6 +1,7 @@
 package com.bretzelfresser.ornithodira.core.datagen.client;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
+import com.bretzelfresser.ornithodira.core.init.ModEntities;
 import com.bretzelfresser.ornithodira.core.init.ModItems;
 import com.bretzelfresser.ornithodira.core.init.ModTabs;
 import net.minecraft.data.CachedOutput;
@@ -10,7 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ModLanguageProvider extends LanguageProvider {
+public class ModLanguageProvider extends BetterLanguageProvider {
     public ModLanguageProvider(PackOutput output) {
         super(output, Ornithodira.MODID, "en_us");
     }
@@ -24,6 +25,9 @@ public class ModLanguageProvider extends LanguageProvider {
             }
 
         });
+        ModEntities.ENTITIES.getEntries().forEach(e -> {
+            add(e.get(), toTitleCase(e.getId().getPath()));
+        });
         ModTabs.CREATIVE_MODE_TABS.getEntries().stream().forEach(i -> {
             try {
                 add(ModTabs.makeDiscriptionId(i.getId().getPath()), toTitleCase(i.getId().getPath()));
@@ -32,9 +36,6 @@ public class ModLanguageProvider extends LanguageProvider {
             }
 
         });
-
-        this.add("container." + Ornithodira.MODID + ".scanner", "Scanner");
-        this.add("container." + Ornithodira.MODID + ".scanner.possibilities", "Possibilities:");
     }
 
     public static String toTitleCase(String input) {
