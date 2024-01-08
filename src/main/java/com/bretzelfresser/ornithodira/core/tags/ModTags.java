@@ -9,6 +9,7 @@ public class ModTags {
 
     public static class Items{
         public static final TagKey<Item> SANCHUANSAURUS_STEER_ITEMS = tag("sanchuansaurus_steer_items");
+        public static final TagKey<Item> COMMON_EGGS = tag("common_eggs");
 
         private static TagKey<Item> tag(String pName) {
             return TagKey.create(Registries.ITEM, Ornithodira.modLoc(pName));

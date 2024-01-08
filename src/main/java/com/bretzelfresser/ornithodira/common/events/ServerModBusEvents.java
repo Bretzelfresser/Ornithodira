@@ -1,6 +1,7 @@
 package com.bretzelfresser.ornithodira.common.events;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
+import com.bretzelfresser.ornithodira.common.entity.Hopsorrhinus;
 import com.bretzelfresser.ornithodira.common.entity.Sanchuansaurus;
 import com.bretzelfresser.ornithodira.common.entity.Taoheodon;
 import com.bretzelfresser.ornithodira.core.init.ModEntities;
@@ -21,6 +22,7 @@ public class ServerModBusEvents {
     public static void createAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.SANCHUANSAURUS.get(), Sanchuansaurus.createAttributes().build());
         event.put(ModEntities.TAOHEODON.get(), Taoheodon.createAttributes().build());
+        event.put(ModEntities.HOPSORRHINUS.get(), Hopsorrhinus.createAttributes().build());
     }
 
     @SubscribeEvent

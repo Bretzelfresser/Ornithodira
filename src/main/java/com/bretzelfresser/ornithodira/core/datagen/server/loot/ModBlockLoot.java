@@ -36,7 +36,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
         makeCustomEggLootTable(ModBlocks.TAOHEODON_EGG.get(), ModItems.TAOHEODON_EGG.get(), ModItems.FOSSILIZED_TAOHEODON_EGG.get());
     }
 
-    protected void makeCustomEggLootTable(Block egg, ItemLike cleanEgg, ItemLike fossilizedEgg) {
+    public void makeCustomEggLootTable(Block egg, ItemLike cleanEgg, ItemLike fossilizedEgg) {
         LootTable.Builder table = LootTable.lootTable();
         table.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).
                 add(LootItem.lootTableItem(cleanEgg).when(

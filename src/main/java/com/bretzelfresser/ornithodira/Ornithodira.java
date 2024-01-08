@@ -51,6 +51,7 @@ public class Ornithodira {
        if (event.getTab() == ModTabs.SPAWN_EGGS.get()){
            event.accept(ModItems.SANCHUANSAURUS_SPAWN_EGG);
            event.accept(ModItems.TAOHEODON_SPAWN_EGG);
+           event.accept(ModItems.HOPSORRHINUS_SPAWN_EGG);
        }
     }
 

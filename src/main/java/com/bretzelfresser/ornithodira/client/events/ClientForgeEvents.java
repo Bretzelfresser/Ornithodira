@@ -1,6 +1,7 @@
 package com.bretzelfresser.ornithodira.client.events;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
+import com.bretzelfresser.ornithodira.client.model.entity.HopsorrhinusModel;
 import com.bretzelfresser.ornithodira.client.model.entity.TaoheodonModel;
 import com.bretzelfresser.ornithodira.client.renderer.entity.SanchuansaurusRenderer;
 import com.bretzelfresser.ornithodira.core.init.ModBlockEntities;
@@ -32,6 +33,7 @@ public class ClientForgeEvents {
     public static void registerRenders(EntityRenderersEvent.RegisterRenderers event){
         event.registerEntityRenderer(ModEntities.SANCHUANSAURUS.get(), SanchuansaurusRenderer::new);
         event.registerEntityRenderer(ModEntities.TAOHEODON.get(), createEntityGeoRenderer(new TaoheodonModel()));
+        event.registerEntityRenderer(ModEntities.HOPSORRHINUS.get(), createEntityGeoRenderer(new HopsorrhinusModel()));
     }
 
     @SubscribeEvent

@@ -104,6 +104,11 @@ public class Taoheodon extends Animal implements GeoEntity {
     }
 
     @Override
+    public boolean isFood(ItemStack pStack) {
+        return false;
+    }
+
+    @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putBoolean("digging", isDigging());
