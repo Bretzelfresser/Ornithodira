@@ -1,6 +1,7 @@
 package com.bretzelfresser.ornithodira.common.block;
 
-import com.bretzelfresser.ornithodira.common.item.BrushTool;
+import com.bretzelfresser.ornithodira.common.recipe.EggEntitiesRecipe;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -22,11 +23,10 @@ import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -39,11 +39,11 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -59,24 +59,24 @@ public class CustomEggBlock extends Block {
 
     public static final BooleanProperty FOSSILIZED = BooleanProperty.create("fossilized");
 
-    protected final Supplier<EntityType<?>> entityTypeSupplier;
+    protected final Supplier<RecipeType<? extends EggEntitiesRecipe>> recipeSupplier;
     protected final Predicate<ItemStack> fossilizedEgg, cleanEgg;
     protected final float probability, fortuneAddition;
     protected final int minToolLevel;
 
-    public CustomEggBlock(Supplier<EntityType<?>> entityTypeSupplier, float probability, float fortuneAddition, int minToolLevel, Predicate<ItemStack> fossilizedEgg, Predicate<ItemStack> cleanEgg, Properties pProperties) {
+    public CustomEggBlock(Supplier<RecipeType<? extends EggEntitiesRecipe>> recipeSUpplier, float probability, float fortuneAddition, int minToolLevel, Predicate<ItemStack> fossilizedEgg, Predicate<ItemStack> cleanEgg, Properties pProperties) {
         super(pProperties);
         this.probability = probability;
         this.fortuneAddition = fortuneAddition;
         this.minToolLevel = minToolLevel;
         this.fossilizedEgg = fossilizedEgg;
         this.cleanEgg = cleanEgg;
-        this.entityTypeSupplier = entityTypeSupplier;
+        this.recipeSupplier = recipeSUpplier;
         this.registerDefaultState(this.stateDefinition.any().setValue(HATCH, 0).setValue(EGGS, 1).setValue(FOSSILIZED, false).setValue(FACING, Direction.NORTH));
     }
 
-    public CustomEggBlock(Supplier<EntityType<?>> entityTypeSupplier, float probability, float fortuneAddition, int minToolLevel, Supplier<ItemLike> fossilizedEgg, Supplier<ItemLike> cleanEgg, Properties pProperties) {
-        this(entityTypeSupplier, probability, fortuneAddition, minToolLevel, stack -> stack.getItem() == fossilizedEgg.get().asItem(), stack -> stack.getItem() == cleanEgg.get().asItem(), pProperties);
+    public CustomEggBlock(Supplier<RecipeType<? extends EggEntitiesRecipe>> recipeSUpplier, float probability, float fortuneAddition, int minToolLevel, Supplier<ItemLike> fossilizedEgg, Supplier<ItemLike> cleanEgg, Properties pProperties) {
+        this(recipeSUpplier, probability, fortuneAddition, minToolLevel, stack -> stack.getItem() == fossilizedEgg.get().asItem(), stack -> stack.getItem() == cleanEgg.get().asItem(), pProperties);
     }
 
     public void brush(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand) {
@@ -181,7 +181,7 @@ public class CustomEggBlock extends Block {
 
                 for (int j = 0; j < pState.getValue(EGGS); ++j) {
                     pLevel.levelEvent(2001, pPos, Block.getId(pState));
-                    Entity turtle = this.entityTypeSupplier.get().create(pLevel);
+                    Entity turtle = spawnEntity(pState, pLevel, pPos, pRandom);
                     if (turtle != null && turtle instanceof AgeableMob ageableMob) {
                         ageableMob.setAge(-24000);
                     }
@@ -191,6 +191,30 @@ public class CustomEggBlock extends Block {
             }
         }
 
+    }
+
+    protected Entity spawnEntity(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom){
+        RecipeType<? extends EggEntitiesRecipe> type = recipeSupplier.get();
+        List<Pair<EntityType<?>, Integer>> entities = new ArrayList<>();
+        for (EggEntitiesRecipe recipes : pLevel.getRecipeManager().getAllRecipesFor(type)){
+            entities.addAll(recipes.getEntries());
+        }
+        EntityType<?> weightedRandom = getRandomEntity(entities, pRandom);
+        return weightedRandom.create(pLevel);
+    }
+
+    public static EntityType<?> getRandomEntity(List<Pair<EntityType<?>, Integer>> entities, RandomSource random) {
+        int totalWeight = entities.stream().mapToInt(Pair::getSecond).sum();
+        int randomWeight = random.nextInt(totalWeight) + 1; // Add 1 to make it inclusive
+
+        for (Pair<EntityType<?>, Integer> pair : entities) {
+            randomWeight -= pair.getSecond();
+            if (randomWeight <= 0) {
+                return pair.getFirst();
+            }
+        }
+
+        throw new IllegalStateException("This should not happen, but in case of issues, return null or handle it accordingly");
     }
 
     @Override

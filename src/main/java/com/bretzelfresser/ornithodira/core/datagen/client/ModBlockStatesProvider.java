@@ -30,7 +30,7 @@ public class ModBlockStatesProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         makeFossilizedEggBlock(ModBlocks.SANCHUANSAURUS_EGG.get());
-        makeFossilizedEggBlock(ModBlocks.TAOHEODON_EGG.get(), name(ModBlocks.TAOHEODON_EGG.get()),name(ModBlocks.TAOHEODON_EGG.get()), true);
+        //makeFossilizedEggBlock(ModBlocks.TAOHEODON_EGG.get(), name(ModBlocks.TAOHEODON_EGG.get()),name(ModBlocks.TAOHEODON_EGG.get()), true);
     }
 
 

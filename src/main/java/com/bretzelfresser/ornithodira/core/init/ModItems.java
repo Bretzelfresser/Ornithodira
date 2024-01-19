@@ -20,8 +20,8 @@ public class ModItems {
     public static final RegistryObject<ModBlockItem> SANCHUANSAURUS_EGG = ITEMS.register("sanchuansaurus_egg", () -> new ModBlockItem(ModBlocks.SANCHUANSAURUS_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, false), new Item.Properties()));
     public static final RegistryObject<ModBlockItem> FOSSILIZED_SANCHUANSAURUS_EGG = ITEMS.register("fossilized_sanchuansaurus_egg", () -> new ModBlockItem(ModBlocks.SANCHUANSAURUS_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, true), new Item.Properties()));
 
-    public static final RegistryObject<ModBlockItem> TAOHEODON_EGG = ITEMS.register("taoheodon_egg", () -> new ModBlockItem(ModBlocks.TAOHEODON_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, false), new Item.Properties()));
-    public static final RegistryObject<ModBlockItem> FOSSILIZED_TAOHEODON_EGG = ITEMS.register("fossilized_taoheodon_egg", () -> new ModBlockItem(ModBlocks.TAOHEODON_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, true), new Item.Properties()));
+//    public static final RegistryObject<ModBlockItem> TAOHEODON_EGG = ITEMS.register("taoheodon_egg", () -> new ModBlockItem(ModBlocks.TAOHEODON_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, false), new Item.Properties()));
+   // public static final RegistryObject<ModBlockItem> FOSSILIZED_TAOHEODON_EGG = ITEMS.register("fossilized_taoheodon_egg", () -> new ModBlockItem(ModBlocks.TAOHEODON_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, true), new Item.Properties()));
 
     public static final RegistryObject<Item> NINGXIAITES_CONE_STICK = ITEMS.register("ningxiaites_cone_on_a_stick", () -> new Item(new Item.Properties()));
 

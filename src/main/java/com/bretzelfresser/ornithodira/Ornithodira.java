@@ -32,6 +32,7 @@ public class Ornithodira {
         ModLootModifiers.LOOT_MODIFIER_SERIALIZER.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
         ModMenus.MENUS.register(modEventBus);
+        ModRecipes.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
@@ -45,8 +46,8 @@ public class Ornithodira {
            event.accept(ModItems.SANCHUANSAURUS_EGG);
            event.accept(ModItems.FOSSILIZED_SANCHUANSAURUS_EGG);
            event.accept(ModItems.NINGXIAITES_CONE_STICK);
-           event.accept(ModItems.FOSSILIZED_TAOHEODON_EGG);
-           event.accept(ModItems.TAOHEODON_EGG);
+           //event.accept(ModItems.FOSSILIZED_TAOHEODON_EGG);
+           //event.accept(ModItems.TAOHEODON_EGG);
        }
        if (event.getTab() == ModTabs.SPAWN_EGGS.get()){
            event.accept(ModItems.SANCHUANSAURUS_SPAWN_EGG);

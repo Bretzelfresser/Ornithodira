@@ -1,6 +1,9 @@
 package com.bretzelfresser.ornithodira.core.datagen.server;
 
+import com.bretzelfresser.ornithodira.common.recipe.BasicEggEntitiesRecipe;
+import com.bretzelfresser.ornithodira.core.datagen.server.recipe.EggRecipeBuilder;
 import com.bretzelfresser.ornithodira.core.init.ModBlocks;
+import com.bretzelfresser.ornithodira.core.init.ModEntities;
 import com.bretzelfresser.ornithodira.core.init.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -21,6 +24,8 @@ public class ModRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
         makeBrushRecipes(consumer);
+
+        EggRecipeBuilder.builder(BasicEggEntitiesRecipe.SERIALIZER).add(5, ModEntities.SANCHUANSAURUS.get()).add(1, ModEntities.TAOHEODON.get()).save(consumer, "sanchuansaurus_egg_entities");
     }
 
     protected void makeBrushRecipes(Consumer<FinishedRecipe> consumer){
