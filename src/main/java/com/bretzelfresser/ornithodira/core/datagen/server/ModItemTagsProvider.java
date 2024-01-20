@@ -21,6 +21,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
         tag(ModTags.Items.SANCHUANSAURUS_STEER_ITEMS).add(ModItems.NINGXIAITES_CONE_STICK.get());
-        tag(ModTags.Items.COMMON_EGGS).add(ModItems.FOSSILIZED_SANCHUANSAURUS_EGG.get());
+        tag(ModTags.Items.COMMON_EGGS).add(ModItems.PARAREPTILE_EGG.get());
     }
 }

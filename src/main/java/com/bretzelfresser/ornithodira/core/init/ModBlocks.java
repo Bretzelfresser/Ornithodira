@@ -18,8 +18,8 @@ public class ModBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Ornithodira.MODID);
 
-    public static final RegistryObject<CustomEggBlock> SANCHUANSAURUS_EGG = BLOCKS.register("sanchuansaurus_egg", () -> new CustomEggBlock(ModRecipes.BASIC_EGG_ENTITIES::get,.5f, 0f, 0, ModItems.FOSSILIZED_SANCHUANSAURUS_EGG::get, ModItems.SANCHUANSAURUS_EGG::get, BlockBehaviour.Properties.of().dynamicShape().randomTicks().noOcclusion().strength(1.5f).pushReaction(PushReaction.DESTROY)));
-    //public static final RegistryObject<CustomEggBlock> TAOHEODON_EGG = BLOCKS.register("taoheodon_egg", () -> new CustomEggBlock(ModEntities.TAOHEODON::get,.5f, 0f, 0, ModItems.FOSSILIZED_TAOHEODON_EGG::get, ModItems.TAOHEODON_EGG::get, BlockBehaviour.Properties.of().dynamicShape().randomTicks().noOcclusion().strength(1.5f).pushReaction(PushReaction.DESTROY)));
+    public static final RegistryObject<CustomEggBlock> PARAREPTILE_EGG = BLOCKS.register("parareptile_egg", () -> new CustomEggBlock(ModRecipes.PARAREPTILE_EGG_ENTITIES::get,.5f, 0f, 0, ModItems.FOSSILIZED_PARAREPTILE_EGG::get, ModItems.PARAREPTILE_EGG::get, BlockBehaviour.Properties.of().dynamicShape().randomTicks().noOcclusion().strength(1.5f).pushReaction(PushReaction.DESTROY)));
+    public static final RegistryObject<CustomEggBlock> SYNAPSID_EGG = BLOCKS.register("synapsid_egg", () -> new CustomEggBlock(ModRecipes.SYNAPSID_EGG_ENTITIES::get,.5f, 0f, 0, ModItems.FOSSILIZED_SYNAPSID_EGG::get, ModItems.SYNAPSID_EGG::get, BlockBehaviour.Properties.of().dynamicShape().randomTicks().noOcclusion().strength(1.5f).pushReaction(PushReaction.DESTROY)));
 
 
     public static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier) {

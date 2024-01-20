@@ -29,8 +29,8 @@ public class ModBlockStatesProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        makeFossilizedEggBlock(ModBlocks.SANCHUANSAURUS_EGG.get());
-        //makeFossilizedEggBlock(ModBlocks.TAOHEODON_EGG.get(), name(ModBlocks.TAOHEODON_EGG.get()),name(ModBlocks.TAOHEODON_EGG.get()), true);
+        makeFossilizedEggBlock(ModBlocks.PARAREPTILE_EGG.get());
+        makeFossilizedEggBlock(ModBlocks.SYNAPSID_EGG.get(), name(ModBlocks.SYNAPSID_EGG.get()), name(ModBlocks.SYNAPSID_EGG.get()), true);
     }
 
 
@@ -47,7 +47,7 @@ public class ModBlockStatesProvider extends BlockStateProvider {
             int eggs = state.getValue(BlockStateProperties.EGGS);
             textureName += "_" + eggs;
             modelName += "_" + eggs;
-            if (!state.getValue(CustomEggBlock.FOSSILIZED) && state.getValue(BlockStateProperties.HATCH) > 0){
+            if (!state.getValue(CustomEggBlock.FOSSILIZED) && state.getValue(BlockStateProperties.HATCH) > 0) {
                 int hatch = state.getValue(BlockStateProperties.HATCH);
                 textureName += "_hatching_" + hatch;
             }
@@ -68,7 +68,7 @@ public class ModBlockStatesProvider extends BlockStateProvider {
             int eggs = state.getValue(BlockStateProperties.EGGS);
             parentModelName += "_" + eggs;
             modelName += "_" + eggs;
-            if (!ignoreHatching && !state.getValue(CustomEggBlock.FOSSILIZED) && state.getValue(BlockStateProperties.HATCH) > 0){
+            if (!ignoreHatching && !state.getValue(CustomEggBlock.FOSSILIZED) && state.getValue(BlockStateProperties.HATCH) > 0) {
                 int hatch = state.getValue(BlockStateProperties.HATCH);
                 textureFinal += "_hatching_" + hatch;
                 modelName += "_hatching_" + hatch;

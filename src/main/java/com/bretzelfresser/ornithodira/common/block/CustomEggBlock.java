@@ -179,9 +179,10 @@ public class CustomEggBlock extends Block {
                 pLevel.playSound((Player) null, pPos, SoundEvents.TURTLE_EGG_HATCH, SoundSource.BLOCKS, 0.7F, 0.9F + pRandom.nextFloat() * 0.2F);
                 pLevel.removeBlock(pPos, false);
 
+                EntityType<?> type = spawnEntity(pState, pLevel, pPos, pRandom);
                 for (int j = 0; j < pState.getValue(EGGS); ++j) {
                     pLevel.levelEvent(2001, pPos, Block.getId(pState));
-                    Entity turtle = spawnEntity(pState, pLevel, pPos, pRandom);
+                    Entity turtle = type.create(pLevel);
                     if (turtle != null && turtle instanceof AgeableMob ageableMob) {
                         ageableMob.setAge(-24000);
                     }
@@ -193,14 +194,14 @@ public class CustomEggBlock extends Block {
 
     }
 
-    protected Entity spawnEntity(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom){
+    protected EntityType<?> spawnEntity(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom){
         RecipeType<? extends EggEntitiesRecipe> type = recipeSupplier.get();
         List<Pair<EntityType<?>, Integer>> entities = new ArrayList<>();
         for (EggEntitiesRecipe recipes : pLevel.getRecipeManager().getAllRecipesFor(type)){
             entities.addAll(recipes.getEntries());
         }
         EntityType<?> weightedRandom = getRandomEntity(entities, pRandom);
-        return weightedRandom.create(pLevel);
+        return weightedRandom;
     }
 
     public static EntityType<?> getRandomEntity(List<Pair<EntityType<?>, Integer>> entities, RandomSource random) {

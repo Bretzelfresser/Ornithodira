@@ -43,11 +43,11 @@ public class Ornithodira {
        if (event.getTab() == ModTabs.ITEMS.get()) {
            event.accept(ModItems.METAL_BRUSH);
            event.accept(ModItems.DIAMOND_BRUSH);
-           event.accept(ModItems.SANCHUANSAURUS_EGG);
-           event.accept(ModItems.FOSSILIZED_SANCHUANSAURUS_EGG);
+           event.accept(ModItems.PARAREPTILE_EGG);
+           event.accept(ModItems.FOSSILIZED_PARAREPTILE_EGG);
            event.accept(ModItems.NINGXIAITES_CONE_STICK);
-           //event.accept(ModItems.FOSSILIZED_TAOHEODON_EGG);
-           //event.accept(ModItems.TAOHEODON_EGG);
+           event.accept(ModItems.FOSSILIZED_SYNAPSID_EGG);
+           event.accept(ModItems.SYNAPSID_EGG);
        }
        if (event.getTab() == ModTabs.SPAWN_EGGS.get()){
            event.accept(ModItems.SANCHUANSAURUS_SPAWN_EGG);

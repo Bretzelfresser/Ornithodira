@@ -1,7 +1,9 @@
 package com.bretzelfresser.ornithodira.core.init;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
-import com.bretzelfresser.ornithodira.common.recipe.BasicEggEntitiesRecipe;
+import com.bretzelfresser.ornithodira.common.recipe.EggEntitiesRecipe;
+import com.bretzelfresser.ornithodira.common.recipe.ParareptileEggEntitiesRecipe;
+import com.bretzelfresser.ornithodira.common.recipe.SynapsidEggEntitiesRecipe;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -18,7 +20,8 @@ public class ModRecipes {
     protected static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZER = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Ornithodira.MODID);
 
 
-    public static final RegistryObject<RecipeType<BasicEggEntitiesRecipe>> BASIC_EGG_ENTITIES = register("basic_egg_entities", () -> BasicEggEntitiesRecipe.SERIALIZER);
+    public static final RegistryObject<RecipeType<ParareptileEggEntitiesRecipe>> PARAREPTILE_EGG_ENTITIES = register("parareptile_egg_entities", () -> ParareptileEggEntitiesRecipe.SERIALIZER);
+    public static final RegistryObject<RecipeType<SynapsidEggEntitiesRecipe>> SYNAPSID_EGG_ENTITIES = register("synapsid_egg_entities", () -> SynapsidEggEntitiesRecipe.SERIALIZER);
 
     public static <T extends Recipe<?>> RegistryObject<RecipeType<T>> register(String name, Supplier<RecipeSerializer<T>> serializer){
         RegistryObject<RecipeType<T>> type = RECIPES_TYPES.register(name, () -> new RecipeType<T>() {

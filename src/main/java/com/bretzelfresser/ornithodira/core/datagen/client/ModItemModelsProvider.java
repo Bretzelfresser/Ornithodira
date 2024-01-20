@@ -33,8 +33,8 @@ public class ModItemModelsProvider extends ItemModelProvider {
             else if (!(i instanceof BlockItem))
                 simple(i);
         });
-        simple(ModItems.FOSSILIZED_SANCHUANSAURUS_EGG.get(), ModItems.SANCHUANSAURUS_EGG.get());
-        //simple(ModItems.TAOHEODON_EGG.get(), ModItems.FOSSILIZED_TAOHEODON_EGG.get());
+        simple(ModItems.FOSSILIZED_SYNAPSID_EGG.get(), ModItems.SYNAPSID_EGG.get());
+        simple(ModItems.FOSSILIZED_PARAREPTILE_EGG.get(), ModItems.PARAREPTILE_EGG.get());
     }
 
     private void simple(Item... items) {

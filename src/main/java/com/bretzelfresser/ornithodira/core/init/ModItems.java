@@ -17,11 +17,11 @@ public class ModItems {
     public static final RegistryObject<BrushTool> METAL_BRUSH = ITEMS.register("metal_brush", () -> new BrushTool(0, new Item.Properties().durability(10)));
     public static final RegistryObject<BrushTool> DIAMOND_BRUSH = ITEMS.register("diamond_brush", () -> new BrushTool(10, new Item.Properties().durability(10)));
 
-    public static final RegistryObject<ModBlockItem> SANCHUANSAURUS_EGG = ITEMS.register("sanchuansaurus_egg", () -> new ModBlockItem(ModBlocks.SANCHUANSAURUS_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, false), new Item.Properties()));
-    public static final RegistryObject<ModBlockItem> FOSSILIZED_SANCHUANSAURUS_EGG = ITEMS.register("fossilized_sanchuansaurus_egg", () -> new ModBlockItem(ModBlocks.SANCHUANSAURUS_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, true), new Item.Properties()));
+    public static final RegistryObject<ModBlockItem> PARAREPTILE_EGG = ITEMS.register("parareptile_egg", () -> new ModBlockItem(ModBlocks.PARAREPTILE_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, false), new Item.Properties()));
+    public static final RegistryObject<ModBlockItem> FOSSILIZED_PARAREPTILE_EGG = ITEMS.register("fossilized_parareptile_egg", () -> new ModBlockItem(ModBlocks.PARAREPTILE_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, true), new Item.Properties()));
 
-//    public static final RegistryObject<ModBlockItem> TAOHEODON_EGG = ITEMS.register("taoheodon_egg", () -> new ModBlockItem(ModBlocks.TAOHEODON_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, false), new Item.Properties()));
-   // public static final RegistryObject<ModBlockItem> FOSSILIZED_TAOHEODON_EGG = ITEMS.register("fossilized_taoheodon_egg", () -> new ModBlockItem(ModBlocks.TAOHEODON_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, true), new Item.Properties()));
+    public static final RegistryObject<ModBlockItem> SYNAPSID_EGG = ITEMS.register("synapsid_egg", () -> new ModBlockItem(ModBlocks.SYNAPSID_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, false), new Item.Properties()));
+    public static final RegistryObject<ModBlockItem> FOSSILIZED_SYNAPSID_EGG = ITEMS.register("fossilized_synapsid_egg", () -> new ModBlockItem(ModBlocks.SYNAPSID_EGG.get(), state -> state.setValue(CustomEggBlock.FOSSILIZED, true), new Item.Properties()));
 
     public static final RegistryObject<Item> NINGXIAITES_CONE_STICK = ITEMS.register("ningxiaites_cone_on_a_stick", () -> new Item(new Item.Properties()));
 

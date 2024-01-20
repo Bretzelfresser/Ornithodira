@@ -9,11 +9,11 @@ import net.minecraft.world.item.crafting.RecipeType;
 
 import java.util.List;
 
-public class BasicEggEntitiesRecipe extends EggEntitiesRecipe{
+public class ParareptileEggEntitiesRecipe extends EggEntitiesRecipe{
 
-    public static final EggEntitiesSerializer<BasicEggEntitiesRecipe> SERIALIZER = new EggEntitiesSerializer<>(BasicEggEntitiesRecipe::new);
+    public static final EggEntitiesSerializer<ParareptileEggEntitiesRecipe> SERIALIZER = new EggEntitiesSerializer<>(ParareptileEggEntitiesRecipe::new);
 
-    public BasicEggEntitiesRecipe(ResourceLocation id, List<Pair<EntityType<?>, Integer>> entries) {
+    public ParareptileEggEntitiesRecipe(ResourceLocation id, List<Pair<EntityType<?>, Integer>> entries) {
         super(id, entries);
     }
 
@@ -24,6 +24,6 @@ public class BasicEggEntitiesRecipe extends EggEntitiesRecipe{
 
     @Override
     public RecipeType<?> getType() {
-        return ModRecipes.BASIC_EGG_ENTITIES.get();
+        return ModRecipes.PARAREPTILE_EGG_ENTITIES.get();
     }
 }
