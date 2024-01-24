@@ -1,12 +1,8 @@
 package com.bretzelfresser.ornithodira.client.events;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
-import com.bretzelfresser.ornithodira.client.model.entity.CladocyclusModel;
-import com.bretzelfresser.ornithodira.client.model.entity.DapediumModel;
-import com.bretzelfresser.ornithodira.client.model.entity.JuravenatorModel;
-import com.bretzelfresser.ornithodira.client.model.entity.TaoheodonModel;
+import com.bretzelfresser.ornithodira.client.model.entity.*;
 import com.bretzelfresser.ornithodira.client.renderer.entity.SanchuansaurusRenderer;
-import com.bretzelfresser.ornithodira.common.entity.ambient.terrestrial.Jurvenator;
 import com.bretzelfresser.ornithodira.core.init.ModEntities;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -36,7 +32,8 @@ public class ClientForgeEvents {
 
         event.registerEntityRenderer(ModEntities.DAPEDIUM.get(), createEntityGeoRenderer(new DapediumModel()));
         event.registerEntityRenderer(ModEntities.CLADOCYCLUS.get(), createEntityGeoRenderer(new CladocyclusModel()));
-        event.registerEntityRenderer(ModEntities.JURVENATOR.get(), createEntityGeoRenderer(new JuravenatorModel()));
+        event.registerEntityRenderer(ModEntities.JURAVENATOR.get(), createEntityGeoRenderer(new JuravenatorModel()));
+        event.registerEntityRenderer(ModEntities.GEMINIRAPTOR.get(), createEntityGeoRenderer(new GeminiraptorModel()));
     }
 
     @SubscribeEvent
