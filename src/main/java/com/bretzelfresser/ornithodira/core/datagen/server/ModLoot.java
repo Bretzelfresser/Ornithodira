@@ -2,6 +2,7 @@ package com.bretzelfresser.ornithodira.core.datagen.server;
 
 import com.bretzelfresser.ornithodira.core.datagen.server.loot.ModArcheologyLoot;
 import com.bretzelfresser.ornithodira.core.datagen.server.loot.ModBlockLoot;
+import com.bretzelfresser.ornithodira.core.datagen.server.loot.ModEntityLoot;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -14,7 +15,8 @@ public class ModLoot extends LootTableProvider {
     public ModLoot(PackOutput pOutput) {
         super(pOutput, Set.of(), List.of(
                 new LootTableProvider.SubProviderEntry(ModBlockLoot::new, LootContextParamSets.BLOCK),
-                new LootTableProvider.SubProviderEntry(ModArcheologyLoot::new, LootContextParamSets.ARCHAEOLOGY)
+                new LootTableProvider.SubProviderEntry(ModArcheologyLoot::new, LootContextParamSets.ARCHAEOLOGY),
+                new LootTableProvider.SubProviderEntry(ModEntityLoot::new, LootContextParamSets.ENTITY)
         ));
     }
 }
