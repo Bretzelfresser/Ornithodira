@@ -25,7 +25,7 @@ public class Geminiraptor extends AgeableMob implements GeoEntity {
 
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 16D).add(Attributes.MOVEMENT_SPEED, (double)0.4F).add(Attributes.ATTACK_DAMAGE, 2);
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8D).add(Attributes.MOVEMENT_SPEED, (double)0.4F).add(Attributes.ATTACK_DAMAGE, 3);
     }
     protected AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     public Geminiraptor(EntityType<? extends AgeableMob> pEntityType, Level pLevel) {
