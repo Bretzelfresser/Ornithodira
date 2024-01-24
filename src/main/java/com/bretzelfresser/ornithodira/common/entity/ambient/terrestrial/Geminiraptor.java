@@ -1,5 +1,6 @@
 package com.bretzelfresser.ornithodira.common.entity.ambient.terrestrial;
 
+import com.bretzelfresser.ornithodira.common.util.GeckoUtils;
 import com.bretzelfresser.ornithodira.core.init.ModEntities;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;
@@ -26,9 +27,11 @@ public class Geminiraptor extends AgeableMob implements GeoEntity {
 
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8D).add(Attributes.MOVEMENT_SPEED, (double)0.4F).add(Attributes.ATTACK_DAMAGE, 3);
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8D).add(Attributes.MOVEMENT_SPEED, (double) 0.4F).add(Attributes.ATTACK_DAMAGE, 3);
     }
+
     protected AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+
     public Geminiraptor(EntityType<? extends AgeableMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
@@ -42,8 +45,8 @@ public class Geminiraptor extends AgeableMob implements GeoEntity {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 1.7D));
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.7d, true));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 1.5D));
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.5d, true));
 
         this.goalSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Rabbit.class, true));
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, .6D));
@@ -52,10 +55,9 @@ public class Geminiraptor extends AgeableMob implements GeoEntity {
 
     }
 
-    protected PlayState predicate(AnimationState<Geminiraptor> state){
-        if(state.isMoving()){
-            return state.setAndContinue(RawAnimation.begin().thenLoop("animation.geminiraptor.walk"));
-        }
+    protected PlayState predicate(AnimationState<Geminiraptor> state) {
+        if (GeckoUtils.isMoving(this, .9d))
+            return state.setAndContinue(RawAnimation.begin().thenPlay("animation.geminiraptor.walk"));
         return PlayState.STOP;
     }
 
