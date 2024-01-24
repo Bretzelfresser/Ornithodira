@@ -1,6 +1,5 @@
 {
 	"format_version": "1.8.0",
-<<<<<<< HEAD
 	"animations": {
 		"animation.geminiraptor.walk": {
 			"loop": true,
@@ -207,8 +206,4 @@
 			}
 		}
 	}
-=======
-	"animations": {},
-	"geckolib_format_version": 2
->>>>>>> origin/master
 }
