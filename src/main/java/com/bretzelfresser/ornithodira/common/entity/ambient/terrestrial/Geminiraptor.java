@@ -18,6 +18,7 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
@@ -25,7 +26,7 @@ public class Geminiraptor extends AgeableMob implements GeoEntity {
 
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 16D).add(Attributes.MOVEMENT_SPEED, (double)0.4F).add(Attributes.ATTACK_DAMAGE, 2);
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8D).add(Attributes.MOVEMENT_SPEED, (double)0.4F).add(Attributes.ATTACK_DAMAGE, 3);
     }
     protected AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     public Geminiraptor(EntityType<? extends AgeableMob> pEntityType, Level pLevel) {
@@ -52,7 +53,10 @@ public class Geminiraptor extends AgeableMob implements GeoEntity {
     }
 
     protected PlayState predicate(AnimationState<Geminiraptor> state){
-        return PlayState.CONTINUE;
+        if(state.isMoving()){
+            return state.setAndContinue(RawAnimation.begin().thenLoop("animation.geminiraptor.walk"));
+        }
+        return PlayState.STOP;
     }
 
     @Override
