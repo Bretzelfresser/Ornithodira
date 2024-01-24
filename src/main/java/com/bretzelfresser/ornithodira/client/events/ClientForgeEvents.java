@@ -2,6 +2,7 @@ package com.bretzelfresser.ornithodira.client.events;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
 import com.bretzelfresser.ornithodira.client.model.entity.*;
+import com.bretzelfresser.ornithodira.client.renderer.entity.AgableEntityRenderer;
 import com.bretzelfresser.ornithodira.client.renderer.entity.SanchuansaurusRenderer;
 import com.bretzelfresser.ornithodira.core.init.ModEntities;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -32,8 +33,8 @@ public class ClientForgeEvents {
 
         event.registerEntityRenderer(ModEntities.DAPEDIUM.get(), createEntityGeoRenderer(new DapediumModel()));
         event.registerEntityRenderer(ModEntities.CLADOCYCLUS.get(), createEntityGeoRenderer(new CladocyclusModel()));
-        event.registerEntityRenderer(ModEntities.JURAVENATOR.get(), createEntityGeoRenderer(new JuravenatorModel()));
-        event.registerEntityRenderer(ModEntities.GEMINIRAPTOR.get(), createEntityGeoRenderer(new GeminiraptorModel()));
+        event.registerEntityRenderer(ModEntities.JURAVENATOR.get(), c -> new AgableEntityRenderer<>(c, new JuravenatorModel()));
+        event.registerEntityRenderer(ModEntities.GEMINIRAPTOR.get(), c -> new AgableEntityRenderer<>(c, new GeminiraptorModel()));
     }
 
     @SubscribeEvent
