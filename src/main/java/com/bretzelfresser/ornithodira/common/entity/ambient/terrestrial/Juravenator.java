@@ -1,5 +1,8 @@
 package com.bretzelfresser.ornithodira.common.entity.ambient.terrestrial;
 
+import com.bretzelfresser.ornithodira.core.init.ModEntities;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -7,8 +10,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -16,7 +19,7 @@ import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class Jurvenator extends PathfinderMob implements GeoEntity {
+public class Juravenator extends AgeableMob implements GeoEntity {
 
     public static AttributeSupplier.Builder createAttributes(){
         return PathfinderMob.createMobAttributes().add(Attributes.MAX_HEALTH, 5)
@@ -25,7 +28,7 @@ public class Jurvenator extends PathfinderMob implements GeoEntity {
 
     protected AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    public Jurvenator(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
+    public Juravenator(EntityType<? extends AgeableMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -40,7 +43,7 @@ public class Jurvenator extends PathfinderMob implements GeoEntity {
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
     }
 
-    protected PlayState predicate(AnimationState<Jurvenator> event){
+    protected PlayState predicate(AnimationState<Juravenator> event){
         return PlayState.STOP;
     }
 
@@ -53,5 +56,11 @@ public class Jurvenator extends PathfinderMob implements GeoEntity {
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.cache;
+    }
+
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
+        return ModEntities.JURAVENATOR.get().create(pLevel);
     }
 }
