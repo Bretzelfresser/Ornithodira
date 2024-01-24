@@ -1,13 +1,11 @@
 package com.bretzelfresser.ornithodira.client.events;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
-import com.bretzelfresser.ornithodira.client.model.entity.HopsorrhinusModel;
+import com.bretzelfresser.ornithodira.client.model.entity.CladocyclusModel;
+import com.bretzelfresser.ornithodira.client.model.entity.DapediumModel;
 import com.bretzelfresser.ornithodira.client.model.entity.TaoheodonModel;
 import com.bretzelfresser.ornithodira.client.renderer.entity.SanchuansaurusRenderer;
-import com.bretzelfresser.ornithodira.core.init.ModBlockEntities;
 import com.bretzelfresser.ornithodira.core.init.ModEntities;
-import com.bretzelfresser.ornithodira.core.init.ModMenus;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.LivingEntity;
@@ -33,7 +31,9 @@ public class ClientForgeEvents {
     public static void registerRenders(EntityRenderersEvent.RegisterRenderers event){
         event.registerEntityRenderer(ModEntities.SANCHUANSAURUS.get(), SanchuansaurusRenderer::new);
         event.registerEntityRenderer(ModEntities.TAOHEODON.get(), createEntityGeoRenderer(new TaoheodonModel()));
-        event.registerEntityRenderer(ModEntities.HOPSORRHINUS.get(), createEntityGeoRenderer(new HopsorrhinusModel()));
+
+        event.registerEntityRenderer(ModEntities.DAPEDIUM.get(), createEntityGeoRenderer(new DapediumModel()));
+        event.registerEntityRenderer(ModEntities.CLADOCYCLUS.get(), createEntityGeoRenderer(new CladocyclusModel()));
     }
 
     @SubscribeEvent

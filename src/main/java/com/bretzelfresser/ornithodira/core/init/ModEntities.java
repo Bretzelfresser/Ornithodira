@@ -1,9 +1,7 @@
 package com.bretzelfresser.ornithodira.core.init;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
-import com.bretzelfresser.ornithodira.common.entity.Hopsorrhinus;
-import com.bretzelfresser.ornithodira.common.entity.Sanchuansaurus;
-import com.bretzelfresser.ornithodira.common.entity.Taoheodon;
+import com.bretzelfresser.ornithodira.common.entity.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -23,7 +21,9 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<Taoheodon>> TAOHEODON = register("taoheodon", () -> EntityType.Builder.of(Taoheodon::new, MobCategory.CREATURE).sized(.7f, .5f));
 
-    public static final RegistryObject<EntityType<Hopsorrhinus>> HOPSORRHINUS = register("hopsorrhinus", () -> EntityType.Builder.of(Hopsorrhinus::new, MobCategory.AMBIENT).sized(0.4F, 0.5F));
+    //Fish
+    public static final RegistryObject<EntityType<Dapedium>> DAPEDIUM = register("dapedium", () -> EntityType.Builder.of(Dapedium::new, MobCategory.WATER_AMBIENT).sized(0.7F, 0.4F));
+    public static final RegistryObject<EntityType<Cladocyclus>> CLADOCYCLUS = register("cladocyclus", () -> EntityType.Builder.of(Cladocyclus::new, MobCategory.WATER_AMBIENT).sized(0.7F, 0.4F));
 
     public static final <T extends Entity> RegistryObject<EntityType<T>> register(String name, Supplier<EntityType.Builder<T>> builder){
         return ENTITIES.register(name, () -> builder.get().build(Ornithodira.modLoc(name).toString()));
