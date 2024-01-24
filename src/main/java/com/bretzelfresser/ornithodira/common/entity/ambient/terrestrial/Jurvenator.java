@@ -1,14 +1,14 @@
-package com.bretzelfresser.ornithodira.common.entity;
+package com.bretzelfresser.ornithodira.common.entity.ambient.terrestrial;
 
-import com.bretzelfresser.ornithodira.core.init.ModItems;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.animal.AbstractFish;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -16,31 +16,34 @@ import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class Dapedium extends AbstractFish implements GeoEntity {
+public class Jurvenator extends PathfinderMob implements GeoEntity {
 
     public static AttributeSupplier.Builder createAttributes(){
-        return AbstractFish.createAttributes();
+        return PathfinderMob.createMobAttributes().add(Attributes.MAX_HEALTH, 5)
+                .add(Attributes.MOVEMENT_SPEED, 0.25D);
     }
 
     protected AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    public Dapedium(EntityType<? extends AbstractFish> pEntityType, Level pLevel) {
+
+    public Jurvenator(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
 
-    protected PlayState predicate(AnimationState<Dapedium> event){
-        return PlayState.CONTINUE;
+    @Override
+    protected void registerGoals() {
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 1.4D));
+
+        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6f));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1D));
+        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
     }
 
-    @Override
-    protected SoundEvent getFlopSound() {
-        return SoundEvents.TROPICAL_FISH_FLOP;
+    protected PlayState predicate(AnimationState<Jurvenator> event){
+        return PlayState.STOP;
     }
 
-    @Override
-    public ItemStack getBucketItemStack() {
-        return ModItems.DAPEDIUM_BUCKET.get().getDefaultInstance();
-    }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {

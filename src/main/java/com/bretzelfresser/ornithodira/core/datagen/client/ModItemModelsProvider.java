@@ -25,14 +25,9 @@ public class ModItemModelsProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        ModItems.ITEMS.getEntries().stream().map(RegistryObject::get).forEach(i -> {
-            if (i instanceof ForgeSpawnEggItem)
-                spawnEgg(i);
-            else if (i == ModItems.NINGXIAITES_CONE_STICK.get())
-                rod(i);
-            else if (!(i instanceof BlockItem))
-                simple(i);
-        });
+        ModItems.ITEMS.getEntries().stream().map(RegistryObject::get).filter(i -> i instanceof ForgeSpawnEggItem).forEach(this::spawnEgg);
+        rod(ModItems.NINGXIAITES_CONE_STICK.get());
+        simple(ModItems.DIAMOND_BRUSH.get(), ModItems.METAL_BRUSH.get());
         simple(ModItems.FOSSILIZED_SYNAPSID_EGG.get(), ModItems.SYNAPSID_EGG.get());
         simple(ModItems.FOSSILIZED_PARAREPTILE_EGG.get(), ModItems.PARAREPTILE_EGG.get());
     }

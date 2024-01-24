@@ -1,7 +1,7 @@
 package com.bretzelfresser.ornithodira.client.model.entity;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
-import com.bretzelfresser.ornithodira.common.entity.Cladocyclus;
+import com.bretzelfresser.ornithodira.common.entity.ambient.fish.Cladocyclus;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 

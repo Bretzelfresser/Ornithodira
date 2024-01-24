@@ -1,11 +1,10 @@
-package com.bretzelfresser.ornithodira.common.entity;
+package com.bretzelfresser.ornithodira.common.entity.ambient.fish;
 
 import com.bretzelfresser.ornithodira.core.init.ModItems;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -17,19 +16,19 @@ import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class Cladocyclus extends AbstractFish implements GeoEntity {
+public class Dapedium extends AbstractFish implements GeoEntity {
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return AbstractFish.createAttributes().add(Attributes.MAX_HEALTH, 5d);
+    public static AttributeSupplier.Builder createAttributes(){
+        return AbstractFish.createAttributes();
     }
 
     protected AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-
-    public Cladocyclus(EntityType<? extends AbstractFish> pEntityType, Level pLevel) {
+    public Dapedium(EntityType<? extends AbstractFish> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
-    protected PlayState predicate(AnimationState<Cladocyclus> event) {
+
+    protected PlayState predicate(AnimationState<Dapedium> event){
         return PlayState.CONTINUE;
     }
 
@@ -40,7 +39,7 @@ public class Cladocyclus extends AbstractFish implements GeoEntity {
 
     @Override
     public ItemStack getBucketItemStack() {
-        return ModItems.CLADOCYCLUS_BUCKET.get().getDefaultInstance();
+        return ModItems.DAPEDIUM_BUCKET.get().getDefaultInstance();
     }
 
     @Override

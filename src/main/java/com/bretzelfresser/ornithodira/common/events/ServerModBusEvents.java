@@ -1,10 +1,11 @@
 package com.bretzelfresser.ornithodira.common.events;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
-import com.bretzelfresser.ornithodira.common.entity.Cladocyclus;
-import com.bretzelfresser.ornithodira.common.entity.Dapedium;
+import com.bretzelfresser.ornithodira.common.entity.ambient.fish.Cladocyclus;
+import com.bretzelfresser.ornithodira.common.entity.ambient.fish.Dapedium;
 import com.bretzelfresser.ornithodira.common.entity.Sanchuansaurus;
 import com.bretzelfresser.ornithodira.common.entity.Taoheodon;
+import com.bretzelfresser.ornithodira.common.entity.ambient.terrestrial.Jurvenator;
 import com.bretzelfresser.ornithodira.core.init.ModEntities;
 import com.bretzelfresser.ornithodira.core.init.ModLootNumberProviderTypes;
 import com.bretzelfresser.ornithodira.core.init.ModNetworks;
@@ -24,6 +25,7 @@ public class ServerModBusEvents {
         event.put(ModEntities.TAOHEODON.get(), Taoheodon.createAttributes().build());
         event.put(ModEntities.DAPEDIUM.get(), Dapedium.createAttributes().build());
         event.put(ModEntities.CLADOCYCLUS.get(), Cladocyclus.createAttributes().build());
+        event.put(ModEntities.JURVENATOR.get(), Jurvenator.createAttributes().build());
     }
 
     @SubscribeEvent
