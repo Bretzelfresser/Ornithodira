@@ -2,6 +2,7 @@ package com.bretzelfresser.ornithodira.common.entity;
 
 import com.bretzelfresser.ornithodira.core.init.ModEntities;
 import com.bretzelfresser.ornithodira.core.init.ModLootTables;
+import com.bretzelfresser.ornithodira.core.tags.ModTags;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -18,6 +19,8 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -108,6 +111,10 @@ public class Taoheodon extends Animal implements GeoEntity {
         return false;
     }
 
+    public boolean canDigOnBlock(BlockState state){
+        return state.is(ModTags.Blocks.TAHOEODON_DIG_BLOCKS);
+    }
+
     @Override
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
@@ -193,7 +200,7 @@ public class Taoheodon extends Animal implements GeoEntity {
 
         @Override
         public boolean canUse() {
-            return !animal.shouldPanic() && animal.getLastHurtByMob() == null && !animal.isBaby() && animal.diggingCooldown <= 0;
+            return animal.canDigOnBlock(animal.getBlockStateOn()) && !animal.shouldPanic() && animal.getLastHurtByMob() == null && !animal.isBaby() && animal.diggingCooldown <= 0;
         }
 
         @Override

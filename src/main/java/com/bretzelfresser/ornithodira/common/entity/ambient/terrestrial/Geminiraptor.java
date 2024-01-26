@@ -56,8 +56,11 @@ public class Geminiraptor extends AgeableMob implements GeoEntity {
     }
 
     protected PlayState predicate(AnimationState<Geminiraptor> state) {
-        if (GeckoUtils.isMoving(this, .9d))
+        state.getController().setAnimationSpeed(1d);
+        if (state.isMoving()) {
+            state.getController().setAnimationSpeed(2d);
             return state.setAndContinue(RawAnimation.begin().thenPlay("animation.geminiraptor.walk"));
+        }
         return PlayState.STOP;
     }
 
