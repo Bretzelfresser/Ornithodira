@@ -5,7 +5,7 @@ import com.bretzelfresser.ornithodira.common.entity.ambient.terrestrial.Geminira
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 
-public class GeminiraptorModel extends GeoModel<Geminiraptor> {
+public class GeminiraptorModel extends ScaleableAgeableModel<Geminiraptor> {
     @Override
     public ResourceLocation getModelResource(Geminiraptor animatable) {
         return Ornithodira.entityGeo("geminiraptor.json");

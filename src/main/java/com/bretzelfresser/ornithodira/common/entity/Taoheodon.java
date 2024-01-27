@@ -213,8 +213,6 @@ public class Taoheodon extends Animal implements GeoEntity {
                 while (pos.getY() > 0 && !animal.canDigOnBlock(animal.level().getBlockState(pos)) && !animal.level().getBlockState(pos).isCollisionShapeFullBlock(animal.level(), pos)) {
                     pos = pos.below();
                 }
-                System.out.println(ForgeRegistries.BLOCKS.getKey(this.animal.level().getBlockState(pos).getBlock()));
-                System.out.println(pos);
                 if (animal.canDigOnBlock(animal.level().getBlockState(pos))) {
                     this.target = pos;
                     return;
@@ -241,7 +239,6 @@ public class Taoheodon extends Animal implements GeoEntity {
         @Override
         public boolean canContinueToUse() {
             if (stuckCooldown > 200) {
-                System.out.println("is this the abortion cuase");
                 return false;
             }if (this.animal.distanceToSqr(Vec3.atCenterOf(this.target)) <= .25d || this.animal.getNavigation().isDone()) {
                 return false;

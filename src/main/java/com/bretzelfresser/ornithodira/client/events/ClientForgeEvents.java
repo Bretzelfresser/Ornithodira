@@ -34,7 +34,7 @@ public class ClientForgeEvents {
         event.registerEntityRenderer(ModEntities.DAPEDIUM.get(), createEntityGeoRenderer(new DapediumModel()));
         event.registerEntityRenderer(ModEntities.CLADOCYCLUS.get(), createEntityGeoRenderer(new CladocyclusModel()));
         event.registerEntityRenderer(ModEntities.JURAVENATOR.get(), c -> new AgableEntityRenderer<>(c, new JuravenatorModel()));
-        event.registerEntityRenderer(ModEntities.GEMINIRAPTOR.get(), c -> new AgableEntityRenderer<>(c, new GeminiraptorModel()));
+        event.registerEntityRenderer(ModEntities.GEMINIRAPTOR.get(), createEntityGeoRenderer(new GeminiraptorModel()));
     }
 
     @SubscribeEvent
