@@ -12,7 +12,6 @@ public abstract class ScaleableAgeableModel<T extends LivingEntity & GeoEntity> 
     @Override
     public void setCustomAnimations(T animatable, long instanceId, AnimationState<T> animationState) {
         super.setCustomAnimations(animatable, instanceId, animationState);
-
         if (animationState == null) return;
         if (animatable.isBaby()) {
             this.getAnimationProcessor().getRegisteredBones().forEach(this::boneChildScaling);

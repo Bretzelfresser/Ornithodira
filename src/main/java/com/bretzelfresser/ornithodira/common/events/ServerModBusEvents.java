@@ -1,6 +1,7 @@
 package com.bretzelfresser.ornithodira.common.events;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
+import com.bretzelfresser.ornithodira.common.entity.Animantarx;
 import com.bretzelfresser.ornithodira.common.entity.ambient.fish.Cladocyclus;
 import com.bretzelfresser.ornithodira.common.entity.ambient.fish.Dapedium;
 import com.bretzelfresser.ornithodira.common.entity.Sanchuansaurus;
@@ -28,6 +29,7 @@ public class ServerModBusEvents {
         event.put(ModEntities.CLADOCYCLUS.get(), Cladocyclus.createAttributes().build());
         event.put(ModEntities.JURAVENATOR.get(), Juravenator.createAttributes().build());
         event.put(ModEntities.GEMINIRAPTOR.get(), Geminiraptor.createAttributes().build());
+        event.put(ModEntities.ANIMANTARX.get(), Animantarx.createAttributes().build());
     }
 
     @SubscribeEvent
