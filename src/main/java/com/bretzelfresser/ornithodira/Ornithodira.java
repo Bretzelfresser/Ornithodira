@@ -58,6 +58,7 @@ public class Ornithodira {
            event.accept(ModItems.CLADOCYCLUS_SPAWN_EGG);
            event.accept(ModItems.JURAVENATOR_SPAWN_EGG);
            event.accept(ModItems.GEMINIRAPTOR_SPAWN_EGG);
+           event.accept(ModItems.ANIMANTARX_SPAWN_EGG);
        }
     }
 

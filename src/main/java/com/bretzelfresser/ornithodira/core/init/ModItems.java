@@ -42,6 +42,7 @@ public class ModItems {
     public static final RegistryObject<ForgeSpawnEggItem> CLADOCYCLUS_SPAWN_EGG = ITEMS.register("cladocyclus_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.CLADOCYCLUS, 0x9ab8dc, 0x5f4044, new Item.Properties()));
     public static final RegistryObject<ForgeSpawnEggItem> JURAVENATOR_SPAWN_EGG = ITEMS.register("juravenator_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.JURAVENATOR, 0xa4ae230,0x599c10, new Item.Properties()));
     public static final RegistryObject<ForgeSpawnEggItem> GEMINIRAPTOR_SPAWN_EGG = ITEMS.register("geminiraptor_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.GEMINIRAPTOR, 0x9b3528,0x372b25, new Item.Properties()));
+    public static final RegistryObject<ForgeSpawnEggItem> ANIMANTARX_SPAWN_EGG = ITEMS.register("animantarx_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.ANIMANTARX, 0x411d1b,0x411d1b, new Item.Properties()));
 
     public static final RegistryObject<BucketItem> DAPEDIUM_BUCKET = ITEMS.register("dapedium_bucket", () -> new MobBucketItem(ModEntities.DAPEDIUM, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties()));
     public static final RegistryObject<MobBucketItem> CLADOCYCLUS_BUCKET = registerMobBucket("cladocyclus_bucket", ModEntities.DAPEDIUM);
