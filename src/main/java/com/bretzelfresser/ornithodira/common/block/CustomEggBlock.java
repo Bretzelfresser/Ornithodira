@@ -47,7 +47,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class CustomEggBlock extends Block {
+public class CustomEggBlock extends Block implements BrushableBlock{
 
     public static final VoxelShape SHAPE_EGG1 = Block.box(4, 0, 4, 12, 7, 12);
     public static final VoxelShape SHAPE_EGG_OTHER = Block.box(1, 0, 1, 15, 7, 15);
@@ -310,7 +310,8 @@ public class CustomEggBlock extends Block {
         return fortuneAddition;
     }
 
-    public int getMinToolLevel() {
-        return minToolLevel;
+    @Override
+    public int getMinRequiredToolLevel() {
+        return this.minToolLevel;
     }
 }

@@ -35,6 +35,8 @@ public class ModItems {
     public static final RegistryObject<Item> DAPEDIUM = ITEMS.register("dapedium", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CLADOCYCLUS = ITEMS.register("cladocyclus", () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> NINGXIAITES_CONE = ITEMS.register("ningxiaites_cone", () -> new Item(new Item.Properties()));
+
 
     public static final RegistryObject<ForgeSpawnEggItem> SANCHUANSAURUS_SPAWN_EGG = ITEMS.register("sanchuansaurus_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.SANCHUANSAURUS, 0x51382c, 0x993b13, new Item.Properties()));
     public static final RegistryObject<ForgeSpawnEggItem> TAOHEODON_SPAWN_EGG = ITEMS.register("taoheodon_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.TAOHEODON, 0xb56039, 0x8b8852, new Item.Properties()));

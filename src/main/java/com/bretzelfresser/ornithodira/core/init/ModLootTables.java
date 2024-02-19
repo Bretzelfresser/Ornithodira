@@ -7,4 +7,5 @@ public class ModLootTables {
 
     public static final ResourceLocation TAOHEODON_DIGG_LOOT = Ornithodira.modLoc("digging/taoheodon_digg_loot");
     public static final ResourceLocation COMMON_EGGS_LOOT = Ornithodira.modLoc("digging/common_eggs_loot");
+    public static final ResourceLocation NINGXIATES_BRUSH_LOOT = Ornithodira.modLoc("brushing/ningxiates_brush_loot");
 }

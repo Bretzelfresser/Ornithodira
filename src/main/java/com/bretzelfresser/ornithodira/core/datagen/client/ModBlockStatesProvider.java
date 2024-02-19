@@ -2,6 +2,7 @@ package com.bretzelfresser.ornithodira.core.datagen.client;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
 import com.bretzelfresser.ornithodira.common.block.CustomEggBlock;
+import com.bretzelfresser.ornithodira.common.block.NingxiatesConeBlock;
 import com.bretzelfresser.ornithodira.core.init.ModBlocks;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.PackOutput;
@@ -31,8 +32,23 @@ public class ModBlockStatesProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         makeFossilizedEggBlock(ModBlocks.PARAREPTILE_EGG.get());
         makeFossilizedEggBlock(ModBlocks.SYNAPSID_EGG.get(), name(ModBlocks.SYNAPSID_EGG.get()), name(ModBlocks.SYNAPSID_EGG.get()), false);
+        makeNingxiaitesCone(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get(), "fossilized_ningxiaites_cone");
     }
 
+
+    protected void makeNingxiaitesCone(Block block, String textureName){
+        getVariantBuilder(block).forAllStates(state -> {
+            ConfiguredModel.Builder<?> modelBuilder = ConfiguredModel.builder();
+            String prefab = "prefab_ningxiaites_cone";
+            int eggs = state.getValue(NingxiatesConeBlock.EGGS);
+            prefab += "_" + eggs;
+            String name = name(block) + "_eggs_" + eggs;
+            modelBuilder = modelBuilder.modelFile(models().withExistingParent(modLoc(name).toString(), modLoc(prefab)).texture("texture", modLoc("block/" + textureName)));
+            modelBuilder = modelBuilder.rotationY((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot());
+
+            return modelBuilder.build();
+        });
+    }
 
     protected void makeFossilizedEggBlock(Block egg) {
         makeFossilizedEggBlock(egg, name(egg));

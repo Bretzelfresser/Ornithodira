@@ -50,6 +50,8 @@ public class Ornithodira {
            event.accept(ModItems.SYNAPSID_EGG);
            event.accept(ModItems.DAPEDIUM_BUCKET);
            event.accept(ModItems.CLADOCYCLUS_BUCKET);
+           event.accept(ModItems.NINGXIAITES_CONE);
+           event.accept(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK);
        }
        if (event.getTab() == ModTabs.SPAWN_EGGS.get()){
            event.accept(ModItems.SANCHUANSAURUS_SPAWN_EGG);

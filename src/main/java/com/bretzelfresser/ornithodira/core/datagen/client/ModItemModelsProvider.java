@@ -1,6 +1,7 @@
 package com.bretzelfresser.ornithodira.core.datagen.client;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
+import com.bretzelfresser.ornithodira.core.init.ModBlocks;
 import com.bretzelfresser.ornithodira.core.init.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
@@ -30,6 +31,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
         simple(ModItems.DIAMOND_BRUSH.get(), ModItems.METAL_BRUSH.get());
         simple(ModItems.FOSSILIZED_SYNAPSID_EGG.get(), ModItems.SYNAPSID_EGG.get());
         simple(ModItems.FOSSILIZED_PARAREPTILE_EGG.get(), ModItems.PARAREPTILE_EGG.get());
+        simple(ModItems.NINGXIAITES_CONE.get(), ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get());
     }
 
     private void simple(Item... items) {

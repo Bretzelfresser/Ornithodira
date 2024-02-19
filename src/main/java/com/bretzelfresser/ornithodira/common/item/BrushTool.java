@@ -1,5 +1,6 @@
 package com.bretzelfresser.ornithodira.common.item;
 
+import com.bretzelfresser.ornithodira.common.block.BrushableBlock;
 import com.bretzelfresser.ornithodira.common.block.CustomEggBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -45,8 +46,8 @@ public class BrushTool extends Item {
     }
 
     public BrushTool(int toolLevel, Properties pProperties) {
-        this(toolLevel, state -> state.getBlock() instanceof CustomEggBlock egg && egg.canBrush(state) && egg.getMinToolLevel() <= toolLevel, (state, level, pos, player, hand) -> {
-            if (state.getBlock() instanceof CustomEggBlock egg) {
+        this(toolLevel, state -> state.getBlock() instanceof BrushableBlock egg && egg.canBrush(state) && egg.getMinRequiredToolLevel() <= toolLevel, (state, level, pos, player, hand) -> {
+            if (state.getBlock() instanceof BrushableBlock egg) {
                 egg.brush(state, level, pos, player, hand);
             }
         }, pProperties);
