@@ -32,6 +32,7 @@ public class Ornithodira {
         ModLootModifiers.LOOT_MODIFIER_SERIALIZER.register(modEventBus);
         ModEntities.ENTITIES.register(modEventBus);
         ModMenus.MENUS.register(modEventBus);
+        ModEffects.EFFECTS.register(modEventBus);
         ModRecipes.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -48,17 +49,14 @@ public class Ornithodira {
            event.accept(ModItems.NINGXIAITES_CONE_STICK);
            event.accept(ModItems.FOSSILIZED_SYNAPSID_EGG);
            event.accept(ModItems.SYNAPSID_EGG);
-           event.accept(ModItems.DAPEDIUM_BUCKET);
-           event.accept(ModItems.CLADOCYCLUS_BUCKET);
            event.accept(ModItems.NINGXIAITES_CONE);
            event.accept(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK);
        }
        if (event.getTab() == ModTabs.SPAWN_EGGS.get()){
            event.accept(ModItems.SANCHUANSAURUS_SPAWN_EGG);
            event.accept(ModItems.TAOHEODON_SPAWN_EGG);
-           event.accept(ModItems.DAPEDIUM_SPAWN_EGG);
            event.accept(ModItems.CLADOCYCLUS_SPAWN_EGG);
-           event.accept(ModItems.JURAVENATOR_SPAWN_EGG);
+           event.accept(ModItems.CASEA_SPAWN_EGG);
            event.accept(ModItems.GEMINIRAPTOR_SPAWN_EGG);
            event.accept(ModItems.ANIMANTARX_SPAWN_EGG);
        }

@@ -11,6 +11,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -26,12 +27,14 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
-public class NingxiatesConeBlock extends RotatableBlock implements BrushableBlock{
+public class NingxiatesConeBlock extends RotatableBlock implements BrushableBlock {
 
     public static final IntegerProperty EGGS = IntegerProperty.create("eggs", 1, 3);
 
@@ -40,7 +43,7 @@ public class NingxiatesConeBlock extends RotatableBlock implements BrushableBloc
         this.registerDefaultState(this.stateDefinition.any().setValue(EGGS, 1).setValue(RotatableBlock.HORIZONTAL_FACING, Direction.NORTH));
     }
 
-    protected int getMaxEggs(){
+    protected int getMaxEggs() {
         return 3;
     }
 
@@ -56,6 +59,12 @@ public class NingxiatesConeBlock extends RotatableBlock implements BrushableBloc
             return InteractionResult.SUCCESS;
         }
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+    }
+
+
+    @Override
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return pState.getValue(EGGS) <= 1 ? CustomEggBlock.SHAPE_EGG1 : CustomEggBlock.SHAPE_EGG_OTHER;
     }
 
     private void decreaseEggs(Level pLevel, BlockPos pPos, BlockState pState) {
@@ -111,7 +120,7 @@ public class NingxiatesConeBlock extends RotatableBlock implements BrushableBloc
         }
     }
 
-    public List<ItemStack> getBrushSTacks(BlockState state, LootParams.Builder lootParams){
+    public List<ItemStack> getBrushSTacks(BlockState state, LootParams.Builder lootParams) {
         ResourceLocation resourcelocation = ModLootTables.NINGXIATES_BRUSH_LOOT;
         if (resourcelocation == BuiltInLootTables.EMPTY) {
             return Collections.emptyList();
