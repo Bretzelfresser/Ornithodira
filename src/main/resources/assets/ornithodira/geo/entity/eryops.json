@@ -1,0 +1,91 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.eryops",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0, 4, 0.5]
+				},
+				{
+					"name": "torso",
+					"parent": "body",
+					"pivot": [0, 4, 0.5],
+					"cubes": [
+						{"origin": [-4, 1, -5], "size": [8, 6, 11], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [0, 4.16667, -5],
+					"cubes": [
+						{"origin": [-2.5, 2.5, -8], "size": [5, 3, 3], "uv": [15, 25]},
+						{"origin": [-1.5, 2.5, -12], "size": [3, 2, 4], "uv": [27, 27]},
+						{"origin": [-2, 1, -7], "size": [4, 2, 2], "uv": [0, 30]}
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "body",
+					"pivot": [0, 5.5599, 5.48],
+					"cubes": [
+						{"origin": [-2, 2.17853, 5.76528], "size": [4, 4, 4], "uv": [18, 17]}
+					]
+				},
+				{
+					"name": "tail2",
+					"parent": "tail",
+					"pivot": [0, 4.14795, 10],
+					"cubes": [
+						{"origin": [-1, 3.17853, 9.76528], "size": [2, 2, 7], "pivot": [0, 3.17853, 9.76528], "rotation": [-0.5, 0, 0], "uv": [0, 17]}
+					]
+				},
+				{
+					"name": "frontleg1",
+					"parent": "body",
+					"pivot": [4, 2.75, -3],
+					"cubes": [
+						{"origin": [3, 0, -4], "size": [2, 3, 2], "uv": [20, 31]},
+						{"origin": [3, 0, -6], "size": [4, 0, 4], "uv": [0, 26]}
+					]
+				},
+				{
+					"name": "backleg1",
+					"parent": "body",
+					"pivot": [4, 3, 4],
+					"cubes": [
+						{"origin": [3, 0, 3], "size": [2, 4, 2], "uv": [12, 31]},
+						{"origin": [3, 0, 1], "size": [4, 0, 4], "uv": [23, 4]}
+					]
+				},
+				{
+					"name": "backleg2",
+					"parent": "body",
+					"pivot": [-4, 3, 4],
+					"cubes": [
+						{"origin": [-5, 0, 3], "size": [2, 4, 2], "uv": [0, 0]},
+						{"origin": [-7, 0, 1], "size": [4, 0, 4], "uv": [7, 17]}
+					]
+				},
+				{
+					"name": "frontleg2",
+					"parent": "body",
+					"pivot": [-4, 2.75, -3],
+					"cubes": [
+						{"origin": [-5, 0, -4], "size": [2, 3, 2], "uv": [0, 6]},
+						{"origin": [-7, 0, -6], "size": [4, 0, 4], "uv": [23, 0]}
+					]
+				}
+			]
+		}
+	]
+}
