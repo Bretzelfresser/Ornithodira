@@ -25,7 +25,6 @@ public class ModEntityLoot extends VanillaEntityLoot {
 
     @Override
     public void generate() {
-        add(ModEntities.DAPEDIUM.get(), makeFishPool(ModItems.DAPEDIUM.get()));
         add(ModEntities.CLADOCYCLUS.get(), makeFishPool(ModItems.CLADOCYCLUS.get()));
     }
 

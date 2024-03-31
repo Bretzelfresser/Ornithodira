@@ -31,11 +31,10 @@ public class ClientForgeEvents {
         event.registerEntityRenderer(ModEntities.SANCHUANSAURUS.get(), SanchuansaurusRenderer::new);
         event.registerEntityRenderer(ModEntities.TAOHEODON.get(), createEntityGeoRenderer(new TaoheodonModel()));
 
-        event.registerEntityRenderer(ModEntities.DAPEDIUM.get(), createEntityGeoRenderer(new DapediumModel()));
         event.registerEntityRenderer(ModEntities.CLADOCYCLUS.get(), createEntityGeoRenderer(new CladocyclusModel()));
-        event.registerEntityRenderer(ModEntities.JURAVENATOR.get(), c -> new AgableEntityRenderer<>(c, new JuravenatorModel()));
         event.registerEntityRenderer(ModEntities.GEMINIRAPTOR.get(), createEntityGeoRenderer(new GeminiraptorModel()));
         event.registerEntityRenderer(ModEntities.ANIMANTARX.get(), createEntityGeoRenderer(new AnimantarxModel()));
+        event.registerEntityRenderer(ModEntities.CASEA.get(), createEntityGeoRenderer(new CaseaModel()));
     }
 
     @SubscribeEvent

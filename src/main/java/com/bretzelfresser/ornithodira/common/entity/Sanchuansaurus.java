@@ -12,6 +12,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
@@ -23,8 +24,10 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DragonEggBlock;
@@ -73,10 +76,58 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable, Spe
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
     }
 
+
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(HAS_SADDLE, false);
+    }
+
+    public boolean doHurtTarget(Entity pEntity) {
+        float f;
+        if (pEntity.getBbHeight() >= 2 && pEntity.getBbWidth() >= 3) {
+            f = 4f;
+        } else
+            f = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        float f1 = (float) this.getAttributeValue(Attributes.ATTACK_KNOCKBACK);
+        if (pEntity instanceof LivingEntity) {
+            f += EnchantmentHelper.getDamageBonus(this.getMainHandItem(), ((LivingEntity) pEntity).getMobType());
+            f1 += (float) EnchantmentHelper.getKnockbackBonus(this);
+        }
+
+        int i = EnchantmentHelper.getFireAspect(this);
+        if (i > 0) {
+            pEntity.setSecondsOnFire(i * 4);
+        }
+
+        boolean flag = pEntity.hurt(this.damageSources().mobAttack(this), f);
+        if (flag) {
+            if (f1 > 0.0F && pEntity instanceof LivingEntity) {
+                ((LivingEntity) pEntity).knockback((double) (f1 * 0.5F), (double) Mth.sin(this.getYRot() * ((float) Math.PI / 180F)), (double) (-Mth.cos(this.getYRot() * ((float) Math.PI / 180F))));
+                this.setDeltaMovement(this.getDeltaMovement().multiply(0.6D, 1.0D, 0.6D));
+            }
+
+            if (pEntity instanceof Player) {
+                Player player = (Player) pEntity;
+                this.maybeDisableShield(player, this.getMainHandItem(), player.isUsingItem() ? player.getUseItem() : ItemStack.EMPTY);
+            }
+
+            this.doEnchantDamageEffects(this, pEntity);
+            this.setLastHurtMob(pEntity);
+        }
+
+        return flag;
+    }
+
+    private void maybeDisableShield(Player pPlayer, ItemStack pMobItemStack, ItemStack pPlayerItemStack) {
+        if (!pMobItemStack.isEmpty() && !pPlayerItemStack.isEmpty() && pMobItemStack.getItem() instanceof AxeItem && pPlayerItemStack.is(Items.SHIELD)) {
+            float f = 0.25F + (float)EnchantmentHelper.getBlockEfficiency(this) * 0.05F;
+            if (this.random.nextFloat() < f) {
+                pPlayer.getCooldowns().addCooldown(Items.SHIELD, 100);
+                this.level().broadcastEntityEvent(pPlayer, (byte)30);
+            }
+        }
+
     }
 
     @Override
@@ -140,9 +191,9 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable, Spe
         if (!this.level().isClientSide) {
             if (this.blockBreakCooldown > 0)
                 this.blockBreakCooldown--;
-            if (this.isBaby() && !getAttribute(Attributes.MAX_HEALTH).hasModifier(BABY_MAX_HEALTH)){
+            if (this.isBaby() && !getAttribute(Attributes.MAX_HEALTH).hasModifier(BABY_MAX_HEALTH)) {
                 getAttribute(Attributes.MAX_HEALTH).addTransientModifier(BABY_MAX_HEALTH);
-            }else if (!this.isBaby() && getAttribute(Attributes.MAX_HEALTH).hasModifier(BABY_MAX_HEALTH)){
+            } else if (!this.isBaby() && getAttribute(Attributes.MAX_HEALTH).hasModifier(BABY_MAX_HEALTH)) {
                 getAttribute(Attributes.MAX_HEALTH).removeModifier(BABY_MAX_HEALTH);
                 this.heal(16);
             }
@@ -264,9 +315,9 @@ public class Sanchuansaurus extends Animal implements GeoEntity, Saddleable, Spe
             BlockPos pos = firstPos.above(y);
             BlockState state = level().getBlockState(pos);
             if (state.getDestroySpeed(level(), pos) > 0 && ForgeEventFactory.doPlayerHarvestCheck(sender, state, !state.requiresCorrectToolForDrops() || Items.IRON_PICKAXE.isCorrectToolForDrops(new ItemStack(Items.IRON_PICKAXE), state))) {
-                if (state.getBlock() instanceof DragonEggBlock eggBlock){
+                if (state.getBlock() instanceof DragonEggBlock eggBlock) {
                     eggBlock.attack(state, level(), pos, sender);
-                }else {
+                } else {
                     this.level().destroyBlock(pos, true, this, 1 << 5);
                 }
                 destroyedOneBlock = true;

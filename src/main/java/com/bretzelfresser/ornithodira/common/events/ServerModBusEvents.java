@@ -2,12 +2,11 @@ package com.bretzelfresser.ornithodira.common.events;
 
 import com.bretzelfresser.ornithodira.Ornithodira;
 import com.bretzelfresser.ornithodira.common.entity.Animantarx;
+import com.bretzelfresser.ornithodira.common.entity.Casea;
 import com.bretzelfresser.ornithodira.common.entity.ambient.fish.Cladocyclus;
-import com.bretzelfresser.ornithodira.common.entity.ambient.fish.Dapedium;
 import com.bretzelfresser.ornithodira.common.entity.Sanchuansaurus;
 import com.bretzelfresser.ornithodira.common.entity.Taoheodon;
 import com.bretzelfresser.ornithodira.common.entity.ambient.terrestrial.Geminiraptor;
-import com.bretzelfresser.ornithodira.common.entity.ambient.terrestrial.Juravenator;
 import com.bretzelfresser.ornithodira.core.init.ModEntities;
 import com.bretzelfresser.ornithodira.core.init.ModLootNumberProviderTypes;
 import com.bretzelfresser.ornithodira.core.init.ModNetworks;
@@ -25,11 +24,10 @@ public class ServerModBusEvents {
     public static void createAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.SANCHUANSAURUS.get(), Sanchuansaurus.createAttributes().build());
         event.put(ModEntities.TAOHEODON.get(), Taoheodon.createAttributes().build());
-        event.put(ModEntities.DAPEDIUM.get(), Dapedium.createAttributes().build());
         event.put(ModEntities.CLADOCYCLUS.get(), Cladocyclus.createAttributes().build());
-        event.put(ModEntities.JURAVENATOR.get(), Juravenator.createAttributes().build());
         event.put(ModEntities.GEMINIRAPTOR.get(), Geminiraptor.createAttributes().build());
         event.put(ModEntities.ANIMANTARX.get(), Animantarx.createAttributes().build());
+        event.put(ModEntities.CASEA.get(), Casea.createAttributes().build());
     }
 
     @SubscribeEvent

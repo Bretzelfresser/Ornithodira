@@ -36,7 +36,7 @@ public class ModArcheologyLoot implements LootTableSubProvider {
                 Pair.of(Items.GOLD_NUGGET, 4),
                 Pair.of(Items.GOLD_INGOT, 3),
                 Pair.of(Items.DIAMOND, 2)
-        )).add(LootTableReference.lootTableReference(ModLootTables.COMMON_EGGS_LOOT).setWeight(3));
+        )).add(LootTableReference.lootTableReference(ModLootTables.COMMON_EGGS_LOOT).setWeight(1));
     }
 
     protected LootPool.Builder makeItemPools(LootPool.Builder builder, List<Pair<ItemLike, Integer>> list){
