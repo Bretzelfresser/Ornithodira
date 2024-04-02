@@ -10,7 +10,7 @@ public class SanchuansaurusModel extends GeoModel<Sanchuansaurus> {
     public ResourceLocation getModelResource(Sanchuansaurus animatable) {
         if (animatable.isBaby())
             return Ornithodira.entityGeo("sanchuan_baby.geo.json");
-        return Ornithodira.entityGeo("sanchuansaurus.geo.json");
+        return Ornithodira.entityGeo("sanchuansaurus.json");
     }
 
     @Override

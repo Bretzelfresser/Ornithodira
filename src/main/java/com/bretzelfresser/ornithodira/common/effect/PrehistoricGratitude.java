@@ -21,7 +21,7 @@ public class PrehistoricGratitude extends MobEffect {
     public void onXpGain(PlayerXpEvent.XpChange event) {
         if (event.getEntity().hasEffect(this)) {
             int amplifier = Math.max(0, event.getEntity().getEffect(this).getAmplifier());
-            double percentageBoost = 1d + xpGain.apply(Double.valueOf(amplifier));
+            double percentageBoost = 1d + xpGain.apply((double) amplifier);
             double xpGain = (double) event.getAmount() * percentageBoost;
             event.setAmount((int) Math.round(xpGain));
         }
