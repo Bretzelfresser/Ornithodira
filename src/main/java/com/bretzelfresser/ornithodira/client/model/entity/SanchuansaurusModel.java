@@ -3,13 +3,12 @@ package com.bretzelfresser.ornithodira.client.model.entity;
 import com.bretzelfresser.ornithodira.Ornithodira;
 import com.bretzelfresser.ornithodira.common.entity.Sanchuansaurus;
 import net.minecraft.resources.ResourceLocation;
+import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 import software.bernie.geckolib.model.GeoModel;
 
 public class SanchuansaurusModel extends GeoModel<Sanchuansaurus> {
     @Override
     public ResourceLocation getModelResource(Sanchuansaurus animatable) {
-        if (animatable.isBaby())
-            return Ornithodira.entityGeo("sanchuan_baby.geo.json");
         return Ornithodira.entityGeo("sanchuansaurus.json");
     }
 
