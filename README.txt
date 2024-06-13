@@ -5,9 +5,13 @@ Bash ability should deal like 2 damage and a block of knockback in the 2 (high) 
 General things:
 Remove ALL fossils (just everything with fossil in the name) since the concept of the mod changed (its in the dev channel)
 
+the ningxiaites cone should be held like a tool, but isnt actually a tool
+
+
 Add the food items (cladocyclus and geminiraptor) and bucket of cladocyclus
 
 hatchable Eggs for every mob will come later
+
 
 
 
