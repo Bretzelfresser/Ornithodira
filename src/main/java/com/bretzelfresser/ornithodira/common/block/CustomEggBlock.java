@@ -102,7 +102,7 @@ public class CustomEggBlock extends Block implements BrushableBlock{
             for (double x = -.25d; x <= .25d; x += .01d) {
                 for (double z = -.25d; z <= .25d; z += .01d) {
                     double y = Math.sqrt(1 - z * z - x * x);
-                    Vec3 motion = new Vec3(x, y, z).normalize().scale(.3d);
+                    Vec3 motion = new Vec3(x, y, z).normalize().scale(.4d);
                     level.addParticle(blockparticleoption, centerPos.x, centerPos.y, centerPos.z, motion.x, motion.y, motion.z);
                 }
             }
