@@ -30,6 +30,17 @@ If at any point you are missing libraries in your IDE, or you've run into proble
 run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
 {this does not affect your code} and then start the process again.
 
+Adding Textures and other Resources:
+============================
+We want to have Feature completeness in the master branch so please when u have new Textures add them
+to a new branch or a existing branch when this texture is needed for a Feature. <br />
+#### For Example:
+there is a branch called Taoheodon, then u can add all textures relating to that entity, for example drops, steering items, etc.
+if there isnt a matching branch and u have eggs for the taoheodon, then please make a new one. <br /><br />
+when u have new textures for entities please go to textures/entity, 
+if u have items go to textures/item and for blocks textures/blocks
+in the src/main/resources/ornithodira. When u add models make sure the path in the model to the textures is corrected.
+
 Mapping Names:
 =============================
 By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
