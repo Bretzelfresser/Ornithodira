@@ -1,3 +1,15 @@
+Alright so for Sanchuansaurus:
+Apply animations (I gotta fix em first)
+Bash ability should deal like 2 damage and a block of knockback in the 2 (high) by 1 (wide) bash zone, and the bash ability should also be useable diagonally (idk if thats possible) and should be useable at any time without having to touch blocks
+
+General things:
+Remove ALL fossils (just everything with fossil in the name) since the concept of the mod changed (its in the dev channel)
+
+Add the food items (cladocyclus and geminiraptor) and bucket of cladocyclus
+
+hatchable Eggs for every mob will come later
+
+
 
 Source installation information for modders
 -------------------------------------------
