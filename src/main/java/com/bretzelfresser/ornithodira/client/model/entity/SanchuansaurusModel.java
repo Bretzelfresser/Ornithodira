@@ -15,16 +15,11 @@ public class SanchuansaurusModel extends GeoModel<Sanchuansaurus> {
 
     @Override
     public ResourceLocation getTextureResource(Sanchuansaurus animatable) {
-        if (animatable.isBaby())
-            return Ornithodira.entityTexture("sanchuan_baby.png");
-        return Ornithodira.entityTexture("sanchuansaurus_striped.png");
+        return Ornithodira.entityTexture("sanchuansaurus.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(Sanchuansaurus animatable) {
-        if (animatable.isBaby()){
-            return Ornithodira.animation("sanchuan_baby.animation.json");
-        }
         return Ornithodira.animation("sanchuansaurus.animation.json");
     }
 }
