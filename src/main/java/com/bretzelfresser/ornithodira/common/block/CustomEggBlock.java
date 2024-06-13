@@ -90,9 +90,10 @@ public class CustomEggBlock extends Block implements BrushableBlock{
                 moreEggs++;
             }
         }
-        if (moreEggs > 0)
+        if (moreEggs > 0) {
             level.setBlock(pos, state.setValue(FOSSILIZED, false).setValue(EGGS, moreEggs), 3);
-        else {
+
+        }else {
             level.destroyBlock(pos, false, player, 1 << 5);
         }
         if (level.isClientSide) {
@@ -101,13 +102,12 @@ public class CustomEggBlock extends Block implements BrushableBlock{
             for (double x = -.25d; x <= .25d; x += .01d) {
                 for (double z = -.25d; z <= .25d; z += .01d) {
                     double y = Math.sqrt(1 - z * z - x * x);
-                    Vec3 moition = new Vec3(x, y, z).normalize().scale(.3d);
-                    level.addParticle(blockparticleoption, centerPos.x, centerPos.y, centerPos.z, moition.x, moition.y, moition.z);
+                    Vec3 motion = new Vec3(x, y, z).normalize().scale(.3d);
+                    level.addParticle(blockparticleoption, centerPos.x, centerPos.y, centerPos.z, motion.x, motion.y, motion.z);
                 }
             }
 
         }
-
     }
 
     @Override
