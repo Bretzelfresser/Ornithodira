@@ -1,6 +1,7 @@
 package com.bretzelfresser.ornithodira.core.datagen.server;
 
 import com.bretzelfresser.ornithodira.common.recipe.ParareptileEggEntitiesRecipe;
+import com.bretzelfresser.ornithodira.common.util.ResourceLocationUtils;
 import com.bretzelfresser.ornithodira.core.datagen.server.recipe.EggRecipeBuilder;
 import com.bretzelfresser.ornithodira.core.init.ModEntities;
 import com.bretzelfresser.ornithodira.core.init.ModItems;
@@ -10,6 +11,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.function.Consumer;
@@ -25,6 +27,9 @@ public class ModRecipeProvider extends RecipeProvider {
 
         EggRecipeBuilder.builder(ParareptileEggEntitiesRecipe.SERIALIZER).add(5, ModEntities.SANCHUANSAURUS.get()).add(1, ModEntities.TAOHEODON.get()).save(consumer, "sanchuansaurus_egg_entities");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.NINGXIAITES_CONE_STICK.get()).requires(Items.FISHING_ROD).requires(ModItems.NINGXIAITES_CONE.get()).unlockedBy("hasItem", has(ModItems.NINGXIAITES_CONE.get())).save(consumer);
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_CLADOCYCLUS.get()), RecipeCategory.FOOD, ModItems.COOKED_CLADOCYCLUS.get(), .3f, 200).unlockedBy("hasItem", has(ModItems.RAW_CLADOCYCLUS.get())).save(consumer);
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItems.RAW_CLADOCYCLUS.get()), RecipeCategory.FOOD, ModItems.COOKED_CLADOCYCLUS.get(), .3f, 100).unlockedBy("hasItem", has(ModItems.RAW_CLADOCYCLUS.get())).save(consumer, ResourceLocationUtils.extend(ModItems.COOKED_CLADOCYCLUS.getId(), "_smoking"));
     }
 
     protected void makeBrushRecipes(Consumer<FinishedRecipe> consumer){

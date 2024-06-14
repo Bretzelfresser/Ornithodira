@@ -20,6 +20,7 @@ public class ModItemModelsProvider extends ItemModelProvider {
     public final ModelFile spawnEgg = getExistingFile(mcLoc("item/template_spawn_egg"));
 
     public final ModelFile rod = getExistingFile(mcLoc("item/handheld_rod"));
+    public final ModelFile handheld = getExistingFile(mcLoc("item/handheld"));
     public ModItemModelsProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, Ornithodira.MODID, existingFileHelper);
     }
@@ -31,7 +32,10 @@ public class ModItemModelsProvider extends ItemModelProvider {
         simple(ModItems.DIAMOND_BRUSH.get(), ModItems.METAL_BRUSH.get());
         simple(ModItems.FOSSILIZED_SYNAPSID_EGG.get(), ModItems.SYNAPSID_EGG.get());
         simple(ModItems.FOSSILIZED_PARAREPTILE_EGG.get(), ModItems.PARAREPTILE_EGG.get());
-        simple(ModItems.NINGXIAITES_CONE.get(), ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get());
+        simple(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get());
+        handheld(ModItems.NINGXIAITES_CONE.get());
+        simple(ModItems.RAW_CLADOCYCLUS.get(), ModItems.COOKED_CLADOCYCLUS.get());
+        simple(ModItems.CLADOCYCLUS_BUCKET.get());
     }
 
     private void simple(Item... items) {
@@ -58,6 +62,13 @@ public class ModItemModelsProvider extends ItemModelProvider {
         for (Item item : items) {
             String name = ForgeRegistries.ITEMS.getKey(item).getPath();
             getBuilder(name).parent(rod).texture("layer0", "item/" + name);
+        }
+    }
+
+    protected void handheld(Item... items) {
+        for (Item item : items) {
+            String name = ForgeRegistries.ITEMS.getKey(item).getPath();
+            getBuilder(name).parent(handheld).texture("layer0", "item/" + name);
         }
     }
 }

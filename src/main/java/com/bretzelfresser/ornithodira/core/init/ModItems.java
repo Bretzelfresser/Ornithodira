@@ -34,7 +34,8 @@ public class ModItems {
     public static final RegistryObject<Item> NINGXIAITES_CONE_STICK = ITEMS.register("ningxiaites_cone_on_a_stick", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> DAPEDIUM = ITEMS.register("dapedium", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CLADOCYCLUS = ITEMS.register("cladocyclus", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_CLADOCYCLUS = ITEMS.register("raw_cladocyclus", () -> new Item(new Item.Properties().food(ModFoods.RAW_CLADOCYCLUS)));
+    public static final RegistryObject<Item> COOKED_CLADOCYCLUS = ITEMS.register("cooked_cladocyclus", () -> new Item(new Item.Properties().food(ModFoods.COOKED_CLADOCYCLUS)));
 
     public static final RegistryObject<Item> NINGXIAITES_CONE = ITEMS.register("ningxiaites_cone", () -> new Item(new Item.Properties()));
 

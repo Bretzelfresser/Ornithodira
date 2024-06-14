@@ -25,7 +25,7 @@ public class ModEntityLoot extends VanillaEntityLoot {
 
     @Override
     public void generate() {
-        add(ModEntities.CLADOCYCLUS.get(), makeFishPool(ModItems.CLADOCYCLUS.get()));
+        add(ModEntities.CLADOCYCLUS.get(), makeFishPool(ModItems.RAW_CLADOCYCLUS.get()));
     }
 
     public LootTable.Builder makeFishPool(ItemLike fish){
