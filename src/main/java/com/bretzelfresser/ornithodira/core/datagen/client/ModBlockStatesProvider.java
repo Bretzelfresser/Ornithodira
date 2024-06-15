@@ -32,7 +32,6 @@ public class ModBlockStatesProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         makeFossilizedEggBlock(ModBlocks.PARAREPTILE_EGG.get());
         makeFossilizedEggBlock(ModBlocks.SYNAPSID_EGG.get(), name(ModBlocks.SYNAPSID_EGG.get()), name(ModBlocks.SYNAPSID_EGG.get()), false);
-        makeNingxiaitesCone(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get(), "fossilized_ningxiaites_cone");
     }
 
 

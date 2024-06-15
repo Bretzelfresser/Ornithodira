@@ -37,7 +37,6 @@ public class ModBlockLoot extends BlockLootSubProvider {
     protected void generate() {
         makeCustomEggLootTable(ModBlocks.PARAREPTILE_EGG.get(), ModItems.PARAREPTILE_EGG.get(), ModItems.FOSSILIZED_PARAREPTILE_EGG.get());
         makeCustomEggLootTable(ModBlocks.SYNAPSID_EGG.get(), ModItems.SYNAPSID_EGG.get(), ModItems.FOSSILIZED_SYNAPSID_EGG.get());
-        dropWhenSilkTouch(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get());
         this.map.put(ModLootTables.NINGXIATES_BRUSH_LOOT, createSingleItemTable(ModItems.NINGXIAITES_CONE.get()));
 
     }

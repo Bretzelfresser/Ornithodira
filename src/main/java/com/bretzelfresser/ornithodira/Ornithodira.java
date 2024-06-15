@@ -50,7 +50,6 @@ public class Ornithodira {
            event.accept(ModItems.FOSSILIZED_SYNAPSID_EGG);
            event.accept(ModItems.SYNAPSID_EGG);
            event.accept(ModItems.NINGXIAITES_CONE);
-           event.accept(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK);
            event.accept(ModItems.RAW_CLADOCYCLUS.get());
            event.accept(ModItems.COOKED_CLADOCYCLUS.get());
            event.accept(ModItems.CLADOCYCLUS_BUCKET.get());

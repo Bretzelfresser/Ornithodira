@@ -32,7 +32,6 @@ public class ModItemModelsProvider extends ItemModelProvider {
         simple(ModItems.DIAMOND_BRUSH.get(), ModItems.METAL_BRUSH.get());
         simple(ModItems.FOSSILIZED_SYNAPSID_EGG.get(), ModItems.SYNAPSID_EGG.get());
         simple(ModItems.FOSSILIZED_PARAREPTILE_EGG.get(), ModItems.PARAREPTILE_EGG.get());
-        simple(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get());
         handheld(ModItems.NINGXIAITES_CONE.get());
         simple(ModItems.RAW_CLADOCYCLUS.get(), ModItems.COOKED_CLADOCYCLUS.get());
         simple(ModItems.CLADOCYCLUS_BUCKET.get());
