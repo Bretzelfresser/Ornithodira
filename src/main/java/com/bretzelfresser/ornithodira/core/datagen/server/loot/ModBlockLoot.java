@@ -40,9 +40,23 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropWhenSilkTouch(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get());
         this.map.put(ModLootTables.NINGXIATES_BRUSH_LOOT, createSingleItemTable(ModItems.NINGXIAITES_CONE.get()));
 
+        this.add(ModBlocks.SHALE.get(), (penis) -> {
+            return this.createSingleItemTableWithSilkTouch(penis, ModBlocks.COBBLED_SHALE.get());
+        });
+        this.dropSelf(ModBlocks.SHALE_STAIRS.get());
+        slabLoot(ModBlocks.SHALE_SLAB.get());
+        this.dropSelf(ModBlocks.SHALE_WALL.get());
+
+        this.dropSelf(ModBlocks.COBBLED_SHALE.get());
+        this.dropSelf(ModBlocks.POLISHED_SHALE.get());
+        this.dropSelf(ModBlocks.SHALE_BRICKS.get());
+        this.dropSelf(ModBlocks.CRACKED_SHALE_BRICKS.get());
+        this.dropSelf(ModBlocks.MOSSY_SHALE_BRICKS.get());
     }
 
-
+    public void slabLoot(Block slab) {
+        this.add(slab, block -> createSlabItemTable(slab));
+    }
 
     public void makeCustomEggLootTable(Block egg, ItemLike cleanEgg, ItemLike fossilizedEgg) {
         LootTable.Builder table = LootTable.lootTable();

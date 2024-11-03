@@ -9,7 +9,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -33,6 +33,63 @@ public class ModBlockStatesProvider extends BlockStateProvider {
         makeFossilizedEggBlock(ModBlocks.PARAREPTILE_EGG.get());
         makeFossilizedEggBlock(ModBlocks.SYNAPSID_EGG.get(), name(ModBlocks.SYNAPSID_EGG.get()), name(ModBlocks.SYNAPSID_EGG.get()), false);
         makeNingxiaitesCone(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get(), "fossilized_ningxiaites_cone");
+
+        blockWithItem(ModBlocks.SHALE.get());
+        stairsBlock(ModBlocks.SHALE_STAIRS.get(), ModBlocks.SHALE.get());
+        slabBlock(ModBlocks.SHALE_SLAB.get(), ModBlocks.SHALE.get());
+        wallBlock(ModBlocks.SHALE_WALL.get(), ModBlocks.SHALE.get());
+
+        blockWithItem(ModBlocks.COBBLED_SHALE.get());
+        stairsBlock(ModBlocks.COBBLED_SHALE_STAIRS.get(), ModBlocks.COBBLED_SHALE.get());
+        slabBlock(ModBlocks.COBBLED_SHALE_SLAB.get(), ModBlocks.COBBLED_SHALE.get());
+        wallBlock(ModBlocks.COBBLED_SHALE_WALL.get(), ModBlocks.COBBLED_SHALE.get());
+
+        blockWithItem(ModBlocks.POLISHED_SHALE.get());
+        stairsBlock(ModBlocks.POLISHED_SHALE_STAIRS.get(), ModBlocks.POLISHED_SHALE.get());
+        slabBlock(ModBlocks.POLISHED_SHALE_SLAB.get(), ModBlocks.POLISHED_SHALE.get());
+        wallBlock(ModBlocks.POLISHED_SHALE_WALL.get(), ModBlocks.POLISHED_SHALE.get());
+
+        blockWithItem(ModBlocks.SHALE_BRICKS.get());
+        stairsBlock(ModBlocks.SHALE_BRICK_STAIRS.get(), ModBlocks.SHALE_BRICKS.get());
+        slabBlock(ModBlocks.SHALE_BRICK_SLAB.get(), ModBlocks.SHALE_BRICKS.get());
+        wallBlock(ModBlocks.SHALE_BRICK_WALL.get(), ModBlocks.SHALE_BRICKS.get());
+
+        blockWithItem(ModBlocks.CRACKED_SHALE_BRICKS.get());
+
+        blockWithItem(ModBlocks.MOSSY_SHALE_BRICKS.get());
+        stairsBlock(ModBlocks.MOSSY_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_SHALE_BRICKS.get());
+        slabBlock(ModBlocks.MOSSY_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_SHALE_BRICKS.get());
+        wallBlock(ModBlocks.MOSSY_SHALE_BRICK_WALL.get(), ModBlocks.MOSSY_SHALE_BRICKS.get());
+    }
+
+    public void blockWithItem(Block block) {
+        simpleBlockWithItem(block, cubeAll(block));
+    }
+    public void stairsBlock(Block block, Block originalBlock) {
+        stairsBlock((StairBlock) block, blockTexture(originalBlock));
+        itemFromBlock(block);
+    }
+    public void slabBlock(Block block, Block originalBlock) {
+        slabBlock((SlabBlock) block, blockTexture(originalBlock), blockTexture(originalBlock));
+        itemFromBlock(block);
+    }
+    public void wallBlock(Block block, Block originalBlock) {
+        wallBlock((WallBlock) block, blockTexture(originalBlock));
+        wallItem(block, originalBlock);
+    }
+
+    public void itemFromBlock(Block block) {
+        ResourceLocation itemLoc = ForgeRegistries.ITEMS.getKey(block.asItem());
+        System.out.println("itemLoc toString: " + itemLoc.toString());
+        itemModels().getBuilder(itemLoc.toString())
+                .parent(new ModelFile.UncheckedModelFile(Ornithodira.MODID + ":block/" + name(block)));
+    }
+
+    public void wallItem(Block block, Block originalBlock) {
+        ResourceLocation itemLoc = ForgeRegistries.ITEMS.getKey(block.asItem());
+        itemModels().getBuilder(itemLoc.toString())
+                .parent(new ModelFile.UncheckedModelFile(mcLoc("block/wall_inventory")))
+                .texture("wall", new ResourceLocation(Ornithodira.MODID, "block/" + name(originalBlock)));
     }
 
 

@@ -25,6 +25,12 @@ public class ModRecipeProvider extends RecipeProvider {
 
         EggRecipeBuilder.builder(ParareptileEggEntitiesRecipe.SERIALIZER).add(5, ModEntities.SANCHUANSAURUS.get()).add(1, ModEntities.TAOHEODON.get()).save(consumer, "sanchuansaurus_egg_entities");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.NINGXIAITES_CONE_STICK.get()).requires(Items.FISHING_ROD).requires(ModItems.NINGXIAITES_CONE.get()).unlockedBy("hasItem", has(ModItems.NINGXIAITES_CONE.get())).save(consumer);
+
+
+    }
+
+    protected void stoneSetRecipes() {
+
     }
 
     protected void makeBrushRecipes(Consumer<FinishedRecipe> consumer){
