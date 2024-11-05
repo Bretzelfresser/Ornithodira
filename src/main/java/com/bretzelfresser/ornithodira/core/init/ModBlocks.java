@@ -42,26 +42,26 @@ public class ModBlocks {
     public static final RegistryObject<Block> SHALE_WALL = register("shale_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
 
     public static final RegistryObject<Block> COBBLED_SHALE = register("cobbled_shale", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
-    public static final RegistryObject<Block> COBBLED_SHALE_STAIRS = register("cobbled_shale_stairs", () -> new StairBlock(ModBlocks.SHALE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE)));
-    public static final RegistryObject<Block> COBBLED_SHALE_SLAB = register("cobbled_shale_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
-    public static final RegistryObject<Block> COBBLED_SHALE_WALL = register("cobbled_shale_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> COBBLED_SHALE_STAIRS = register("cobbled_shale_stairs", () -> new StairBlock(ModBlocks.SHALE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
+    public static final RegistryObject<Block> COBBLED_SHALE_SLAB = register("cobbled_shale_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
+    public static final RegistryObject<Block> COBBLED_SHALE_WALL = register("cobbled_shale_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE)));
 
-    public static final RegistryObject<Block> POLISHED_SHALE = register("polished_shale", () -> new Block(BlockBehaviour.Properties.copy(Blocks.SMOOTH_STONE)));
+    public static final RegistryObject<Block> POLISHED_SHALE = register("polished_shale", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
     public static final RegistryObject<Block> POLISHED_SHALE_STAIRS = register("polished_shale_stairs", () -> new StairBlock(ModBlocks.SHALE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE)));
     public static final RegistryObject<Block> POLISHED_SHALE_SLAB = register("polished_shale_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
     public static final RegistryObject<Block> POLISHED_SHALE_WALL = register("polished_shale_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
 
     public static final RegistryObject<Block> SHALE_BRICKS = register("shale_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE_BRICKS)));
-    public static final RegistryObject<Block> SHALE_BRICK_STAIRS = register("shale_brick_stairs", () -> new StairBlock(ModBlocks.SHALE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE)));
-    public static final RegistryObject<Block> SHALE_BRICK_SLAB = register("shale_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
-    public static final RegistryObject<Block> SHALE_BRICK_WALL = register("shale_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
-
-    public static final RegistryObject<Block> CRACKED_SHALE_BRICKS = register("cracked_shale_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CRACKED_STONE_BRICKS)));
+    public static final RegistryObject<Block> SHALE_BRICK_STAIRS = register("shale_brick_stairs", () -> new StairBlock(ModBlocks.SHALE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_STAIRS)));
+    public static final RegistryObject<Block> SHALE_BRICK_SLAB = register("shale_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_SLAB)));
+    public static final RegistryObject<Block> SHALE_BRICK_WALL = register("shale_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
 
     public static final RegistryObject<Block> MOSSY_SHALE_BRICKS = register("mossy_shale_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICKS)));
-    public static final RegistryObject<Block> MOSSY_SHALE_BRICK_STAIRS = register("mossy_shale_brick_stairs", () -> new StairBlock(ModBlocks.SHALE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE)));
-    public static final RegistryObject<Block> MOSSY_SHALE_BRICK_SLAB = register("mossy_shale_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
-    public static final RegistryObject<Block> MOSSY_SHALE_BRICK_WALL = register("mossy_shale_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> MOSSY_SHALE_BRICK_STAIRS = register("mossy_shale_brick_stairs", () -> new StairBlock(ModBlocks.SHALE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICK_STAIRS)));
+    public static final RegistryObject<Block> MOSSY_SHALE_BRICK_SLAB = register("mossy_shale_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICK_SLAB)));
+    public static final RegistryObject<Block> MOSSY_SHALE_BRICK_WALL = register("mossy_shale_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.MOSSY_STONE_BRICK_WALL)));
+
+    public static final RegistryObject<Block> CRACKED_SHALE_BRICKS = register("cracked_shale_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CRACKED_STONE_BRICKS)));
 
 
     public static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier) {

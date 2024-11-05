@@ -26,20 +26,40 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(ModTags.Blocks.TAHOEODON_DIG_BLOCKS).add(Blocks.DIRT, Blocks.GRASS_BLOCK, Blocks.SAND, Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.MUD);
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-                ModBlocks.SHALE.get(),
-                ModBlocks.COBBLED_SHALE.get(),
-                ModBlocks.POLISHED_SHALE.get(),
-                ModBlocks.SHALE_BRICKS.get(),
-                ModBlocks.CRACKED_SHALE_BRICKS.get(),
-                ModBlocks.MOSSY_SHALE_BRICKS.get());
+                ModBlocks.SHALE.get(), ModBlocks.SHALE_STAIRS.get(), ModBlocks.SHALE_SLAB.get(), ModBlocks.SHALE_WALL.get(),
+                ModBlocks.COBBLED_SHALE.get(), ModBlocks.COBBLED_SHALE_STAIRS.get(), ModBlocks.COBBLED_SHALE_SLAB.get(), ModBlocks.COBBLED_SHALE_WALL.get(),
+                ModBlocks.POLISHED_SHALE.get(), ModBlocks.POLISHED_SHALE_STAIRS.get(), ModBlocks.POLISHED_SHALE_SLAB.get(), ModBlocks.POLISHED_SHALE_WALL.get(),
+                ModBlocks.SHALE_BRICKS.get(), ModBlocks.SHALE_BRICK_STAIRS.get(), ModBlocks.SHALE_BRICK_SLAB.get(), ModBlocks.SHALE_BRICK_WALL.get(),
+                ModBlocks.MOSSY_SHALE_BRICKS.get(), ModBlocks.MOSSY_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_SHALE_BRICK_WALL.get(),
+                ModBlocks.CRACKED_SHALE_BRICKS.get()
+        );
 
         tag(Tags.Blocks.STONE).add(ModBlocks.SHALE.get(), ModBlocks.POLISHED_SHALE.get());
         tag(Tags.Blocks.COBBLESTONE).add(ModBlocks.COBBLED_SHALE.get());
-        tag(BlockTags.WALLS).add(ModBlocks.SHALE_WALL.get());
+
+        tag(BlockTags.STAIRS).add(
+                ModBlocks.SHALE_STAIRS.get(),
+                ModBlocks.COBBLED_SHALE_STAIRS.get(),
+                ModBlocks.POLISHED_SHALE_STAIRS.get(),
+                ModBlocks.SHALE_BRICK_STAIRS.get(),
+                ModBlocks.MOSSY_SHALE_BRICK_STAIRS.get());
+        tag(BlockTags.SLABS).add(
+                ModBlocks.SHALE_SLAB.get(),
+                ModBlocks.COBBLED_SHALE_SLAB.get(),
+                ModBlocks.POLISHED_SHALE_SLAB.get(),
+                ModBlocks.SHALE_BRICK_SLAB.get(),
+                ModBlocks.MOSSY_SHALE_BRICK_SLAB.get());
+        tag(BlockTags.WALLS).add(
+                ModBlocks.SHALE_WALL.get(),
+                ModBlocks.COBBLED_SHALE_WALL.get(),
+                ModBlocks.POLISHED_SHALE_WALL.get(),
+                ModBlocks.SHALE_BRICK_WALL.get(),
+                ModBlocks.MOSSY_SHALE_BRICK_WALL.get());
 
         tag(ModTags.Blocks.SHALE_BRICKS).add(
                 ModBlocks.SHALE_BRICKS.get(),
                 ModBlocks.CRACKED_SHALE_BRICKS.get(),
                 ModBlocks.MOSSY_SHALE_BRICKS.get());
+
     }
 }

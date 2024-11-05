@@ -37,12 +37,6 @@ public class ModItemModelsProvider extends ItemModelProvider {
         simple(ModItems.FOSSILIZED_SYNAPSID_EGG.get(), ModItems.SYNAPSID_EGG.get());
         simple(ModItems.FOSSILIZED_PARAREPTILE_EGG.get(), ModItems.PARAREPTILE_EGG.get());
         simple(ModItems.NINGXIAITES_CONE.get(), ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get());
-
-        //itemFromBlock(ModBlocks.SHALE_STAIRS.get());
-        //itemFromBlock(ModBlocks.SHALE_SLAB.get());
-
-
-        wallItem(ModBlocks.SHALE_WALL, ModBlocks.SHALE);
     }
 
     public void itemFromBlock(Block block) {
