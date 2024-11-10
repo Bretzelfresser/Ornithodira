@@ -67,7 +67,6 @@ public class ModBlockStatesProvider extends BlockStateProvider {
 
     public void itemFromBlock(Block block) {
         ResourceLocation itemLoc = ForgeRegistries.ITEMS.getKey(block.asItem());
-        System.out.println("itemLoc toString: " + itemLoc.toString());
         itemModels().getBuilder(itemLoc.toString())
                 .parent(new ModelFile.UncheckedModelFile(Ornithodira.MODID + ":block/" + name(block)));
     }
