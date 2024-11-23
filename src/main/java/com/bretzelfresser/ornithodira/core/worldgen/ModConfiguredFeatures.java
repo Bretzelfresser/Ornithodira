@@ -15,12 +15,14 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 public class ModConfiguredFeatures {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SHALE = registerKey("ore_shale");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_BROWN_SHALE = registerKey("ore_brown_shale");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest baseStoneOverworld = new TagMatchTest(BlockTags.BASE_STONE_OVERWORLD);
 
-        register(context, ORE_SHALE, Feature.ORE, new OreConfiguration(baseStoneOverworld, ModBlocks.SHALE.get().defaultBlockState(), 64));
+        //register(context, ORE_SHALE, Feature.ORE, new OreConfiguration(baseStoneOverworld, ModBlocks.SHALE.get().defaultBlockState(), 64));
+        register(context, ORE_BROWN_SHALE, Feature.ORE, new OreConfiguration(baseStoneOverworld, ModBlocks.BROWN_SHALE.get().defaultBlockState(), 64));
+
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {

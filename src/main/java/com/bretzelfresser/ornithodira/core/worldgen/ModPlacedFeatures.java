@@ -18,14 +18,17 @@ import java.util.List;
 public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_SHALE_UPPER = registerKey("ore_shale_upper");
     public static final ResourceKey<PlacedFeature> ORE_SHALE_LOWER = registerKey("ore_shale_lower");
+    public static final ResourceKey<PlacedFeature> ORE_BROWN_SHALE = registerKey("ore_brown_shale");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        register(context, ORE_SHALE_UPPER, configuredFeatures.getOrThrow(ModConfiguredFeatures.ORE_SHALE),
+        /*register(context, ORE_SHALE_UPPER, configuredFeatures.getOrThrow(ModConfiguredFeatures.ORE_SHALE),
                 ModOrePlacement.rareOrePlacement(6, HeightRangePlacement.uniform(VerticalAnchor.absolute(64), VerticalAnchor.absolute(128))));
         register(context, ORE_SHALE_LOWER, configuredFeatures.getOrThrow(ModConfiguredFeatures.ORE_SHALE),
-                ModOrePlacement.commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(60))));
+                ModOrePlacement.commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(60))));*/
+        register(context, ORE_BROWN_SHALE, configuredFeatures.getOrThrow(ModConfiguredFeatures.ORE_BROWN_SHALE),
+                ModOrePlacement.commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(69))));
     }
 
 

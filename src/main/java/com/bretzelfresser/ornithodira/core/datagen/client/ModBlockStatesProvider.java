@@ -4,7 +4,6 @@ import com.bretzelfresser.ornithodira.Ornithodira;
 import com.bretzelfresser.ornithodira.common.block.CustomEggBlock;
 import com.bretzelfresser.ornithodira.common.block.NingxiatesConeBlock;
 import com.bretzelfresser.ornithodira.core.init.ModBlocks;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -34,12 +33,13 @@ public class ModBlockStatesProvider extends BlockStateProvider {
         makeFossilizedEggBlock(ModBlocks.SYNAPSID_EGG.get(), name(ModBlocks.SYNAPSID_EGG.get()), name(ModBlocks.SYNAPSID_EGG.get()), false);
         makeNingxiaitesCone(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get(), "fossilized_ningxiaites_cone");
 
-        stoneBlockSet(ModBlocks.SHALE.get(), ModBlocks.SHALE_STAIRS.get(), ModBlocks.SHALE_SLAB.get(), ModBlocks.SHALE_WALL.get());
-        stoneBlockSet(ModBlocks.COBBLED_SHALE.get(), ModBlocks.COBBLED_SHALE_STAIRS.get(), ModBlocks.COBBLED_SHALE_SLAB.get(), ModBlocks.COBBLED_SHALE_WALL.get());
-        stoneBlockSet(ModBlocks.POLISHED_SHALE.get(), ModBlocks.POLISHED_SHALE_STAIRS.get(), ModBlocks.POLISHED_SHALE_SLAB.get(), ModBlocks.POLISHED_SHALE_WALL.get());
-        stoneBlockSet(ModBlocks.SHALE_BRICKS.get(), ModBlocks.SHALE_BRICK_STAIRS.get(), ModBlocks.SHALE_BRICK_SLAB.get(), ModBlocks.SHALE_BRICK_WALL.get());
-        stoneBlockSet(ModBlocks.MOSSY_SHALE_BRICKS.get(), ModBlocks.MOSSY_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_SHALE_BRICK_WALL.get());
-        blockWithItem(ModBlocks.CRACKED_SHALE_BRICKS.get());
+        stoneBlockSet(ModBlocks.BROWN_SHALE.get(), ModBlocks.BROWN_SHALE_STAIRS.get(), ModBlocks.BROWN_SHALE_SLAB.get(), ModBlocks.BROWN_SHALE_WALL.get());
+        stoneBlockSet(ModBlocks.COBBLED_BROWN_SHALE.get(), ModBlocks.COBBLED_BROWN_SHALE_STAIRS.get(), ModBlocks.COBBLED_BROWN_SHALE_SLAB.get(), ModBlocks.COBBLED_BROWN_SHALE_WALL.get());
+        stoneBlockSet(ModBlocks.POLISHED_BROWN_SHALE.get(), ModBlocks.POLISHED_BROWN_SHALE_STAIRS.get(), ModBlocks.POLISHED_BROWN_SHALE_SLAB.get(), ModBlocks.POLISHED_BROWN_SHALE_WALL.get());
+        blockWithItem(ModBlocks.CHISELED_BROWN_SHALE.get());
+        stoneBlockSet(ModBlocks.BROWN_SHALE_BRICKS.get(), ModBlocks.BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.BROWN_SHALE_BRICK_WALL.get());
+        stoneBlockSet(ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL.get());
+        blockWithItem(ModBlocks.CRACKED_BROWN_SHALE_BRICKS.get());
     }
 
     public void blockWithItem(Block block) {

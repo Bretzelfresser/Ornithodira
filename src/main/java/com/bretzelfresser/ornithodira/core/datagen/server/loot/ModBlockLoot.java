@@ -1,7 +1,6 @@
 package com.bretzelfresser.ornithodira.core.datagen.server.loot;
 
 import com.bretzelfresser.ornithodira.common.block.CustomEggBlock;
-import com.bretzelfresser.ornithodira.common.loot.BlocksStateNumberProvider;
 import com.bretzelfresser.ornithodira.core.init.ModBlocks;
 import com.bretzelfresser.ornithodira.core.init.ModItems;
 import com.bretzelfresser.ornithodira.core.init.ModLootTables;
@@ -9,16 +8,13 @@ import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
@@ -40,18 +36,27 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropWhenSilkTouch(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get());
         this.map.put(ModLootTables.NINGXIATES_BRUSH_LOOT, createSingleItemTable(ModItems.NINGXIAITES_CONE.get()));
 
-        this.add(ModBlocks.SHALE.get(), (penis) -> {
-            return this.createSingleItemTableWithSilkTouch(penis, ModBlocks.COBBLED_SHALE.get());
+        this.add(ModBlocks.BROWN_SHALE.get(), (penis) -> {
+            return this.createSingleItemTableWithSilkTouch(penis, ModBlocks.COBBLED_BROWN_SHALE.get());
         });
-        this.dropSelf(ModBlocks.SHALE_STAIRS.get());
-        slabLoot(ModBlocks.SHALE_SLAB.get());
-        this.dropSelf(ModBlocks.SHALE_WALL.get());
+        stairSlabAndWallLoot(ModBlocks.BROWN_SHALE_STAIRS.get(), ModBlocks.BROWN_SHALE_SLAB.get(), ModBlocks.BROWN_SHALE_WALL.get());
 
-        this.dropSelf(ModBlocks.COBBLED_SHALE.get());
-        this.dropSelf(ModBlocks.POLISHED_SHALE.get());
-        this.dropSelf(ModBlocks.SHALE_BRICKS.get());
-        this.dropSelf(ModBlocks.CRACKED_SHALE_BRICKS.get());
-        this.dropSelf(ModBlocks.MOSSY_SHALE_BRICKS.get());
+        this.dropSelf(ModBlocks.COBBLED_BROWN_SHALE.get());
+        stairSlabAndWallLoot(ModBlocks.COBBLED_BROWN_SHALE_STAIRS.get(), ModBlocks.COBBLED_BROWN_SHALE_SLAB.get(), ModBlocks.COBBLED_BROWN_SHALE_WALL.get());
+        this.dropSelf(ModBlocks.POLISHED_BROWN_SHALE.get());
+        stairSlabAndWallLoot(ModBlocks.POLISHED_BROWN_SHALE_STAIRS.get(), ModBlocks.POLISHED_BROWN_SHALE_SLAB.get(), ModBlocks.POLISHED_BROWN_SHALE_WALL.get());
+        this.dropSelf(ModBlocks.CHISELED_BROWN_SHALE.get());
+        this.dropSelf(ModBlocks.BROWN_SHALE_BRICKS.get());
+        stairSlabAndWallLoot(ModBlocks.BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.BROWN_SHALE_BRICK_WALL.get());
+        this.dropSelf(ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get());
+        stairSlabAndWallLoot(ModBlocks.MOSSY_BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL.get());
+        this.dropSelf(ModBlocks.CRACKED_BROWN_SHALE_BRICKS.get());
+    }
+
+    public void stairSlabAndWallLoot(Block stairs, Block slab, Block wall) {
+        this.dropSelf(stairs);
+        slabLoot(slab);
+        this.dropSelf(wall);
     }
 
     public void slabLoot(Block slab) {

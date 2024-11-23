@@ -34,47 +34,51 @@ public class ModRecipeProvider extends RecipeProvider {
 
     protected void genShaleRecipes(Consumer<FinishedRecipe> consumer) {
         //cobbled shale
-        genStairsSlabAndWall(consumer, ModBlocks.COBBLED_SHALE.get(), ModBlocks.COBBLED_SHALE_STAIRS.get(), ModBlocks.COBBLED_SHALE_SLAB.get(), ModBlocks.COBBLED_SHALE_WALL.get());
+        genStairsSlabAndWall(consumer, ModBlocks.COBBLED_BROWN_SHALE.get(), ModBlocks.COBBLED_BROWN_SHALE_STAIRS.get(), ModBlocks.COBBLED_BROWN_SHALE_SLAB.get(), ModBlocks.COBBLED_BROWN_SHALE_WALL.get());
 
         //normal shale
-        simpleSmeltingBuilder(consumer, ModBlocks.COBBLED_SHALE.get(), ModBlocks.SHALE.get(), RecipeCategory.BUILDING_BLOCKS);
-        genStairsSlabAndWall(consumer, ModBlocks.SHALE.get(), ModBlocks.SHALE_STAIRS.get(), ModBlocks.SHALE_SLAB.get(), ModBlocks.SHALE_WALL.get());
+        simpleSmeltingBuilder(consumer, ModBlocks.COBBLED_BROWN_SHALE.get(), ModBlocks.BROWN_SHALE.get(), RecipeCategory.BUILDING_BLOCKS);
+        genStairsSlabAndWall(consumer, ModBlocks.BROWN_SHALE.get(), ModBlocks.BROWN_SHALE_STAIRS.get(), ModBlocks.BROWN_SHALE_SLAB.get(), ModBlocks.BROWN_SHALE_WALL.get());
+
+        //chiseled shale
+        chiseled(consumer, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_BROWN_SHALE.get(), ModBlocks.BROWN_SHALE_SLAB.get());
 
         //polished shale
-        polished(consumer, ModBlocks.POLISHED_SHALE.get(), ModBlocks.SHALE.get());
-        genStairsSlabAndWall(consumer, ModBlocks.POLISHED_SHALE.get(), ModBlocks.POLISHED_SHALE_STAIRS.get(), ModBlocks.POLISHED_SHALE_SLAB.get(), ModBlocks.POLISHED_SHALE_WALL.get());
+        twoByTwoToFour(consumer, ModBlocks.POLISHED_BROWN_SHALE.get(), ModBlocks.BROWN_SHALE.get());
+        genStairsSlabAndWall(consumer, ModBlocks.POLISHED_BROWN_SHALE.get(), ModBlocks.POLISHED_BROWN_SHALE_STAIRS.get(), ModBlocks.POLISHED_BROWN_SHALE_SLAB.get(), ModBlocks.POLISHED_BROWN_SHALE_WALL.get());
 
         //shale bricks
-        polished(consumer, ModBlocks.SHALE_BRICKS.get(), ModBlocks.POLISHED_SHALE.get());
-        genStairsSlabAndWall(consumer, ModBlocks.SHALE_BRICKS.get(), ModBlocks.SHALE_BRICK_STAIRS.get(), ModBlocks.SHALE_BRICK_SLAB.get(), ModBlocks.SHALE_BRICK_WALL.get());
+        twoByTwoToFour(consumer, ModBlocks.BROWN_SHALE_BRICKS.get(), ModBlocks.POLISHED_BROWN_SHALE.get());
+        genStairsSlabAndWall(consumer, ModBlocks.BROWN_SHALE_BRICKS.get(), ModBlocks.BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.BROWN_SHALE_BRICK_WALL.get());
 
         //mossy shale bricks
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_SHALE_BRICKS.get()).requires(ModBlocks.SHALE_BRICKS.get()).requires(Blocks.VINE).group("mossy_shale_bricks").unlockedBy(getHasName(Blocks.VINE), has(Blocks.VINE)).save(consumer, getConversionRecipeName(Blocks.MOSSY_STONE_BRICKS, Blocks.VINE));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_SHALE_BRICKS.get()).requires(ModBlocks.SHALE_BRICKS.get()).requires(Blocks.MOSS_BLOCK).group("mossy_shale_bricks").unlockedBy(getHasName(Blocks.MOSS_BLOCK), has(Blocks.MOSS_BLOCK)).save(consumer, getConversionRecipeName(Blocks.MOSSY_STONE_BRICKS, Blocks.MOSS_BLOCK));
-        genStairsSlabAndWall(consumer, ModBlocks.MOSSY_SHALE_BRICKS.get(), ModBlocks.MOSSY_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_SHALE_BRICK_WALL.get());
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get()).requires(ModBlocks.BROWN_SHALE_BRICKS.get()).requires(Blocks.VINE).group("mossy_shale_bricks").unlockedBy(getHasName(Blocks.VINE), has(Blocks.VINE)).save(consumer, getConversionRecipeName(Blocks.MOSSY_STONE_BRICKS, Blocks.VINE));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get()).requires(ModBlocks.BROWN_SHALE_BRICKS.get()).requires(Blocks.MOSS_BLOCK).group("mossy_shale_bricks").unlockedBy(getHasName(Blocks.MOSS_BLOCK), has(Blocks.MOSS_BLOCK)).save(consumer, getConversionRecipeName(Blocks.MOSSY_STONE_BRICKS, Blocks.MOSS_BLOCK));
+        genStairsSlabAndWall(consumer, ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL.get());
 
         //cracked shale bricks
-        simpleSmeltingBuilder(consumer, ModBlocks.SHALE_BRICKS.get(), ModBlocks.CRACKED_SHALE_BRICKS.get(), RecipeCategory.BUILDING_BLOCKS);
+        simpleSmeltingBuilder(consumer, ModBlocks.BROWN_SHALE_BRICKS.get(), ModBlocks.CRACKED_BROWN_SHALE_BRICKS.get(), RecipeCategory.BUILDING_BLOCKS);
 
         //stonecutting
-        massStonecutting(consumer, ModBlocks.COBBLED_SHALE.get(), ModBlocks.COBBLED_SHALE_STAIRS.get(), ModBlocks.COBBLED_SHALE_SLAB.get(), ModBlocks.COBBLED_SHALE_WALL.get());
+        //brown
+        massStonecutting(consumer, ModBlocks.COBBLED_BROWN_SHALE.get(), ModBlocks.COBBLED_BROWN_SHALE_STAIRS.get(), ModBlocks.COBBLED_BROWN_SHALE_SLAB.get(), ModBlocks.COBBLED_BROWN_SHALE_WALL.get());
 
-        massStonecutting(consumer, ModBlocks.SHALE.get(), ModBlocks.SHALE_STAIRS.get(), ModBlocks.SHALE_SLAB.get(), ModBlocks.SHALE_WALL.get());
-        massStonecutting(consumer, ModBlocks.SHALE.get(), ModBlocks.POLISHED_SHALE.get(), ModBlocks.POLISHED_SHALE_STAIRS.get(), ModBlocks.POLISHED_SHALE_SLAB.get(), ModBlocks.POLISHED_SHALE_WALL.get());
-        massStonecutting(consumer, ModBlocks.SHALE.get(), ModBlocks.SHALE_BRICKS.get(), ModBlocks.SHALE_BRICK_STAIRS.get(), ModBlocks.SHALE_BRICK_SLAB.get(), ModBlocks.SHALE_BRICK_WALL.get());
+        massStonecutting(consumer, ModBlocks.BROWN_SHALE.get(), ModBlocks.CHISELED_BROWN_SHALE.get(), ModBlocks.BROWN_SHALE_STAIRS.get(), ModBlocks.BROWN_SHALE_SLAB.get(), ModBlocks.BROWN_SHALE_WALL.get());
+        massStonecutting(consumer, ModBlocks.BROWN_SHALE.get(), ModBlocks.POLISHED_BROWN_SHALE.get(), ModBlocks.POLISHED_BROWN_SHALE_STAIRS.get(), ModBlocks.POLISHED_BROWN_SHALE_SLAB.get(), ModBlocks.POLISHED_BROWN_SHALE_WALL.get());
+        massStonecutting(consumer, ModBlocks.BROWN_SHALE.get(), ModBlocks.BROWN_SHALE_BRICKS.get(), ModBlocks.BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.BROWN_SHALE_BRICK_WALL.get());
 
-        massStonecutting(consumer, ModBlocks.POLISHED_SHALE.get(), ModBlocks.POLISHED_SHALE_STAIRS.get(), ModBlocks.POLISHED_SHALE_SLAB.get(), ModBlocks.POLISHED_SHALE_WALL.get());
-        massStonecutting(consumer, ModBlocks.POLISHED_SHALE.get(), ModBlocks.SHALE_BRICKS.get(), ModBlocks.SHALE_BRICK_STAIRS.get(), ModBlocks.SHALE_BRICK_SLAB.get(), ModBlocks.SHALE_BRICK_WALL.get());
+        massStonecutting(consumer, ModBlocks.POLISHED_BROWN_SHALE.get(), ModBlocks.POLISHED_BROWN_SHALE_STAIRS.get(), ModBlocks.POLISHED_BROWN_SHALE_SLAB.get(), ModBlocks.POLISHED_BROWN_SHALE_WALL.get());
+        massStonecutting(consumer, ModBlocks.POLISHED_BROWN_SHALE.get(), ModBlocks.BROWN_SHALE_BRICKS.get(), ModBlocks.BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.BROWN_SHALE_BRICK_WALL.get());
 
-        massStonecutting(consumer, ModBlocks.SHALE_BRICKS.get(), ModBlocks.SHALE_BRICK_STAIRS.get(), ModBlocks.SHALE_BRICK_SLAB.get(), ModBlocks.SHALE_BRICK_WALL.get());
-        massStonecutting(consumer, ModBlocks.MOSSY_SHALE_BRICKS.get(), ModBlocks.MOSSY_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_SHALE_BRICK_WALL.get());
+        massStonecutting(consumer, ModBlocks.BROWN_SHALE_BRICKS.get(), ModBlocks.BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.BROWN_SHALE_BRICK_WALL.get());
+        massStonecutting(consumer, ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL.get());
     }
 
     protected static void simpleSmeltingBuilder(Consumer<FinishedRecipe> consumer, ItemLike ingredient, ItemLike result, RecipeCategory category) {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), category, result, 0.1F, 200).unlockedBy(getHasName(ingredient), has(ingredient)).save(consumer);
     }
 
-    protected static void polished(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike material) {
+    protected static void twoByTwoToFour(Consumer<FinishedRecipe> consumer, ItemLike result, ItemLike material) {
         cutBuilder(RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(material)).unlockedBy(getHasName(material), has(material)).save(consumer);
     }
 
