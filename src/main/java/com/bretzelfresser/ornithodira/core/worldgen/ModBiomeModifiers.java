@@ -13,27 +13,30 @@ import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModBiomeModifiers {
-    /*public static final ResourceKey<BiomeModifier> ADD_ORE_SHALE_UPPER = registerKey("add_ore_shale_upper");
-    public static final ResourceKey<BiomeModifier> ADD_ORE_SHALE_LOWER = registerKey("add_ore_shale_lower");*/
     public static final ResourceKey<BiomeModifier> ADD_ORE_BROWN_SHALE = registerKey("add_ore_brown_shale");
+    public static final ResourceKey<BiomeModifier> ADD_ORE_GRAY_SHALE = registerKey("add_ore_gray_shale");
+    public static final ResourceKey<BiomeModifier> ADD_ORE_RED_SHALE = registerKey("add_ore_red_shale");
+    public static final ResourceKey<BiomeModifier> ADD_ORE_RICH_RED_SHALE = registerKey("add_ore_rich_red_shale");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
 
-        /*context.register(ADD_ORE_SHALE_UPPER, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.ORE_SHALE_UPPER)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));
-
-        context.register(ADD_ORE_SHALE_LOWER, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.ORE_SHALE_LOWER)),
-                GenerationStep.Decoration.UNDERGROUND_ORES));*/
-
         context.register(ADD_ORE_BROWN_SHALE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.ORE_BROWN_SHALE)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ADD_ORE_GRAY_SHALE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.ORE_GRAY_SHALE)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ADD_ORE_RED_SHALE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.ORE_RED_SHALE)),
+                GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ADD_ORE_RICH_RED_SHALE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.ORE_RICH_RED_SHALE)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
     }
 

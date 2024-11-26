@@ -40,6 +40,10 @@ public class ModBlockStatesProvider extends BlockStateProvider {
         stoneBlockSet(ModBlocks.BROWN_SHALE_BRICKS.get(), ModBlocks.BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.BROWN_SHALE_BRICK_WALL.get());
         stoneBlockSet(ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL.get());
         blockWithItem(ModBlocks.CRACKED_BROWN_SHALE_BRICKS.get());
+
+        blockWithItem(ModBlocks.GRAY_SHALE.get());
+        blockWithItem(ModBlocks.RED_SHALE.get());
+        blockWithItem(ModBlocks.RICH_RED_SHALE.get());
     }
 
     public void blockWithItem(Block block) {

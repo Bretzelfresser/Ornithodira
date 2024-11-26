@@ -51,6 +51,10 @@ public class ModBlockLoot extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get());
         stairSlabAndWallLoot(ModBlocks.MOSSY_BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL.get());
         this.dropSelf(ModBlocks.CRACKED_BROWN_SHALE_BRICKS.get());
+
+        this.dropSelf(ModBlocks.GRAY_SHALE.get());
+        this.dropSelf(ModBlocks.RED_SHALE.get());
+        this.dropSelf(ModBlocks.RICH_RED_SHALE.get());
     }
 
     public void stairSlabAndWallLoot(Block stairs, Block slab, Block wall) {

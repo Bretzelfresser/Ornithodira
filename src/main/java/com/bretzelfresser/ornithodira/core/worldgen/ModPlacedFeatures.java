@@ -16,19 +16,22 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import java.util.List;
 
 public class ModPlacedFeatures {
-    public static final ResourceKey<PlacedFeature> ORE_SHALE_UPPER = registerKey("ore_shale_upper");
-    public static final ResourceKey<PlacedFeature> ORE_SHALE_LOWER = registerKey("ore_shale_lower");
     public static final ResourceKey<PlacedFeature> ORE_BROWN_SHALE = registerKey("ore_brown_shale");
+    public static final ResourceKey<PlacedFeature> ORE_GRAY_SHALE = registerKey("ore_gray_shale");
+    public static final ResourceKey<PlacedFeature> ORE_RED_SHALE = registerKey("ore_red_shale");
+    public static final ResourceKey<PlacedFeature> ORE_RICH_RED_SHALE = registerKey("ore_rich_red_shale");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        /*register(context, ORE_SHALE_UPPER, configuredFeatures.getOrThrow(ModConfiguredFeatures.ORE_SHALE),
-                ModOrePlacement.rareOrePlacement(6, HeightRangePlacement.uniform(VerticalAnchor.absolute(64), VerticalAnchor.absolute(128))));
-        register(context, ORE_SHALE_LOWER, configuredFeatures.getOrThrow(ModConfiguredFeatures.ORE_SHALE),
-                ModOrePlacement.commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(60))));*/
         register(context, ORE_BROWN_SHALE, configuredFeatures.getOrThrow(ModConfiguredFeatures.ORE_BROWN_SHALE),
-                ModOrePlacement.commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(69))));
+                ModOrePlacement.commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(69 + 42))));
+        register(context, ORE_GRAY_SHALE, configuredFeatures.getOrThrow(ModConfiguredFeatures.ORE_GRAY_SHALE),
+                ModOrePlacement.commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(0))));
+        register(context, ORE_RED_SHALE, configuredFeatures.getOrThrow(ModConfiguredFeatures.ORE_RED_SHALE),
+                ModOrePlacement.commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(30), VerticalAnchor.absolute(80))));
+        register(context, ORE_RICH_RED_SHALE, configuredFeatures.getOrThrow(ModConfiguredFeatures.ORE_RICH_RED_SHALE),
+                ModOrePlacement.commonOrePlacement(256, HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(30), VerticalAnchor.absolute(60))));
     }
 
 

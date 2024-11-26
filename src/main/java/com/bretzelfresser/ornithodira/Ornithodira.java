@@ -74,6 +74,10 @@ public class Ornithodira {
            event.accept(ModBlocks.MOSSY_BROWN_SHALE_BRICK_STAIRS);
            event.accept(ModBlocks.MOSSY_BROWN_SHALE_BRICK_SLAB);
            event.accept(ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL);
+
+           event.accept(ModBlocks.GRAY_SHALE);
+           event.accept(ModBlocks.RED_SHALE);
+           event.accept(ModBlocks.RICH_RED_SHALE);
        }
        if (event.getTab() == ModTabs.SPAWN_EGGS.get()){
            event.accept(ModItems.SANCHUANSAURUS_SPAWN_EGG);

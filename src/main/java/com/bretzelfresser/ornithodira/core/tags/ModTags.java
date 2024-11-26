@@ -20,7 +20,7 @@ public class ModTags {
     public static class Blocks{
 
         public static final TagKey<Block> TAHOEODON_DIG_BLOCKS = tag("taoheodon_digging_blocks");
-        public static final TagKey<Block> SHALE_BRICKS = tag("shale_bricks");
+        public static final TagKey<Block> RICH_RED_SHALE_REPLACEABLES = tag("rich_red_shale_replaceables");
 
         private static TagKey<Block> tag(String pName) {
             return TagKey.create(Registries.BLOCK, Ornithodira.modLoc(pName));

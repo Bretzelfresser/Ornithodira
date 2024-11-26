@@ -30,10 +30,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.CHISELED_BROWN_SHALE.get(),
                 ModBlocks.BROWN_SHALE_BRICKS.get(), ModBlocks.BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.BROWN_SHALE_BRICK_WALL.get(),
                 ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL.get(),
-                ModBlocks.CRACKED_BROWN_SHALE_BRICKS.get()
+                ModBlocks.CRACKED_BROWN_SHALE_BRICKS.get(),
+
+                ModBlocks.GRAY_SHALE.get(), ModBlocks.RED_SHALE.get(), ModBlocks.RICH_RED_SHALE.get()
         );
 
-        tag(Tags.Blocks.STONE).add(ModBlocks.BROWN_SHALE.get(), ModBlocks.POLISHED_BROWN_SHALE.get());
+        tag(Tags.Blocks.STONE).add(
+                ModBlocks.BROWN_SHALE.get(), ModBlocks.POLISHED_BROWN_SHALE.get(),
+                ModBlocks.GRAY_SHALE.get(), ModBlocks.RED_SHALE.get()
+        );
         tag(Tags.Blocks.COBBLESTONE).add(ModBlocks.COBBLED_BROWN_SHALE.get());
 
         tag(BlockTags.STAIRS).add(
@@ -55,10 +60,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.BROWN_SHALE_BRICK_WALL.get(),
                 ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL.get());
 
-        tag(ModTags.Blocks.SHALE_BRICKS).add(
-                ModBlocks.BROWN_SHALE_BRICKS.get(),
-                ModBlocks.CRACKED_BROWN_SHALE_BRICKS.get(),
-                ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get());
+        tag(ModTags.Blocks.RICH_RED_SHALE_REPLACEABLES).add(
+                ModBlocks.RED_SHALE.get());
 
     }
 }
