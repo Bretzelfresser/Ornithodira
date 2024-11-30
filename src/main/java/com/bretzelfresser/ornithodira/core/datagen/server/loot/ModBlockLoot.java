@@ -36,22 +36,43 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropWhenSilkTouch(ModBlocks.FOSSILIZED_NINGXIATES_CONE_BLOCK.get());
         this.map.put(ModLootTables.NINGXIATES_BRUSH_LOOT, createSingleItemTable(ModItems.NINGXIAITES_CONE.get()));
 
-        this.add(ModBlocks.BROWN_SHALE.get(), (penis) -> {
-            return this.createSingleItemTableWithSilkTouch(penis, ModBlocks.COBBLED_BROWN_SHALE.get());
-        });
+        this.add(ModBlocks.BROWN_SHALE.get(), (penis) -> this.createSingleItemTableWithSilkTouch(penis, ModBlocks.COBBLED_BROWN_SHALE.get()));
         stairSlabAndWallLoot(ModBlocks.BROWN_SHALE_STAIRS.get(), ModBlocks.BROWN_SHALE_SLAB.get(), ModBlocks.BROWN_SHALE_WALL.get());
-
         this.dropSelf(ModBlocks.COBBLED_BROWN_SHALE.get());
         stairSlabAndWallLoot(ModBlocks.COBBLED_BROWN_SHALE_STAIRS.get(), ModBlocks.COBBLED_BROWN_SHALE_SLAB.get(), ModBlocks.COBBLED_BROWN_SHALE_WALL.get());
+        this.dropSelf(ModBlocks.CHISELED_BROWN_SHALE.get());
         this.dropSelf(ModBlocks.POLISHED_BROWN_SHALE.get());
         stairSlabAndWallLoot(ModBlocks.POLISHED_BROWN_SHALE_STAIRS.get(), ModBlocks.POLISHED_BROWN_SHALE_SLAB.get(), ModBlocks.POLISHED_BROWN_SHALE_WALL.get());
-        this.dropSelf(ModBlocks.CHISELED_BROWN_SHALE.get());
         this.dropSelf(ModBlocks.BROWN_SHALE_BRICKS.get());
         stairSlabAndWallLoot(ModBlocks.BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.BROWN_SHALE_BRICK_WALL.get());
+        this.dropSelf(ModBlocks.CRACKED_BROWN_SHALE_BRICKS.get());
         this.dropSelf(ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get());
         stairSlabAndWallLoot(ModBlocks.MOSSY_BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL.get());
-        this.dropSelf(ModBlocks.CRACKED_BROWN_SHALE_BRICKS.get());
 
+        /*this.add(ModBlocks.GRAY_SHALE.get(), (penis) -> this.createSingleItemTableWithSilkTouch(penis, ModBlocks.COBBLED_GRAY_SHALE.get()));
+        stairSlabAndWallLoot(ModBlocks.GRAY_SHALE_STAIRS.get(), ModBlocks.GRAY_SHALE_SLAB.get(), ModBlocks.GRAY_SHALE_WALL.get());
+        stairSlabAndWallLoot(ModBlocks.COBBLED_GRAY_SHALE_STAIRS.get(), ModBlocks.COBBLED_GRAY_SHALE_SLAB.get(), ModBlocks.COBBLED_GRAY_SHALE_WALL.get());
+        this.dropSelf(ModBlocks.CHISELED_GRAY_SHALE.get());
+        this.dropSelf(ModBlocks.POLISHED_GRAY_SHALE.get());
+        stairSlabAndWallLoot(ModBlocks.POLISHED_GRAY_SHALE_STAIRS.get(), ModBlocks.POLISHED_GRAY_SHALE_SLAB.get(), ModBlocks.POLISHED_GRAY_SHALE_WALL.get());
+        this.dropSelf(ModBlocks.GRAY_SHALE_BRICKS.get());
+        stairSlabAndWallLoot(ModBlocks.GRAY_SHALE_BRICK_STAIRS.get(), ModBlocks.GRAY_SHALE_BRICK_SLAB.get(), ModBlocks.GRAY_SHALE_BRICK_WALL.get());
+        this.dropSelf(ModBlocks.CRACKED_GRAY_SHALE_BRICKS.get());
+        this.dropSelf(ModBlocks.MOSSY_GRAY_SHALE_BRICKS.get());
+        stairSlabAndWallLoot(ModBlocks.MOSSY_GRAY_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_GRAY_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_GRAY_SHALE_BRICK_WALL.get());
+
+        this.add(ModBlocks.RED_SHALE.get(), (penis) -> this.createSingleItemTableWithSilkTouch(penis, ModBlocks.COBBLED_RED_SHALE.get()));
+        stairSlabAndWallLoot(ModBlocks.RED_SHALE_STAIRS.get(), ModBlocks.RED_SHALE_SLAB.get(), ModBlocks.RED_SHALE_WALL.get());
+        stairSlabAndWallLoot(ModBlocks.COBBLED_RED_SHALE_STAIRS.get(), ModBlocks.COBBLED_RED_SHALE_SLAB.get(), ModBlocks.COBBLED_RED_SHALE_WALL.get());
+        this.dropSelf(ModBlocks.CHISELED_RED_SHALE.get());
+        this.dropSelf(ModBlocks.POLISHED_RED_SHALE.get());
+        stairSlabAndWallLoot(ModBlocks.POLISHED_RED_SHALE_STAIRS.get(), ModBlocks.POLISHED_RED_SHALE_SLAB.get(), ModBlocks.POLISHED_RED_SHALE_WALL.get());
+        this.dropSelf(ModBlocks.RED_SHALE_BRICKS.get());
+        stairSlabAndWallLoot(ModBlocks.RED_SHALE_BRICK_STAIRS.get(), ModBlocks.RED_SHALE_BRICK_SLAB.get(), ModBlocks.RED_SHALE_BRICK_WALL.get());
+        this.dropSelf(ModBlocks.CRACKED_RED_SHALE_BRICKS.get());
+        this.dropSelf(ModBlocks.MOSSY_RED_SHALE_BRICKS.get());
+        stairSlabAndWallLoot(ModBlocks.MOSSY_RED_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_RED_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_RED_SHALE_BRICK_WALL.get());
+        */
         this.dropSelf(ModBlocks.GRAY_SHALE.get());
         this.dropSelf(ModBlocks.RED_SHALE.get());
         this.dropSelf(ModBlocks.RICH_RED_SHALE.get());

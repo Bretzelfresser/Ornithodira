@@ -76,7 +76,51 @@ public class Ornithodira {
            event.accept(ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL);
 
            event.accept(ModBlocks.GRAY_SHALE);
+           /*event.accept(ModBlocks.GRAY_SHALE_STAIRS);
+           event.accept(ModBlocks.GRAY_SHALE_SLAB);
+           event.accept(ModBlocks.GRAY_SHALE_WALL);
+           event.accept(ModBlocks.COBBLED_GRAY_SHALE);
+           event.accept(ModBlocks.COBBLED_GRAY_SHALE_STAIRS);
+           event.accept(ModBlocks.COBBLED_GRAY_SHALE_SLAB);
+           event.accept(ModBlocks.COBBLED_GRAY_SHALE_WALL);
+           event.accept(ModBlocks.CHISELED_GRAY_SHALE);
+           event.accept(ModBlocks.POLISHED_GRAY_SHALE);
+           event.accept(ModBlocks.POLISHED_GRAY_SHALE_STAIRS);
+           event.accept(ModBlocks.POLISHED_GRAY_SHALE_SLAB);
+           event.accept(ModBlocks.POLISHED_GRAY_SHALE_WALL);
+           event.accept(ModBlocks.GRAY_SHALE_BRICKS);
+           event.accept(ModBlocks.GRAY_SHALE_BRICK_STAIRS);
+           event.accept(ModBlocks.GRAY_SHALE_BRICK_SLAB);
+           event.accept(ModBlocks.GRAY_SHALE_BRICK_WALL);
+           event.accept(ModBlocks.CRACKED_GRAY_SHALE_BRICKS);
+           event.accept(ModBlocks.MOSSY_GRAY_SHALE_BRICKS);
+           event.accept(ModBlocks.MOSSY_GRAY_SHALE_BRICK_STAIRS);
+           event.accept(ModBlocks.MOSSY_GRAY_SHALE_BRICK_SLAB);
+           event.accept(ModBlocks.MOSSY_GRAY_SHALE_BRICK_WALL);*/
+
            event.accept(ModBlocks.RED_SHALE);
+           /*event.accept(ModBlocks.RED_SHALE_STAIRS);
+           event.accept(ModBlocks.RED_SHALE_SLAB);
+           event.accept(ModBlocks.RED_SHALE_WALL);
+           event.accept(ModBlocks.COBBLED_RED_SHALE);
+           event.accept(ModBlocks.COBBLED_RED_SHALE_STAIRS);
+           event.accept(ModBlocks.COBBLED_RED_SHALE_SLAB);
+           event.accept(ModBlocks.COBBLED_RED_SHALE_WALL);
+           event.accept(ModBlocks.CHISELED_RED_SHALE);
+           event.accept(ModBlocks.POLISHED_RED_SHALE);
+           event.accept(ModBlocks.POLISHED_RED_SHALE_STAIRS);
+           event.accept(ModBlocks.POLISHED_RED_SHALE_SLAB);
+           event.accept(ModBlocks.POLISHED_RED_SHALE_WALL);
+           event.accept(ModBlocks.RED_SHALE_BRICKS);
+           event.accept(ModBlocks.RED_SHALE_BRICK_STAIRS);
+           event.accept(ModBlocks.RED_SHALE_BRICK_SLAB);
+           event.accept(ModBlocks.RED_SHALE_BRICK_WALL);
+           event.accept(ModBlocks.CRACKED_RED_SHALE_BRICKS);
+           event.accept(ModBlocks.MOSSY_RED_SHALE_BRICKS);
+           event.accept(ModBlocks.MOSSY_RED_SHALE_BRICK_STAIRS);
+           event.accept(ModBlocks.MOSSY_RED_SHALE_BRICK_SLAB);
+           event.accept(ModBlocks.MOSSY_RED_SHALE_BRICK_WALL);*/
+
            event.accept(ModBlocks.RICH_RED_SHALE);
        }
        if (event.getTab() == ModTabs.SPAWN_EGGS.get()){

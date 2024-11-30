@@ -35,12 +35,28 @@ public class ModBlockStatesProvider extends BlockStateProvider {
 
         stoneBlockSet(ModBlocks.BROWN_SHALE.get(), ModBlocks.BROWN_SHALE_STAIRS.get(), ModBlocks.BROWN_SHALE_SLAB.get(), ModBlocks.BROWN_SHALE_WALL.get());
         stoneBlockSet(ModBlocks.COBBLED_BROWN_SHALE.get(), ModBlocks.COBBLED_BROWN_SHALE_STAIRS.get(), ModBlocks.COBBLED_BROWN_SHALE_SLAB.get(), ModBlocks.COBBLED_BROWN_SHALE_WALL.get());
-        stoneBlockSet(ModBlocks.POLISHED_BROWN_SHALE.get(), ModBlocks.POLISHED_BROWN_SHALE_STAIRS.get(), ModBlocks.POLISHED_BROWN_SHALE_SLAB.get(), ModBlocks.POLISHED_BROWN_SHALE_WALL.get());
         blockWithItem(ModBlocks.CHISELED_BROWN_SHALE.get());
+        stoneBlockSet(ModBlocks.POLISHED_BROWN_SHALE.get(), ModBlocks.POLISHED_BROWN_SHALE_STAIRS.get(), ModBlocks.POLISHED_BROWN_SHALE_SLAB.get(), ModBlocks.POLISHED_BROWN_SHALE_WALL.get());
         stoneBlockSet(ModBlocks.BROWN_SHALE_BRICKS.get(), ModBlocks.BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.BROWN_SHALE_BRICK_WALL.get());
-        stoneBlockSet(ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL.get());
         blockWithItem(ModBlocks.CRACKED_BROWN_SHALE_BRICKS.get());
+        stoneBlockSet(ModBlocks.MOSSY_BROWN_SHALE_BRICKS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_BROWN_SHALE_BRICK_WALL.get());
 
+        /*stoneBlockSet(ModBlocks.GRAY_SHALE.get(), ModBlocks.GRAY_SHALE_STAIRS.get(), ModBlocks.GRAY_SHALE_SLAB.get(), ModBlocks.GRAY_SHALE_WALL.get());
+        stoneBlockSet(ModBlocks.COBBLED_GRAY_SHALE.get(), ModBlocks.COBBLED_GRAY_SHALE_STAIRS.get(), ModBlocks.COBBLED_GRAY_SHALE_SLAB.get(), ModBlocks.COBBLED_GRAY_SHALE_WALL.get());
+        blockWithItem(ModBlocks.CHISELED_GRAY_SHALE.get());
+        stoneBlockSet(ModBlocks.POLISHED_GRAY_SHALE.get(), ModBlocks.POLISHED_GRAY_SHALE_STAIRS.get(), ModBlocks.POLISHED_GRAY_SHALE_SLAB.get(), ModBlocks.POLISHED_GRAY_SHALE_WALL.get());
+        stoneBlockSet(ModBlocks.GRAY_SHALE_BRICKS.get(), ModBlocks.GRAY_SHALE_BRICK_STAIRS.get(), ModBlocks.GRAY_SHALE_BRICK_SLAB.get(), ModBlocks.GRAY_SHALE_BRICK_WALL.get());
+        blockWithItem(ModBlocks.CRACKED_GRAY_SHALE_BRICKS.get());
+        stoneBlockSet(ModBlocks.MOSSY_GRAY_SHALE_BRICKS.get(), ModBlocks.MOSSY_GRAY_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_GRAY_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_GRAY_SHALE_BRICK_WALL.get());
+
+        stoneBlockSet(ModBlocks.RED_SHALE.get(), ModBlocks.RED_SHALE_STAIRS.get(), ModBlocks.RED_SHALE_SLAB.get(), ModBlocks.RED_SHALE_WALL.get());
+        stoneBlockSet(ModBlocks.COBBLED_RED_SHALE.get(), ModBlocks.COBBLED_RED_SHALE_STAIRS.get(), ModBlocks.COBBLED_RED_SHALE_SLAB.get(), ModBlocks.COBBLED_RED_SHALE_WALL.get());
+        blockWithItem(ModBlocks.CHISELED_RED_SHALE.get());
+        stoneBlockSet(ModBlocks.POLISHED_RED_SHALE.get(), ModBlocks.POLISHED_RED_SHALE_STAIRS.get(), ModBlocks.POLISHED_RED_SHALE_SLAB.get(), ModBlocks.POLISHED_RED_SHALE_WALL.get());
+        stoneBlockSet(ModBlocks.RED_SHALE_BRICKS.get(), ModBlocks.RED_SHALE_BRICK_STAIRS.get(), ModBlocks.RED_SHALE_BRICK_SLAB.get(), ModBlocks.RED_SHALE_BRICK_WALL.get());
+        blockWithItem(ModBlocks.CRACKED_RED_SHALE_BRICKS.get());
+        stoneBlockSet(ModBlocks.MOSSY_RED_SHALE_BRICKS.get(), ModBlocks.MOSSY_RED_SHALE_BRICK_STAIRS.get(), ModBlocks.MOSSY_RED_SHALE_BRICK_SLAB.get(), ModBlocks.MOSSY_RED_SHALE_BRICK_WALL.get());
+        */
         blockWithItem(ModBlocks.GRAY_SHALE.get());
         blockWithItem(ModBlocks.RED_SHALE.get());
         blockWithItem(ModBlocks.RICH_RED_SHALE.get());
